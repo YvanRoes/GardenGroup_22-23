@@ -15,9 +15,9 @@ using Logic;
 
 namespace UI
 {
-    public partial class Form1 : Form
+    public partial class TestForm : Form
     {
-        public Form1()
+        public TestForm()
         {
             InitializeComponent();
             Start();
