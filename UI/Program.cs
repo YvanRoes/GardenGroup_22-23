@@ -16,7 +16,10 @@ namespace UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestForm());
+            //Application.Run(new TestForm());
+            Application.Run(new UserManagementView());
+
+
         }
     }
 }
