@@ -47,7 +47,8 @@ namespace UI
         }
         private void AddUser_bttn_Click(object sender, EventArgs e)
         {
-
+            AddUserView AddUser = new AddUserView();
+            AddUser.ShowDialog();
         }
 
         private void Filter_bttn_Click(object sender, EventArgs e)
