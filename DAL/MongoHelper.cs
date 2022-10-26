@@ -14,11 +14,12 @@ namespace DAL
     public class MongoHelper
     {
         protected static MongoClient _client;
-        protected static MongoHelper _helper; 
+        protected static MongoHelper _helper;
+        protected IMongoDatabase database;
 
-        private MongoHelper() { _client = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/?retryWrites=true&w=majority"); }
+        protected MongoHelper() { _client = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/?retryWrites=true&w=majority"); database = _client.GetDatabase("NoSqlProjectDatabase"); }
 
-        public static MongoHelper getInstance() 
+        public static MongoHelper getInstance()
         {
             if (_helper == null)
                 _helper = new MongoHelper();
@@ -31,6 +32,23 @@ namespace DAL
             foreach (BsonDocument db in _client.ListDatabases().ToList())
                 dbs.Add(BsonSerializer.Deserialize<DatabaseModel>(db));
             return dbs;
+        }
+        protected List<BsonDocument> GetListOfDocuments(string collectionName)
+        {
+            var Collection = database.GetCollection<BsonDocument>(collectionName);
+            var filter = Builders<BsonDocument>.Filter.Empty;
+            var Documents = Collection.Find(filter).ToList();
+
+            return Documents;
+        }
+
+        protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string searchValue, int atribute)
+        {
+            var Collection = database.GetCollection<BsonDocument>(collectionName);
+            var filter = Builders<BsonDocument>.Filter.Eq(searchValue, atribute);
+            var Documents = Collection.Find(filter).ToList();
+
+            return Documents;
         }
     }
 }

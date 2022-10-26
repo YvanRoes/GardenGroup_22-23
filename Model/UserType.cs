@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum UserType { regular, admin }
+    public enum UserType { Employee, ServiceDesk }
 }
