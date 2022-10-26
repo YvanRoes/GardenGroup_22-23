@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using Model;
 
 namespace DAL
 {
@@ -31,8 +32,5 @@ namespace DAL
                 dbs.Add(BsonSerializer.Deserialize<DatabaseModel>(db));
             return dbs;
         }
-
-        public List
-
     }
 }

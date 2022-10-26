@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace Model
 {
@@ -28,5 +26,35 @@ namespace Model
         public Priority get_priority() { return _priority; }
         public Deadline get_deadline() { return _deadline; }
         public string get_description() { return _description; }
+
+
+        //load on cmMapCreator
+        [BsonConstructor]
+        public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, string _date, int _ticketType, int _priority, int _deadline, string _description)
+        {
+            this._id = _id;
+            this._ticketedBy = _ticketedBy;
+            this._reportedBy = _reportedBy;
+            this._subject = _subject;
+            this._date = DateTime.Parse(_date);
+            this._ticketType = (ticketType)_ticketType;
+            this._priority = (Priority)_priority;
+            this._deadline = (Deadline)_deadline;
+            this._description = _description;
+        }
+
+        public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, DateTime _date, ticketType _ticketType, Priority _priority, Deadline _deadline, string _description)
+        {
+            this._id = _id;
+            this._ticketedBy = _ticketedBy;
+            this._reportedBy = _reportedBy;
+            this._subject = _subject;
+            this._date = DateTime.Parse(_date);
+            this._ticketType = _ticketType;
+            this._priority = _priority;
+            this._deadline = _deadline;
+            this._description = _description;
+        }
+
     }
 }
