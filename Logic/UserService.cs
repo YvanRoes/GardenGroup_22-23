@@ -22,9 +22,9 @@ namespace Logic
             return userDb.GetAllUsers();
         }
 
-        public List<User> GetFilteredUsers()
+        public List<User> GetFilteredUsersByEmail(string filterEmail)
         {
-            return userDb.GetfilteredUser();
+            return userDb.GetFilteredUserByEmail(filterEmail);
         }
     }
 }

@@ -33,16 +33,16 @@
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.filter_txtbox = new System.Windows.Forms.TextBox();
-            this.AddUser_bttn = new System.Windows.Forms.Button();
+            this.Filter_bttn = new System.Windows.Forms.Button();
             this.User_lstView = new System.Windows.Forms.ListView();
             this.IdHeader = new System.Windows.Forms.ColumnHeader();
             this.nameHeader = new System.Windows.Forms.ColumnHeader();
             this.EmailHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.phoneHeader = new System.Windows.Forms.ColumnHeader();
             this.locationHeader = new System.Windows.Forms.ColumnHeader();
-            this.Filter_bttn = new System.Windows.Forms.Button();
+            this.AddUser_bttn = new System.Windows.Forms.Button();
+            this.filter_txtbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TicketsHeader = new System.Windows.Forms.ColumnHeader();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -91,41 +91,25 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // label1
+            // Filter_bttn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User Management";
-            // 
-            // filter_txtbox
-            // 
-            this.filter_txtbox.Location = new System.Drawing.Point(17, 55);
-            this.filter_txtbox.Name = "filter_txtbox";
-            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
-            this.filter_txtbox.TabIndex = 1;
-            // 
-            // AddUser_bttn
-            // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(660, 67);
-            this.AddUser_bttn.Name = "AddUser_bttn";
-            this.AddUser_bttn.Size = new System.Drawing.Size(94, 29);
-            this.AddUser_bttn.TabIndex = 2;
-            this.AddUser_bttn.Text = "Add User";
-            this.AddUser_bttn.UseVisualStyleBackColor = true;
-            this.AddUser_bttn.Click += new System.EventHandler(this.AddUser_bttn_Click);
+            this.Filter_bttn.Location = new System.Drawing.Point(314, 54);
+            this.Filter_bttn.Name = "Filter_bttn";
+            this.Filter_bttn.Size = new System.Drawing.Size(94, 29);
+            this.Filter_bttn.TabIndex = 4;
+            this.Filter_bttn.Text = "Filter";
+            this.Filter_bttn.UseVisualStyleBackColor = true;
+            this.Filter_bttn.Click += new System.EventHandler(this.Filter_bttn_Click);
             // 
             // User_lstView
             // 
             this.User_lstView.BackgroundImageTiled = true;
             this.User_lstView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.IdHeader,
-            this.nameHeader,
             this.EmailHeader1,
-            this.phoneHeader,
-            this.locationHeader});
+            this.nameHeader,
+            this.locationHeader,
+            this.TicketsHeader});
             this.User_lstView.HideSelection = false;
             this.User_lstView.Location = new System.Drawing.Point(12, 102);
             this.User_lstView.MultiSelect = false;
@@ -138,6 +122,7 @@
             // IdHeader
             // 
             this.IdHeader.Text = "Id";
+            this.IdHeader.Width = 80;
             // 
             // nameHeader
             // 
@@ -147,26 +132,43 @@
             // EmailHeader1
             // 
             this.EmailHeader1.Text = "Email";
-            this.EmailHeader1.Width = 200;
-            // 
-            // phoneHeader
-            // 
-            this.phoneHeader.Text = "Phone";
-            this.phoneHeader.Width = 130;
+            this.EmailHeader1.Width = 250;
             // 
             // locationHeader
             // 
             this.locationHeader.Text = "Location";
             this.locationHeader.Width = 150;
             // 
-            // Filter_bttn
+            // AddUser_bttn
             // 
-            this.Filter_bttn.Location = new System.Drawing.Point(314, 54);
-            this.Filter_bttn.Name = "Filter_bttn";
-            this.Filter_bttn.Size = new System.Drawing.Size(94, 29);
-            this.Filter_bttn.TabIndex = 4;
-            this.Filter_bttn.Text = "Filter";
-            this.Filter_bttn.UseVisualStyleBackColor = true;
+            this.AddUser_bttn.Location = new System.Drawing.Point(660, 67);
+            this.AddUser_bttn.Name = "AddUser_bttn";
+            this.AddUser_bttn.Size = new System.Drawing.Size(94, 29);
+            this.AddUser_bttn.TabIndex = 2;
+            this.AddUser_bttn.Text = "Add User";
+            this.AddUser_bttn.UseVisualStyleBackColor = true;
+            this.AddUser_bttn.Click += new System.EventHandler(this.AddUser_bttn_Click);
+            // 
+            // filter_txtbox
+            // 
+            this.filter_txtbox.Location = new System.Drawing.Point(17, 55);
+            this.filter_txtbox.Name = "filter_txtbox";
+            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
+            this.filter_txtbox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "User Management";
+            // 
+            // TicketsHeader
+            // 
+            this.TicketsHeader.Text = "# Tickets";
+            this.TicketsHeader.Width = 90;
             // 
             // UserManagementView
             // 
@@ -200,10 +202,10 @@
         private System.Windows.Forms.ColumnHeader IdHeader;
         private System.Windows.Forms.ColumnHeader nameHeader;
         private System.Windows.Forms.ColumnHeader EmailHeader1;
-        private System.Windows.Forms.ColumnHeader phoneHeader;
         private System.Windows.Forms.ColumnHeader locationHeader;
         private System.Windows.Forms.Button AddUser_bttn;
         private System.Windows.Forms.TextBox filter_txtbox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader TicketsHeader;
     }
 }

@@ -47,11 +47,11 @@ namespace DAL
                 return users;
         }
 
-        public List<User> GetfilteredUser()
+        public List<User> GetFilteredUserByEmail(string filterEmail)
         {
             List<User> users = new List<User>();
             //I have to fix the attribute change back to string
-            var document = GetListOfFilteredDocuments("User", "Location", 1);
+            var document = GetListOfFilteredDocuments("User", "Email",filterEmail);
 
             foreach (var info in document)
             {
