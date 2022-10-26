@@ -43,7 +43,7 @@ namespace Model
             this._description = _description;
         }
 
-        public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, DateTime _date, ticketType _ticketType, Priority _priority, Deadline _deadline, string _description)
+        public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, string _date, ticketType _ticketType, Priority _priority, Deadline _deadline, string _description)
         {
             this._id = _id;
             this._ticketedBy = _ticketedBy;
