@@ -34,7 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Password_CheckBox = new System.Windows.Forms.CheckBox();
             this.Cancel_bttn = new System.Windows.Forms.Button();
             this.Add_bttn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -99,16 +99,15 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Send Password?";
             // 
-            // checkBox1
+            // Password_CheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(181, 339);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(334, 24);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Yes, a password e-mail will be sent to the user";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.Password_CheckBox.AutoSize = true;
+            this.Password_CheckBox.Location = new System.Drawing.Point(181, 339);
+            this.Password_CheckBox.Name = "Password_CheckBox";
+            this.Password_CheckBox.Size = new System.Drawing.Size(334, 24);
+            this.Password_CheckBox.TabIndex = 6;
+            this.Password_CheckBox.Text = "Yes, a password e-mail will be sent to the user";
+            this.Password_CheckBox.UseVisualStyleBackColor = true;
             // 
             // Cancel_bttn
             // 
@@ -190,7 +189,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Add_bttn);
             this.Controls.Add(this.Cancel_bttn);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.Password_CheckBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -212,7 +211,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox Password_CheckBox;
         private System.Windows.Forms.Button Cancel_bttn;
         private System.Windows.Forms.Button Add_bttn;
         private System.Windows.Forms.Label label7;

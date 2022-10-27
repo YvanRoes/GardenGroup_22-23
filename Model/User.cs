@@ -14,6 +14,7 @@ namespace Model
         private long _phone;
         private Location _location;
         private UserType _userType;
+        private string _password;
 
         public int get_id() { return _id; }
         public string get_name() { return _name; }
@@ -21,8 +22,9 @@ namespace Model
         public long get_phone() { return _phone; }
         public Location get_location() { return _location; }
         public UserType get_userType() { return _userType; }
+        public string get_password() { return _password; }
 
-        public User(int id, string name, string email, long phone, int usertype, int location)
+        public User(int id, string name, string email, long phone, int usertype, int location, string password)
         {
             _id = id;
             _name = name;
@@ -30,6 +32,7 @@ namespace Model
             _phone = phone;
             _userType = (UserType)usertype;
             _location = (Location)location;
+            _password = password;
 
         }
     }

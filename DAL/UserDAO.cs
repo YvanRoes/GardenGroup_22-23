@@ -20,8 +20,9 @@ namespace DAL
             long phone = (long)doc["Phone"];
             int userType = (int)(doc["UserType"]);
             int location = (int)doc["Location"];
+            string password = doc["Password"].ToString();
 
-            return new User(id, name, email, phone, userType, location);
+            return new User(id, name, email, phone, userType, location, password);
         }
 
         public List<User> GetAllUsers()
@@ -48,7 +49,7 @@ namespace DAL
 
         public void AddUser(User user)
         {
-            var document = new BsonDocument { { "ID", getNewId() }, { "Name", user.get_name() }, { "Email", user.get_email() }, { "Phone", user.get_phone() }, { "Location", (int)user.get_location() }, { "UserType", (int)user.get_userType() } };
+            var document = new BsonDocument { { "ID", getNewId() }, { "Name", user.get_name() }, { "Email", user.get_email() }, { "Phone", user.get_phone() }, { "Location", (int)user.get_location() }, { "UserType", (int)user.get_userType() }, { "Password", user.get_password() } };
             CreateDocument("User", document);
         }
 
@@ -64,9 +65,18 @@ namespace DAL
             });
             return id + 1;
         }
+        private string getPassword(int id, string name)
+        {
+            string[] separateName = name.Split(' ');
+            return id + separateName[0];
+        }
         public int generateId()
         {
             return getNewId();
+        }
+        public string generatePassword(int id, string name)
+        {
+            return getPassword(id, name);
         }
     }
 }

@@ -31,6 +31,10 @@ namespace Logic
         {
             return userDb.generateId();
         }
+        public string generatePassword(int id, string name)
+        {
+            return userDb.generatePassword(id, name);
+        }
         public void addNewUser(User user)
         {
             userDb.AddUser(user);

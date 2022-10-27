@@ -51,8 +51,14 @@ namespace UI
                 string email = Email_TxtBox.Text;
                 long phone = long.Parse(Phone_TxtBox.Text);
                 int location = Location_cmbBox.SelectedIndex + 1;
+                string password;
 
-                User user = new User(id, name, email, phone, uType, location);
+                if (Password_CheckBox.Checked)
+                    password = _userService.generatePassword(id, name);
+                else
+                    password = "";
+
+                User user = new User(id, name, email, phone, uType, location, password);
                 _userService.addNewUser(user);
 
             }
@@ -62,11 +68,6 @@ namespace UI
             }
 
             this.Close();
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
