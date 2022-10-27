@@ -11,9 +11,9 @@ using Model;
 
 namespace UI
 {
-    public partial class AddUserView : Form
+    public partial class AddUserViewForm : Form
     {
-        public AddUserView()
+        public AddUserViewForm()
         {
             InitializeComponent();
             FillConboBoxes();

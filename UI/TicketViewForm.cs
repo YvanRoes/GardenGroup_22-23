@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class TicketView : Form
+    public partial class TicketViewForm : Form
     {
-        public TicketView()
+        public TicketViewForm()
         {
             InitializeComponent();
         }
