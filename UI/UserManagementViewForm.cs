@@ -36,6 +36,7 @@ namespace UI
                 li.SubItems.Add(user.get_email());
                 li.SubItems.Add(user.get_name());
                 li.SubItems.Add(user.get_location().ToString());
+                //li.SubItems.Add(userService.countTicketsperUser(user.get_id()));
                 li.Tag = user;
                 User_lstView.Items.Add(li);
             }

@@ -54,6 +54,16 @@ namespace DAL
         {
             var collection = database.GetCollection<BsonDocument>(collectionName);
             collection.InsertOne(document);
+            
+        }
+
+        protected async Task<int> executeCountQuery(string collectionName, string field, string value)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+
+            long countResult = await collection.CountDocumentsAsync(c => field == value);
+
+            return (int)countResult;
         }
     }
 }

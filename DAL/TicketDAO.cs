@@ -41,5 +41,11 @@ namespace DAL
                 default : return TicketStatus.unknown;
             }
         }
+
+        public Task<int> CountTicketsperUser(int userId)
+        {
+            return executeCountQuery("Ticket", "reportedBy", userId.ToString());
+
+        }
     }
 }

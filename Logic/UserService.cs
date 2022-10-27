@@ -11,10 +11,11 @@ namespace Logic
     public class UserService
     {
         UserDAO userDb;
+        ItemDAO ticketDb; 
 
         public UserService()
         {
-            userDb = new UserDAO();
+            userDb = new UserDAO();   
         }
 
         public List<User> GetAllUsers()
@@ -38,6 +39,11 @@ namespace Logic
         public void addNewUser(User user)
         {
             userDb.AddUser(user);
+        }
+        public Task<int> countTicketsperUser(int userId)
+        {
+            ticketDb = new ItemDAO();
+            return ticketDb.CountTicketsperUser(userId);
         }
     }
 }
