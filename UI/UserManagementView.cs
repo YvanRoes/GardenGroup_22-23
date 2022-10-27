@@ -43,5 +43,10 @@ namespace UI
         {
 
         }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

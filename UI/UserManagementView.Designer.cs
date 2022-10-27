@@ -33,16 +33,16 @@
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.filter_txtbox = new System.Windows.Forms.TextBox();
-            this.AddUser_bttn = new System.Windows.Forms.Button();
+            this.Filter_bttn = new System.Windows.Forms.Button();
             this.User_lstView = new System.Windows.Forms.ListView();
             this.IdHeader = new System.Windows.Forms.ColumnHeader();
             this.nameHeader = new System.Windows.Forms.ColumnHeader();
             this.EmailHeader1 = new System.Windows.Forms.ColumnHeader();
             this.phoneHeader = new System.Windows.Forms.ColumnHeader();
             this.locationHeader = new System.Windows.Forms.ColumnHeader();
-            this.Filter_bttn = new System.Windows.Forms.Button();
+            this.AddUser_bttn = new System.Windows.Forms.Button();
+            this.filter_txtbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +65,7 @@
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
             this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // ticketManagementToolStripMenuItem
             // 
@@ -91,31 +92,14 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // label1
+            // Filter_bttn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User Management";
-            // 
-            // filter_txtbox
-            // 
-            this.filter_txtbox.Location = new System.Drawing.Point(17, 55);
-            this.filter_txtbox.Name = "filter_txtbox";
-            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
-            this.filter_txtbox.TabIndex = 1;
-            // 
-            // AddUser_bttn
-            // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(660, 67);
-            this.AddUser_bttn.Name = "AddUser_bttn";
-            this.AddUser_bttn.Size = new System.Drawing.Size(94, 29);
-            this.AddUser_bttn.TabIndex = 2;
-            this.AddUser_bttn.Text = "Add User";
-            this.AddUser_bttn.UseVisualStyleBackColor = true;
-            this.AddUser_bttn.Click += new System.EventHandler(this.AddUser_bttn_Click);
+            this.Filter_bttn.Location = new System.Drawing.Point(314, 54);
+            this.Filter_bttn.Name = "Filter_bttn";
+            this.Filter_bttn.Size = new System.Drawing.Size(94, 29);
+            this.Filter_bttn.TabIndex = 4;
+            this.Filter_bttn.Text = "Filter";
+            this.Filter_bttn.UseVisualStyleBackColor = true;
             // 
             // User_lstView
             // 
@@ -159,14 +143,31 @@
             this.locationHeader.Text = "Location";
             this.locationHeader.Width = 150;
             // 
-            // Filter_bttn
+            // AddUser_bttn
             // 
-            this.Filter_bttn.Location = new System.Drawing.Point(314, 54);
-            this.Filter_bttn.Name = "Filter_bttn";
-            this.Filter_bttn.Size = new System.Drawing.Size(94, 29);
-            this.Filter_bttn.TabIndex = 4;
-            this.Filter_bttn.Text = "Filter";
-            this.Filter_bttn.UseVisualStyleBackColor = true;
+            this.AddUser_bttn.Location = new System.Drawing.Point(660, 67);
+            this.AddUser_bttn.Name = "AddUser_bttn";
+            this.AddUser_bttn.Size = new System.Drawing.Size(94, 29);
+            this.AddUser_bttn.TabIndex = 2;
+            this.AddUser_bttn.Text = "Add User";
+            this.AddUser_bttn.UseVisualStyleBackColor = true;
+            this.AddUser_bttn.Click += new System.EventHandler(this.AddUser_bttn_Click);
+            // 
+            // filter_txtbox
+            // 
+            this.filter_txtbox.Location = new System.Drawing.Point(17, 55);
+            this.filter_txtbox.Name = "filter_txtbox";
+            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
+            this.filter_txtbox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "User Management";
             // 
             // UserManagementView
             // 

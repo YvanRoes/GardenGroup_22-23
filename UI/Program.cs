@@ -17,7 +17,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new TestForm());
-            Application.Run(new UserManagementView());
+            Application.Run(new TicketView());
 
 
         }
