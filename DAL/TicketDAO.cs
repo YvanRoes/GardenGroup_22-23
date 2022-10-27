@@ -7,7 +7,7 @@ using Model;
 
 namespace DAL
 {
-    public class ItemDAO : MongoHelper
+    public class TicketDAO : MongoHelper
     {
         public List<Ticket> GetAllTickets()
         {
@@ -19,7 +19,7 @@ namespace DAL
                 int ticketedBy = (int)t["ticketedBy"];
                 int reportedBy = (int)t["reportedBy"];
                 string subject = (string)t["subject"];
-                string date = (string)t["date"];
+                DateTime date = (DateTime)t["date"];
                 TicketType ticketType = (TicketType)(int)t["ticketType"];
                 Priority priority = (Priority)(int)t["priority"];
                 Deadline deadline = (Deadline)(int)t["deadline"];
