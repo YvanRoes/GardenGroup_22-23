@@ -26,5 +26,10 @@ namespace Logic
         {
             return userDb.GetFilteredUserByEmail(filterEmail);
         }
+
+        public void AddUser(User user)
+        {
+            userDb.AddUser(user);
+        }
     }
 }

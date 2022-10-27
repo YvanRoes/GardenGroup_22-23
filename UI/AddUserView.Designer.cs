@@ -40,9 +40,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.TypeUser_cmbBox = new System.Windows.Forms.ComboBox();
             this.Location_cmbBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Name_TxtBox = new System.Windows.Forms.TextBox();
+            this.Email_TxtBox = new System.Windows.Forms.TextBox();
+            this.Phone_TxtBox = new System.Windows.Forms.TextBox();
+            this.id_txtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -155,35 +156,43 @@
             this.Location_cmbBox.Size = new System.Drawing.Size(238, 28);
             this.Location_cmbBox.TabIndex = 11;
             // 
-            // textBox1
+            // Name_TxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 27);
-            this.textBox1.TabIndex = 12;
+            this.Name_TxtBox.Location = new System.Drawing.Point(181, 93);
+            this.Name_TxtBox.Name = "Name_TxtBox";
+            this.Name_TxtBox.Size = new System.Drawing.Size(238, 27);
+            this.Name_TxtBox.TabIndex = 12;
             // 
-            // textBox2
+            // Email_TxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(181, 189);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 27);
-            this.textBox2.TabIndex = 13;
+            this.Email_TxtBox.Location = new System.Drawing.Point(181, 189);
+            this.Email_TxtBox.Name = "Email_TxtBox";
+            this.Email_TxtBox.Size = new System.Drawing.Size(238, 27);
+            this.Email_TxtBox.TabIndex = 13;
             // 
-            // textBox3
+            // Phone_TxtBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(181, 232);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(238, 27);
-            this.textBox3.TabIndex = 14;
+            this.Phone_TxtBox.Location = new System.Drawing.Point(181, 232);
+            this.Phone_TxtBox.Name = "Phone_TxtBox";
+            this.Phone_TxtBox.Size = new System.Drawing.Size(238, 27);
+            this.Phone_TxtBox.TabIndex = 14;
+            // 
+            // id_txtBox
+            // 
+            this.id_txtBox.Location = new System.Drawing.Point(440, 93);
+            this.id_txtBox.Name = "id_txtBox";
+            this.id_txtBox.Size = new System.Drawing.Size(86, 27);
+            this.id_txtBox.TabIndex = 15;
             // 
             // AddUserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 474);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.id_txtBox);
+            this.Controls.Add(this.Phone_TxtBox);
+            this.Controls.Add(this.Email_TxtBox);
+            this.Controls.Add(this.Name_TxtBox);
             this.Controls.Add(this.Location_cmbBox);
             this.Controls.Add(this.TypeUser_cmbBox);
             this.Controls.Add(this.label7);
@@ -217,8 +226,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox TypeUser_cmbBox;
         private System.Windows.Forms.ComboBox Location_cmbBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Name_TxtBox;
+        private System.Windows.Forms.TextBox Email_TxtBox;
+        private System.Windows.Forms.TextBox Phone_TxtBox;
+        private System.Windows.Forms.TextBox id_txtBox;
     }
 }

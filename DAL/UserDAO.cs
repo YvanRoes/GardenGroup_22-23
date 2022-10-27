@@ -9,7 +9,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 
 namespace DAL
-{
+{ 
     public class UserDAO : MongoHelper
     {
         //public User GetUser()
@@ -50,7 +50,6 @@ namespace DAL
         public List<User> GetFilteredUserByEmail(string filterEmail)
         {
             List<User> users = new List<User>();
-            //I have to fix the attribute change back to string
             var document = GetListOfFilteredDocuments("User", "Email",filterEmail);
 
             foreach (var info in document)
@@ -67,6 +66,12 @@ namespace DAL
             }
 
             return users;
+        }
+
+        public void AddUser(User user)
+        {
+            var document = new BsonDocument { { "ID" ,user.get_id()}, { "Name", user.get_name()}, {"Email", user.get_email() }, {"Phone", user.get_phone() }, {"Location", (int)user.get_location()}, {"UserType", (int)user.getUserType()} };
+            CreateDocument("User", document);
         }
     }
 }

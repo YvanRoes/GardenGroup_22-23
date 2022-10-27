@@ -35,20 +35,26 @@ namespace DAL
         }
         protected List<BsonDocument> GetListOfDocuments(string collectionName)
         {
-            var Collection = database.GetCollection<BsonDocument>(collectionName);
+            var collection = database.GetCollection<BsonDocument>(collectionName);
             var filter = Builders<BsonDocument>.Filter.Empty;
-            var Documents = Collection.Find(filter).ToList();
+            var documents = collection.Find(filter).ToList();
 
-            return Documents;
+            return documents;
         }
 
         protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string searchValue, string atribute)
         {
-            var Collection = database.GetCollection<BsonDocument>(collectionName);
+            var collection = database.GetCollection<BsonDocument>(collectionName);
             var filter = Builders<BsonDocument>.Filter.Eq(searchValue, atribute);
-            var Documents = Collection.Find(filter).ToList();
+            var documents = collection.Find(filter).ToList();
 
-            return Documents;
+            return documents;
+        }
+
+        protected void CreateDocument(string collectionName, BsonDocument document)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+            collection.InsertOne(document);
         }
     }
 }
