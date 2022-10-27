@@ -21,11 +21,6 @@ namespace UI
             userService = new UserService();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void UserManagementView_Load(object sender, EventArgs e)
         {
             FillListView(userService.GetAllUsers());
@@ -49,6 +44,7 @@ namespace UI
         {
             AddUserViewForm AddUser = new AddUserViewForm();
             AddUser.ShowDialog();
+            FillListView(userService.GetAllUsers());
         }
 
         private void Filter_bttn_Click(object sender, EventArgs e)

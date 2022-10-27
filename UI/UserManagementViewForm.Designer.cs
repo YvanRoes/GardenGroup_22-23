@@ -89,11 +89,10 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 460);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Filter_bttn
             // 
-            this.Filter_bttn.Location = new System.Drawing.Point(314, 54);
+            this.Filter_bttn.Location = new System.Drawing.Point(341, 54);
             this.Filter_bttn.Name = "Filter_bttn";
             this.Filter_bttn.Size = new System.Drawing.Size(94, 29);
             this.Filter_bttn.TabIndex = 4;
@@ -112,10 +111,10 @@
             this.TicketsHeader});
             this.User_lstView.FullRowSelect = true;
             this.User_lstView.HideSelection = false;
-            this.User_lstView.Location = new System.Drawing.Point(12, 102);
+            this.User_lstView.Location = new System.Drawing.Point(41, 102);
             this.User_lstView.MultiSelect = false;
             this.User_lstView.Name = "User_lstView";
-            this.User_lstView.Size = new System.Drawing.Size(918, 348);
+            this.User_lstView.Size = new System.Drawing.Size(858, 348);
             this.User_lstView.TabIndex = 3;
             this.User_lstView.UseCompatibleStateImageBehavior = false;
             this.User_lstView.View = System.Windows.Forms.View.Details;
@@ -123,31 +122,31 @@
             // IdHeader
             // 
             this.IdHeader.Text = "Id";
-            this.IdHeader.Width = 80;
+            this.IdHeader.Width = 100;
             // 
             // EmailHeader1
             // 
             this.EmailHeader1.Text = "Email";
-            this.EmailHeader1.Width = 250;
+            this.EmailHeader1.Width = 270;
             // 
             // nameHeader
             // 
             this.nameHeader.Text = "Name";
-            this.nameHeader.Width = 170;
+            this.nameHeader.Width = 190;
             // 
             // locationHeader
             // 
             this.locationHeader.Text = "Location";
-            this.locationHeader.Width = 150;
+            this.locationHeader.Width = 160;
             // 
             // TicketsHeader
             // 
             this.TicketsHeader.Text = "# Tickets";
-            this.TicketsHeader.Width = 90;
+            this.TicketsHeader.Width = 100;
             // 
             // AddUser_bttn
             // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(796, 48);
+            this.AddUser_bttn.Location = new System.Drawing.Point(776, 48);
             this.AddUser_bttn.Name = "AddUser_bttn";
             this.AddUser_bttn.Size = new System.Drawing.Size(123, 41);
             this.AddUser_bttn.TabIndex = 2;
@@ -157,7 +156,7 @@
             // 
             // filter_txtbox
             // 
-            this.filter_txtbox.Location = new System.Drawing.Point(17, 55);
+            this.filter_txtbox.Location = new System.Drawing.Point(41, 56);
             this.filter_txtbox.Name = "filter_txtbox";
             this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
             this.filter_txtbox.TabIndex = 1;
