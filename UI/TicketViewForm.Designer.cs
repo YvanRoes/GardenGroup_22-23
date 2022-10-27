@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class TicketView
+    partial class TicketViewForm
     {
         /// <summary>
         /// Required designer variable.

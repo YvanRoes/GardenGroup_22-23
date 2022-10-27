@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class UserManagementView
+    partial class UserManagementViewForm
     {
         /// <summary>
         /// Required designer variable.
