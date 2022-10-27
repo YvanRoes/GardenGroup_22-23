@@ -12,10 +12,10 @@ using Model;
 
 namespace UI
 {
-    public partial class UserManagementView : Form
+    public partial class UserManagementViewForm : Form
     {
         private UserService userService;
-        public UserManagementView()
+        public UserManagementViewForm()
         {
             InitializeComponent();
             userService = new UserService();
@@ -47,7 +47,7 @@ namespace UI
         }
         private void AddUser_bttn_Click(object sender, EventArgs e)
         {
-            AddUserView AddUser = new AddUserView();
+            AddUserViewForm AddUser = new AddUserViewForm();
             AddUser.ShowDialog();
         }
 

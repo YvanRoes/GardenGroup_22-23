@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class DashboardView : Form
+    public partial class DashboardViewForm : Form
     {
-        public DashboardView()
+        public DashboardViewForm()
         {
             InitializeComponent();
         }

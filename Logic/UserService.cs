@@ -27,9 +27,16 @@ namespace Logic
             return userDb.GetFilteredUserByEmail(filterEmail);
         }
 
-        public void AddUser(User user)
+        public int getNewID()
         {
-            userDb.AddUser(user);
+            int id = 0;
+            List<User> users = userDb.GetAllUsers();
+            users.ForEach(user =>
+            {
+                if (user.get_id() > id)
+                    id = user.get_id();
+            });
+            return id + 1;
         }
     }
 }
