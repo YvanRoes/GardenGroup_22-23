@@ -37,7 +37,8 @@ namespace DAL
             {
                 case "open" : return TicketStatus.open;
                 case "waiting" : return TicketStatus.waiting;
-                default : return TicketStatus.Unknown;
+                case "closed": return TicketStatus.closed;
+                default : return TicketStatus.unknown;
             }
         }
     }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum TicketStatus { open, waiting, Unknown }
+    public enum TicketStatus { open, waiting, unknown, closed }
 }
