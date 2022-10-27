@@ -43,7 +43,6 @@
             this.Name_TxtBox = new System.Windows.Forms.TextBox();
             this.Email_TxtBox = new System.Windows.Forms.TextBox();
             this.Phone_TxtBox = new System.Windows.Forms.TextBox();
-            this.id_txtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -177,19 +176,11 @@
             this.Phone_TxtBox.Size = new System.Drawing.Size(238, 27);
             this.Phone_TxtBox.TabIndex = 14;
             // 
-            // id_txtBox
-            // 
-            this.id_txtBox.Location = new System.Drawing.Point(440, 93);
-            this.id_txtBox.Name = "id_txtBox";
-            this.id_txtBox.Size = new System.Drawing.Size(86, 27);
-            this.id_txtBox.TabIndex = 15;
-            // 
-            // AddUserView
+            // AddUserViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 474);
-            this.Controls.Add(this.id_txtBox);
             this.Controls.Add(this.Phone_TxtBox);
             this.Controls.Add(this.Email_TxtBox);
             this.Controls.Add(this.Name_TxtBox);
@@ -205,7 +196,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "AddUserView";
+            this.Name = "AddUserViewForm";
             this.Text = "AddUserView";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,6 +220,5 @@
         private System.Windows.Forms.TextBox Name_TxtBox;
         private System.Windows.Forms.TextBox Email_TxtBox;
         private System.Windows.Forms.TextBox Phone_TxtBox;
-        private System.Windows.Forms.TextBox id_txtBox;
     }
 }

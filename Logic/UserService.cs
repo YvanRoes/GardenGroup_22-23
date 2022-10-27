@@ -27,16 +27,13 @@ namespace Logic
             return userDb.GetFilteredUserByEmail(filterEmail);
         }
 
-        public int getNewID()
+        public int generateId()
         {
-            int id = 0;
-            List<User> users = userDb.GetAllUsers();
-            users.ForEach(user =>
-            {
-                if (user.get_id() > id)
-                    id = user.get_id();
-            });
-            return id + 1;
+            return userDb.generateId();
+        }
+        public void addNewUser(User user)
+        {
+            userDb.AddUser(user);
         }
     }
 }

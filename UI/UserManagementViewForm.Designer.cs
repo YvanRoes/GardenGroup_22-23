@@ -56,7 +56,7 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(942, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,7 +87,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 407);
+            this.panel1.Size = new System.Drawing.Size(942, 460);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -110,11 +110,12 @@
             this.nameHeader,
             this.locationHeader,
             this.TicketsHeader});
+            this.User_lstView.FullRowSelect = true;
             this.User_lstView.HideSelection = false;
             this.User_lstView.Location = new System.Drawing.Point(12, 102);
             this.User_lstView.MultiSelect = false;
             this.User_lstView.Name = "User_lstView";
-            this.User_lstView.Size = new System.Drawing.Size(776, 305);
+            this.User_lstView.Size = new System.Drawing.Size(918, 348);
             this.User_lstView.TabIndex = 3;
             this.User_lstView.UseCompatibleStateImageBehavior = false;
             this.User_lstView.View = System.Windows.Forms.View.Details;
@@ -146,7 +147,7 @@
             // 
             // AddUser_bttn
             // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(648, 42);
+            this.AddUser_bttn.Location = new System.Drawing.Point(796, 48);
             this.AddUser_bttn.Name = "AddUser_bttn";
             this.AddUser_bttn.Size = new System.Drawing.Size(123, 41);
             this.AddUser_bttn.TabIndex = 2;
@@ -164,21 +165,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 20);
+            this.label1.Size = new System.Drawing.Size(296, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Management";
             // 
-            // UserManagementView
+            // UserManagementViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(942, 493);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "UserManagementView";
+            this.Name = "UserManagementViewForm";
             this.Text = "UserManagementView";
             this.Load += new System.EventHandler(this.UserManagementView_Load);
             this.menuStrip1.ResumeLayout(false);
