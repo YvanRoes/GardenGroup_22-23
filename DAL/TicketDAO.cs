@@ -42,9 +42,9 @@ namespace DAL
             }
         }
 
-        public Task<int> CountTicketsperUser(int userId)
+        public int CountTicketsperUser(int userId)
         {
-            return executeCountQuery("Ticket", "reportedBy", userId.ToString());
+            return executeMatchCountQuery("Ticket", "reportedBy", userId);
 
         }
     }

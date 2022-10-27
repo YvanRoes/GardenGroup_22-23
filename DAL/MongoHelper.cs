@@ -57,13 +57,16 @@ namespace DAL
             
         }
 
-        protected async Task<int> executeCountQuery(string collectionName, string field, string value)
+        protected int executeMatchCountQuery(string collectionName, string field, int value)
         {
             var collection = database.GetCollection<BsonDocument>(collectionName);
 
-            long countResult = await collection.CountDocumentsAsync(c => field == value);
+            var query = collection.Aggregate()
+                .Match(new BsonDocument() { { field, value } }).ToList();
 
-            return (int)countResult;
+            int count = query.Count();
+
+            return count;
         }
     }
 }

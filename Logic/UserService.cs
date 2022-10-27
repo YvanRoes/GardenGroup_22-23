@@ -40,7 +40,7 @@ namespace Logic
         {
             userDb.AddUser(user);
         }
-        public Task<int> countTicketsperUser(int userId)
+        public int countTicketsperUser(int userId)
         {
             ticketDb = new ItemDAO();
             return ticketDb.CountTicketsperUser(userId);
