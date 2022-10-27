@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum TicketType { type1, type2 }
+    public enum TicketType { hardware, software, service, unknown }
 }

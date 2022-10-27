@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class AddUserView
+    partial class AddUserViewForm
     {
         /// <summary>
         /// Required designer variable.

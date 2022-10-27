@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class DashboardView
+    partial class DashboardViewForm
     {
         /// <summary>
         /// Required designer variable.
