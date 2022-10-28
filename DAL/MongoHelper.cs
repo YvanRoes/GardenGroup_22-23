@@ -54,7 +54,6 @@ namespace DAL
         {
             var collection = database.GetCollection<BsonDocument>(collectionName);
             collection.InsertOne(document);
-            
         }
 
         protected int executeMatchCountQuery(string collectionName, string field, int value)
