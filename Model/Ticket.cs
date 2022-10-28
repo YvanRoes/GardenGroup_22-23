@@ -29,13 +29,13 @@ namespace Model
         public string get_description() { return _description; }
         public TicketStatus get_status() { return _status; }
 
-        public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, string _date, TicketType _ticketType, Priority _priority, Deadline _deadline, string _description, TicketStatus _status)
+        public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, DateTime _date, TicketType _ticketType, Priority _priority, Deadline _deadline, string _description, TicketStatus _status)
         {
             this._id = _id;
             this._ticketedBy = _ticketedBy;
             this._reportedBy = _reportedBy;
             this._subject = _subject;
-            this._date = DateTime.Parse(_date);
+            this._date = _date;
             this._ticketType = _ticketType;
             this._priority = _priority;
             this._deadline = _deadline;
