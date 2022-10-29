@@ -60,5 +60,12 @@ namespace UI
 
             FillListView(users);
         }
+
+        private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TicketViewForm ticketViewForm = new TicketViewForm();
+            ticketViewForm.ShowDialog();
+            this.Close();
+        }
     }
 }

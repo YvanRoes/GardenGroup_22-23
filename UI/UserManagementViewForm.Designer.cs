@@ -71,6 +71,7 @@
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
             this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
+            this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 

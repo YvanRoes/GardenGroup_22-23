@@ -11,7 +11,7 @@ namespace Logic
     public class UserService
     {
         UserDAO userDb;
-        ItemDAO ticketDb; 
+        TicketDAO ticketDb; 
 
         public UserService()
         {
@@ -42,7 +42,7 @@ namespace Logic
         }
         public int countTicketsperUser(int userId)
         {
-            ticketDb = new ItemDAO();
+            ticketDb = new TicketDAO();
             return ticketDb.CountTicketsperUser(userId);
         }
     }
