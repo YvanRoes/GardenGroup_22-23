@@ -42,9 +42,9 @@ namespace DAL
             }
         }
 
-        public int CountTicketsperUser(int userId)
+        public string CountTicketsperUser(int userId)
         {
-            return executeMatchCountQuery("Ticket", "reportedBy", userId);
+            return executeMatchCountQuery2("Ticket", "reportedBy", userId);
 
         }
     }

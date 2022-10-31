@@ -67,5 +67,35 @@ namespace DAL
 
             return count;
         }
+
+        //
+        protected string executeMatchCountQuery2(string collectionName, string field, int value)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+
+            var pipelinestage1 = new BsonDocument
+            {
+                {"$match", new BsonDocument
+                {
+                    { field, value }
+                } }
+            };
+
+            var pipelinestage2 = new BsonDocument
+            {
+                {"$count", "result" }
+            };
+
+            BsonDocument[] pipeline = new BsonDocument[]
+            {
+                pipelinestage1, pipelinestage2
+            };
+
+            BsonDocument execute = collection.Aggregate<BsonDocument>(pipeline).ToBsonDocument();
+
+            string result = execute.ToString();
+
+            return result;
+        }
     }
 }

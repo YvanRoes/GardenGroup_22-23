@@ -64,7 +64,7 @@ namespace UI
         private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TicketViewForm ticketViewForm = new TicketViewForm();
-            ticketViewForm.ShowDialog();
+            ticketViewForm.Show();
             this.Close();
         }
     }
