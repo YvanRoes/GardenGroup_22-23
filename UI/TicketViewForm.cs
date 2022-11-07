@@ -29,8 +29,16 @@ namespace UI
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
                 ListViewItem list = new ListViewItem(output);
+                list.Tag = Id;
                 listView_Tickets.Items.Add(list);
             }
+        }
+
+        private void button_CreateIncident_Click(object sender, EventArgs e)
+        {
+            
+            AddIncidentForm addIncidentForm = new AddIncidentForm();
+            addIncidentForm.ShowDialog();
         }
     }
 }

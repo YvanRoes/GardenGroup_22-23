@@ -21,5 +21,17 @@ namespace Logic
         {
             return ticketDb.GetAllTickets();
         }
+        public Priority getTicketPriorityFromString(string priority)
+        {
+            switch (priority.ToLower())
+            {
+                case "high": return Priority.high;
+                case "low": return Priority.low;
+                case "normal": return Priority.normal;
+                default: return Priority.normal;
+            }
+        }
     }
+
+
 }

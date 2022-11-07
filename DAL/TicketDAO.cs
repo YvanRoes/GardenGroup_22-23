@@ -33,7 +33,7 @@ namespace DAL
 
         private TicketStatus getTicketStatusFromString(string status)
         {
-            switch (status)
+            switch (status.ToLower())
             {
                 case "open" : return TicketStatus.open;
                 case "waiting" : return TicketStatus.waiting;
@@ -41,5 +41,7 @@ namespace DAL
                 default : return TicketStatus.unknown;
             }
         }
+
+        
     }
 }

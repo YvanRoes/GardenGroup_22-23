@@ -69,6 +69,7 @@
             this.button_CreateIncident.TabIndex = 10;
             this.button_CreateIncident.Text = "Create Incident";
             this.button_CreateIncident.UseVisualStyleBackColor = true;
+            this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click);
             // 
             // label_overview
             // 
