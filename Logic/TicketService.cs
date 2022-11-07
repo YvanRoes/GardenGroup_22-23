@@ -31,6 +31,11 @@ namespace Logic
                 default: return Priority.normal;
             }
         }
+
+        public List<Ticket> GetFilteredTicketsByEmail(string filterEmail)
+        {
+            return ticketDb.GetFilteredTicketByEmail(filterEmail);
+        }
     }
 
 

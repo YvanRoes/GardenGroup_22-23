@@ -17,6 +17,7 @@ namespace UI
         {
             InitializeComponent();
             fillInComboBoxes();
+            //SetStyleOfRegularEmployeeForm();
         }
 
         private void fillInComboBoxes()
@@ -61,5 +62,26 @@ namespace UI
             userManagementViewForm.Show();
             this.Hide();
         }
+
+        private void labelReportedBy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SetStyleOfRegularEmployeeForm()
+        {
+            labelDateTime.Visible = false;
+            labelDateTimeValue.Visible = false;
+            labelReportedBy.Visible = false;
+            comboBox_ReportedBy.Visible = false;
+            labelPriority.Visible = false;
+            comboBox_Priority.Visible = false;
+            labelDeadline.Visible = false;
+            comboBox_Deadline.Visible = false;
+            labelDescription.Location = new Point(163, 296);
+            textBoxDescription.Location = new Point(418, 296);
+
+        }
     }
 }
+

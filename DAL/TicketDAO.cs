@@ -4,31 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using MongoDB.Bson;
 
 namespace DAL
 {
     public class TicketDAO : MongoHelper
     {
+        private Ticket getTicket(BsonDocument doc)
+        {
+           
+                int id = (int)doc["ID"];
+                int ticketedBy = (int)doc["ticketedBy"];
+                int reportedBy = (int)doc["reportedBy"];
+                string subject = (string)doc["subject"];
+                DateTime date = (DateTime)doc["date"];
+                TicketType ticketType = (TicketType)(int)doc["ticketType"];
+                Priority priority = (Priority)(int)doc["priority"];
+                Deadline deadline = (Deadline)(int)doc["deadline"];
+                string description = (string)doc["description"];
+                string status = (string)doc["status"];
+
+                return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, getTicketStatusFromString(status));
+            
+        }
         public List<Ticket> GetAllTickets()
         {
-            List<Ticket> list = new List<Ticket>();
-            var doc = GetListOfDocuments("Ticket");
-            doc.ForEach(t =>
-            {
-                int id = (int)t["ID"];
-                int ticketedBy = (int)t["ticketedBy"];
-                int reportedBy = (int)t["reportedBy"];
-                string subject = (string)t["subject"];
-                DateTime date = (DateTime)t["date"];
-                TicketType ticketType = (TicketType)(int)t["ticketType"];
-                Priority priority = (Priority)(int)t["priority"];
-                Deadline deadline = (Deadline)(int)t["deadline"];
-                string description = (string)t["description"];
-                string status = (string)t["status"];
+            List<Ticket> tickets = new List<Ticket>();
+            var documents = GetListOfDocuments("Ticket");
 
-                list.Add(new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, getTicketStatusFromString(status)));
-            });
-            return list;
+            foreach (var doc in documents)
+                tickets.Add(getTicket(doc));
+
+            return tickets;
         }
 
         private TicketStatus getTicketStatusFromString(string status)
@@ -46,6 +53,16 @@ namespace DAL
         {
             return executeMatchCountQuery2("Ticket", "reportedBy", userId);
 
+        }
+        public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            var documents = GetListOfFilteredDocuments("Ticket", "Email", filterEmail);
+
+            foreach (var doc in documents)
+                tickets.Add(getTicket(doc));
+
+            return tickets;
         }
     }
 }

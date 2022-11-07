@@ -164,6 +164,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "TicketViewForm";
             this.Text = "TicketView";
+            this.Load += new System.EventHandler(this.TicketViewForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
