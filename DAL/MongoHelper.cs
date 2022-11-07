@@ -34,20 +34,68 @@ namespace DAL
         }
         protected List<BsonDocument> GetListOfDocuments(string collectionName)
         {
-            var Collection = database.GetCollection<BsonDocument>(collectionName);
+            var collection = database.GetCollection<BsonDocument>(collectionName);
             var filter = Builders<BsonDocument>.Filter.Empty;
-            var Documents = Collection.Find(filter).ToList();
+            var documents = collection.Find(filter).ToList();
 
-            return Documents;
+            return documents;
         }
 
         protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string searchValue, string atribute)
         {
-            var Collection = database.GetCollection<BsonDocument>(collectionName);
+            var collection = database.GetCollection<BsonDocument>(collectionName);
             var filter = Builders<BsonDocument>.Filter.Eq(searchValue, atribute);
-            var Documents = Collection.Find(filter).ToList();
+            var documents = collection.Find(filter).ToList();
 
-            return Documents;
+            return documents;
+        }
+
+        protected void CreateDocument(string collectionName, BsonDocument document)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+            collection.InsertOne(document);
+        }
+
+        protected int executeMatchCountQuery(string collectionName, string field, int value)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+
+            var query = collection.Aggregate()
+                .Match(new BsonDocument() { { field, value } }).ToList();
+
+            int count = query.Count();
+
+            return count;
+        }
+
+        //
+        protected string executeMatchCountQuery2(string collectionName, string field, int value)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+
+            var pipelinestage1 = new BsonDocument
+            {
+                {"$match", new BsonDocument
+                {
+                    { field, value }
+                } }
+            };
+
+            var pipelinestage2 = new BsonDocument
+            {
+                {"$count", "result" }
+            };
+
+            BsonDocument[] pipeline = new BsonDocument[]
+            {
+                pipelinestage1, pipelinestage2
+            };
+
+            BsonDocument execute = collection.Aggregate<BsonDocument>(pipeline).ToBsonDocument();
+
+            string result = execute.ToString();
+
+            return result;
         }
 
 

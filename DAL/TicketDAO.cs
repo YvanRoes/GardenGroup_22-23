@@ -33,7 +33,7 @@ namespace DAL
 
         private TicketStatus getTicketStatusFromString(string status)
         {
-            switch (status.ToLower())
+            switch (status)
             {
                 case "open" : return TicketStatus.open;
                 case "waiting" : return TicketStatus.waiting;
@@ -42,6 +42,10 @@ namespace DAL
             }
         }
 
-        
+        public string CountTicketsperUser(int userId)
+        {
+            return executeMatchCountQuery2("Ticket", "reportedBy", userId);
+
+        }
     }
 }

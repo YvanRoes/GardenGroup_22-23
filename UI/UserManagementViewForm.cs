@@ -21,11 +21,6 @@ namespace UI
             userService = new UserService();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void UserManagementView_Load(object sender, EventArgs e)
         {
             FillListView(userService.GetAllUsers());
@@ -41,6 +36,7 @@ namespace UI
                 li.SubItems.Add(user.get_email());
                 li.SubItems.Add(user.get_name());
                 li.SubItems.Add(user.get_location().ToString());
+                li.SubItems.Add(userService.countTicketsperUser(user.get_id()).ToString());
                 li.Tag = user;
                 User_lstView.Items.Add(li);
             }
@@ -49,6 +45,7 @@ namespace UI
         {
             AddUserViewForm AddUser = new AddUserViewForm();
             AddUser.ShowDialog();
+            FillListView(userService.GetAllUsers());
         }
 
         private void Filter_bttn_Click(object sender, EventArgs e)
@@ -62,6 +59,13 @@ namespace UI
             users = userService.GetFilteredUsersByEmail(filterTxt);
 
             FillListView(users);
+        }
+
+        private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TicketViewForm ticketViewForm = new TicketViewForm();
+            ticketViewForm.Show();
+            this.Close();
         }
     }
 }
