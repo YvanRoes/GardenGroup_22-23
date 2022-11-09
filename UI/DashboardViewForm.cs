@@ -24,19 +24,34 @@ namespace UI
         //generating PieChart
         protected override void OnPaint(PaintEventArgs e)
         {
+            TicketService ticketService = new TicketService();
+            int totalTickets = ticketService.getAllTickets().Count;
+            List<Ticket> tickets = ticketService.getOpenAndPendingTickets();
+            int open = 0;
+            int pending = 0;
+
+            tickets.ForEach(ticket =>
+            {
+                if (ticket.get_status() == TicketStatus.open)
+                    open++;
+                if (ticket.get_status() == TicketStatus.waiting)
+                    pending++;
+            });
             //width, height, x, y, TotalNumberOfItems, open, pending, Rest
-            createGraphicPie(200, 200, 20, 20, 600, 125, 350, 0, e);
+             createGraphicPie(200, 200, 20, 20, totalTickets, open,pending, e);
+           
         }
 
         void start()
         {
             TicketService ticketService = new TicketService();
-            List<Ticket> t = ticketService.getAllTickets();
-            lblTest.Text = t.Count.ToString();
+            List<Ticket> tickets = ticketService.getAllTickets();
+            List<Ticket> openAndPendingtickets = ticketService.getOpenAndPendingTickets();
+            lblTest.Text = $"amount of open and pending tickets: {openAndPendingtickets.Count}\n" +
+                $"amount of total tickets: {tickets.Count}";
         }
 
-
-        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, int partThree, PaintEventArgs e)
+        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, PaintEventArgs e)
         {
             //set stepSize and increment
             float sweepStepAngle = 360.0f / TotalItems;
@@ -56,6 +71,8 @@ namespace UI
                 //iter trough steps and draw rect as pie
                 for(int i = 0; i < TotalItems; i++)
                 {
+                    if (startAngle >= 360.0f)
+                        break;
                     float newAngle = startAngle + sweepStepAngle;
                     //variable brush color based on partitions
                     colorBrushColorChange(brush, ang1, ang2, rest, newAngle);
@@ -63,6 +80,10 @@ namespace UI
                     g.FillPie(brush, rect, newAngle, sweepStepAngle);
                     startAngle += sweepStepAngle;
                 }
+
+                //add vorder
+                Pen p = new Pen(Color.Black);
+                g.DrawEllipse(p, (float)posX, (float)posY, (float)width, (float)height);
             }
         }
 

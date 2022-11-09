@@ -50,5 +50,11 @@ namespace DAL
 
             return Documents;
         }
+
+        public void CreateDocument(string collectionName, BsonDocument bdoc)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+            collection.InsertOne(bdoc);
+        }
     }
 }
