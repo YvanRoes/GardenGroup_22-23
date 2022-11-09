@@ -38,5 +38,10 @@ namespace Logic
             });
             return id + 1;
         }
+        public User GetUserByNameAndPassword(string username, string passowrd)
+        {
+            User user = userDb.GetUserByNameAndPassword(username,passowrd);
+            return user;
+        }
     }
 }

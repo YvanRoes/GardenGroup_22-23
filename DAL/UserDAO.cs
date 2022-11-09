@@ -68,6 +68,13 @@ namespace DAL
 
             return users;
         }
+        public User GetUserByUsernameAndPassword()
+        {
+            User user;
+            var document = GetUserByUsernameAndPassword("User");
+            
+            return user;
+        }
     }
 }
 

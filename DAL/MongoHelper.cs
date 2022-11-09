@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using System.Collections;
 
 namespace DAL
 {
@@ -49,5 +50,11 @@ namespace DAL
 
             return Documents;
         }
+        //protected User GetUserByUsernameAndPassword(string collectionName)
+        //{
+        //    var collection = database.GetCollection<BsonDocument>(collectionName);
+        //    var filter = Builders<BsonDocument>.
+        //    return User;
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,17 @@ namespace UI
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(textBoxUsername.Text == "" || textBoxPassword.Text == "")
+                labelIndicator.Text = "Please fill the username and password";
+            else
+            {
+                UserService userService = new UserService();
+                UserService user = userService.GetUser
+            }
+        }
+
+        private void btnForgotPassword_Click(object sender, EventArgs e)
         {
 
         }
