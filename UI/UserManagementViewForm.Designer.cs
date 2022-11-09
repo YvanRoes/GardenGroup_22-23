@@ -32,7 +32,7 @@
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.UserManagementPnl = new System.Windows.Forms.Panel();
             this.Filter_bttn = new System.Windows.Forms.Button();
             this.User_lstView = new System.Windows.Forms.ListView();
             this.IdHeader = new System.Windows.Forms.ColumnHeader();
@@ -44,7 +44,7 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.UserManagementPnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -65,6 +65,7 @@
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
             this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // ticketManagementToolStripMenuItem
             // 
@@ -79,17 +80,17 @@
             this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.userManagementToolStripMenuItem.Text = "User Management";
             // 
-            // panel1
+            // UserManagementPnl
             // 
-            this.panel1.Controls.Add(this.Filter_bttn);
-            this.panel1.Controls.Add(this.User_lstView);
-            this.panel1.Controls.Add(this.AddUser_bttn);
-            this.panel1.Controls.Add(this.filter_txtbox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 31);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 460);
-            this.panel1.TabIndex = 1;
+            this.UserManagementPnl.Controls.Add(this.Filter_bttn);
+            this.UserManagementPnl.Controls.Add(this.User_lstView);
+            this.UserManagementPnl.Controls.Add(this.AddUser_bttn);
+            this.UserManagementPnl.Controls.Add(this.filter_txtbox);
+            this.UserManagementPnl.Controls.Add(this.label1);
+            this.UserManagementPnl.Location = new System.Drawing.Point(0, 31);
+            this.UserManagementPnl.Name = "UserManagementPnl";
+            this.UserManagementPnl.Size = new System.Drawing.Size(942, 460);
+            this.UserManagementPnl.TabIndex = 1;
             // 
             // Filter_bttn
             // 
@@ -177,7 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 493);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.UserManagementPnl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserManagementViewForm";
@@ -185,8 +186,8 @@
             this.Load += new System.EventHandler(this.UserManagementView_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.UserManagementPnl.ResumeLayout(false);
+            this.UserManagementPnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,7 +199,7 @@
         private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ticketManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel UserManagementPnl;
         private System.Windows.Forms.Button Filter_bttn;
         private System.Windows.Forms.ListView User_lstView;
         private System.Windows.Forms.ColumnHeader IdHeader;

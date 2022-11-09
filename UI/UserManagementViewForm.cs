@@ -15,10 +15,17 @@ namespace UI
     public partial class UserManagementViewForm : Form
     {
         private UserService userService;
+        private User loggedUser;
         public UserManagementViewForm()
         {
             InitializeComponent();
             userService = new UserService();
+            loggedUser = new User(9000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
+
+            if (loggedUser.get_userType() != UserType.ServiceDesk)
+                UserManagementPnl.Hide();
+
+
         }
 
         private void UserManagementView_Load(object sender, EventArgs e)
@@ -64,8 +71,13 @@ namespace UI
         private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TicketViewForm ticketViewForm = new TicketViewForm();
-            ticketViewForm.Show();
+            ticketViewForm.ShowDialog();
             this.Close();
+        }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
