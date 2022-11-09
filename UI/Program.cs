@@ -16,7 +16,8 @@ namespace UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TicketViewForm());
+            //Application.Run(new TestForm());
+            Application.Run(new DashboardViewForm());
 
 
         }
