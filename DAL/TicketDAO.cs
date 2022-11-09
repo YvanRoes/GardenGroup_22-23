@@ -4,42 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace DAL
 {
-    public class ItemDAO : MongoHelper
+    public class TicketDAO : MongoHelper
     {
-        public List<Ticket> GetAllTickets()
-        {
-            List<Ticket> list = new List<Ticket>();
-            var doc = GetListOfDocuments("Ticket");
-            doc.ForEach(t =>
-            {
-                int id = (int)t["ID"];
-                int ticketedBy = (int)t["ticketedBy"];
-                int reportedBy = (int)t["reportedBy"];
-                string subject = (string)t["subject"];
-                string date = (string)t["date"];
-                TicketType ticketType = (TicketType)(int)t["ticketType"];
-                Priority priority = (Priority)(int)t["priority"];
-                Deadline deadline = (Deadline)(int)t["deadline"];
-                string description = (string)t["description"];
-                string status = (string)t["status"];
 
-                list.Add(new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, getTicketStatusFromString(status)));
-            });
-            return list;
+        //Yvan Roes
+        public List<Ticket> getTickets()
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            return collection.AsQueryable().ToList();
         }
-
-        private TicketStatus getTicketStatusFromString(string status)
+        
+        public List<Ticket> getOpenAndPendingTickets()
         {
-            switch (status)
-            {
-                case "open" : return TicketStatus.open;
-                case "waiting" : return TicketStatus.waiting;
-                case "closed": return TicketStatus.closed;
-                default : return TicketStatus.unknown;
-            }
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var aggregate = (List<Ticket>)collection.Aggregate()
+                .Match(Builders<Ticket>.Filter.Gte(t => t._status, 1));
+            return aggregate.ToList();
         }
     }
 }

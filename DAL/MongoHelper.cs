@@ -32,6 +32,7 @@ namespace DAL
                 dbs.Add(BsonSerializer.Deserialize<DatabaseModel>(db));
             return dbs;
         }
+
         protected List<BsonDocument> GetListOfDocuments(string collectionName)
         {
             var Collection = database.GetCollection<BsonDocument>(collectionName);

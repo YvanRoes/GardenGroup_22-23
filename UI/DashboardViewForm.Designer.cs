@@ -28,19 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblTest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // DashboardView
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(782, 299);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(38, 15);
+            this.lblTest.TabIndex = 0;
+            this.lblTest.Text = "label1";
+            // 
+            // DashboardViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
-            this.Name = "DashboardView";
+            this.Controls.Add(this.lblTest);
+            this.Name = "DashboardViewForm";
             this.Text = "DashboardView";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblTest;
     }
 }
