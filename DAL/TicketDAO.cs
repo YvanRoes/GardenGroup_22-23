@@ -18,13 +18,5 @@ namespace DAL
             IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
             return collection.AsQueryable().ToList();
         }
-        
-        public List<Ticket> getOpenAndPendingTickets()
-        {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
-            var aggregate = (List<Ticket>)collection.Aggregate()
-                .Match(Builders<Ticket>.Filter.Gte(t => t._status, 1));
-            return aggregate.ToList();
-        }
     }
 }

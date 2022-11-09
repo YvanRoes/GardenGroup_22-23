@@ -31,7 +31,7 @@ namespace UI
         void start()
         {
             TicketService ticketService = new TicketService();
-            List<Ticket> t = ticketService.getOpenAndPendingTickets();
+            List<Ticket> t = ticketService.getAllTickets();
             lblTest.Text = t.Count.ToString();
         }
 

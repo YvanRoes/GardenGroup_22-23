@@ -22,10 +22,6 @@ namespace Logic
             return ticketDB.getTickets();
         }
 
-        public List<Ticket> getOpenAndPendingTickets()
-        {
-            return ticketDB.getOpenAndPendingTickets();
-        }
 
     }
 }
