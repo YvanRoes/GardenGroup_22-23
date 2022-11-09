@@ -38,10 +38,22 @@ namespace DAL
             return max + 1;
         }
 
+        //Andy
         public string CountTicketsperUser(int userId)
         {
-            return executeMatchCountQuery("Ticket", "reportedBy", userId);
+            string result = executeMatchCountQuery("Ticket", "reportedBy", userId);
+            string nrOfTickets = "";
 
+            if (result == "NULL")
+                nrOfTickets = "0";
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (char.IsDigit(result[i]))
+                    nrOfTickets += result[i];
+            }
+
+            return nrOfTickets;
         }
 
         //Aleks
