@@ -45,7 +45,7 @@ namespace UI
         {
             try
             {
-                int id = _userService.generateId();
+                int id = _userService.getNewID();
                 string name = Name_TxtBox.Text;
                 int uType = TypeUser_cmbBox.SelectedIndex;
                 string email = Email_TxtBox.Text;

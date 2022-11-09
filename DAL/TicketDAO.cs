@@ -37,5 +37,65 @@ namespace DAL
             });
             return max + 1;
         }
+
+        public string CountTicketsperUser(int userId)
+        {
+            return executeMatchCountQuery("Ticket", "reportedBy", userId);
+
+        }
+
+        //Aleks
+
+        private Ticket getTicket(BsonDocument doc)
+        {
+
+            int id = (int)doc["ID"];
+            int ticketedBy = (int)doc["ticketedBy"];
+            int reportedBy = (int)doc["reportedBy"];
+            string subject = (string)doc["subject"];
+            DateTime date = DateTime.Now; //(DateTime)doc["date"];
+            TicketType ticketType = (TicketType)(int)doc["ticketType"];
+            Priority priority = (Priority)(int)doc["priority"];
+            Deadline deadline = (Deadline)(int)doc["deadline"];
+            string description = (string)doc["description"];
+            TicketStatus status = (TicketStatus)(int)doc["status"];
+
+            return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
+
+
+        }
+        public List<Ticket> GetAllTickets()
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            var documents = GetListOfDocuments("Ticket");
+
+            foreach (var doc in documents)
+                tickets.Add(getTicket(doc));
+
+            return tickets;
+        }
+
+        private TicketStatus getTicketStatusFromString(string status)
+        {
+            switch (status)
+            {
+                case "open": return TicketStatus.open;
+                case "waiting": return TicketStatus.waiting;
+                case "closed": return TicketStatus.closed;
+                default: return TicketStatus.unknown;
+            }
+        }
+
+        public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            var documents = GetListOfFilteredDocuments("Ticket", "Email", filterEmail);
+
+            foreach (var doc in documents)
+                tickets.Add(getTicket(doc));
+
+            return tickets;
+        }
+
     }
 }

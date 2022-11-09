@@ -28,7 +28,7 @@ namespace Logic
             return userDb.GetFilteredUserByEmail(filterEmail);
         }
 
-        public int generateId()
+        public int getNewID()
         {
             return userDb.generateId();
         }
