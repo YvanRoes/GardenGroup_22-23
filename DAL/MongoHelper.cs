@@ -83,7 +83,7 @@ namespace DAL
 
             var pipelinestage2 = new BsonDocument
             {
-                {"$count", "result" }
+                {"$count", " " }
             };
 
             BsonDocument[] pipeline = new BsonDocument[]
@@ -91,11 +91,13 @@ namespace DAL
                 pipelinestage1, pipelinestage2
             };
 
-            BsonDocument execute = collection.Aggregate<BsonDocument>(pipeline).ToBsonDocument();
+            var result = collection.Aggregate<BsonDocument>(pipeline).SingleOrDefault();
 
-            string result = execute.ToString();
+            if (result == null)
+                return "0";
 
-            return result;
+            string[] separator = result.ToString().Split(':');
+            return separator[1];
         }
 
 
