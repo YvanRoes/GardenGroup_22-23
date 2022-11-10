@@ -15,10 +15,15 @@ namespace UI
     public partial class UserManagementViewForm : Form
     {
         private UserService userService;
+        private User loggedUser;
         public UserManagementViewForm()
         {
             InitializeComponent();
             userService = new UserService();
+            loggedUser = new User(9000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
+            
+            if (loggedUser.UserType != UserType.ServiceDesk)
+                UserManagement_Pnl.Hide();
         }
 
         private void UserManagementView_Load(object sender, EventArgs e)
@@ -36,7 +41,7 @@ namespace UI
                 li.SubItems.Add(user.get_email());
                 li.SubItems.Add(user.get_name());
                 li.SubItems.Add(user.get_location().ToString());
-                li.SubItems.Add(userService.countTicketsperUser(user.get_id()).ToString());
+                li.SubItems.Add(userService.countTicketsperUser(user.get_id()));
                 li.Tag = user;
                 User_lstView.Items.Add(li);
             }
@@ -66,11 +71,6 @@ namespace UI
             TicketViewForm ticketViewForm = new TicketViewForm();
             ticketViewForm.Show();
             this.Close();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

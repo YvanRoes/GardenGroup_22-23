@@ -32,7 +32,7 @@
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.UserManagement_Pnl = new System.Windows.Forms.Panel();
             this.Filter_bttn = new System.Windows.Forms.Button();
             this.User_lstView = new System.Windows.Forms.ListView();
             this.IdHeader = new System.Windows.Forms.ColumnHeader();
@@ -44,7 +44,7 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.UserManagement_Pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -56,50 +56,47 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(824, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(942, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // dashboardToolStripMenuItem
             // 
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
             // 
             // ticketManagementToolStripMenuItem
             // 
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
-            this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
+            this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
             this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.userManagementToolStripMenuItem.Text = "User Management";
             // 
-            // panel1
+            // UserManagement_Pnl
             // 
-            this.panel1.Controls.Add(this.Filter_bttn);
-            this.panel1.Controls.Add(this.User_lstView);
-            this.panel1.Controls.Add(this.AddUser_bttn);
-            this.panel1.Controls.Add(this.filter_txtbox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 23);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 345);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.UserManagement_Pnl.Controls.Add(this.Filter_bttn);
+            this.UserManagement_Pnl.Controls.Add(this.User_lstView);
+            this.UserManagement_Pnl.Controls.Add(this.AddUser_bttn);
+            this.UserManagement_Pnl.Controls.Add(this.filter_txtbox);
+            this.UserManagement_Pnl.Controls.Add(this.label1);
+            this.UserManagement_Pnl.Location = new System.Drawing.Point(0, 31);
+            this.UserManagement_Pnl.Name = "UserManagement_Pnl";
+            this.UserManagement_Pnl.Size = new System.Drawing.Size(942, 460);
+            this.UserManagement_Pnl.TabIndex = 1;
             // 
             // Filter_bttn
             // 
-            this.Filter_bttn.Location = new System.Drawing.Point(298, 40);
-            this.Filter_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Filter_bttn.Location = new System.Drawing.Point(341, 53);
             this.Filter_bttn.Name = "Filter_bttn";
-            this.Filter_bttn.Size = new System.Drawing.Size(82, 22);
+            this.Filter_bttn.Size = new System.Drawing.Size(94, 29);
             this.Filter_bttn.TabIndex = 4;
             this.Filter_bttn.Text = "Filter";
             this.Filter_bttn.UseVisualStyleBackColor = true;
@@ -116,11 +113,10 @@
             this.TicketsHeader});
             this.User_lstView.FullRowSelect = true;
             this.User_lstView.HideSelection = false;
-            this.User_lstView.Location = new System.Drawing.Point(36, 76);
-            this.User_lstView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.User_lstView.Location = new System.Drawing.Point(41, 101);
             this.User_lstView.MultiSelect = false;
             this.User_lstView.Name = "User_lstView";
-            this.User_lstView.Size = new System.Drawing.Size(751, 262);
+            this.User_lstView.Size = new System.Drawing.Size(858, 348);
             this.User_lstView.TabIndex = 3;
             this.User_lstView.UseCompatibleStateImageBehavior = false;
             this.User_lstView.View = System.Windows.Forms.View.Details;
@@ -152,10 +148,9 @@
             // 
             // AddUser_bttn
             // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(679, 36);
-            this.AddUser_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddUser_bttn.Location = new System.Drawing.Point(776, 48);
             this.AddUser_bttn.Name = "AddUser_bttn";
-            this.AddUser_bttn.Size = new System.Drawing.Size(108, 31);
+            this.AddUser_bttn.Size = new System.Drawing.Size(123, 41);
             this.AddUser_bttn.TabIndex = 2;
             this.AddUser_bttn.Text = "Add User";
             this.AddUser_bttn.UseVisualStyleBackColor = true;
@@ -163,38 +158,36 @@
             // 
             // filter_txtbox
             // 
-            this.filter_txtbox.Location = new System.Drawing.Point(36, 42);
-            this.filter_txtbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.filter_txtbox.Location = new System.Drawing.Point(41, 56);
             this.filter_txtbox.Name = "filter_txtbox";
-            this.filter_txtbox.Size = new System.Drawing.Size(245, 23);
+            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
             this.filter_txtbox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(10, 0);
+            this.label1.Location = new System.Drawing.Point(11, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 37);
+            this.label1.Size = new System.Drawing.Size(296, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Management";
             // 
             // UserManagementViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 370);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(942, 493);
+            this.Controls.Add(this.UserManagement_Pnl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserManagementViewForm";
             this.Text = "UserManagementView";
             this.Load += new System.EventHandler(this.UserManagementView_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.UserManagement_Pnl.ResumeLayout(false);
+            this.UserManagement_Pnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,7 +199,7 @@
         private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ticketManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel UserManagement_Pnl;
         private System.Windows.Forms.Button Filter_bttn;
         private System.Windows.Forms.ListView User_lstView;
         private System.Windows.Forms.ColumnHeader IdHeader;

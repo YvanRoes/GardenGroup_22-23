@@ -14,17 +14,23 @@ namespace UI
 {
     public partial class MainViewForm : Form
     {
-        public MainViewForm()
+        private UserService _userService;
+        private User _loggedUser;
+        public MainViewForm(User user)
         {
             InitializeComponent();
             start();
             this.Size = new Size(960, 540);
+
+            _userService = new UserService();
+            _loggedUser = user;
         }
 
 
         void start()
         {
-            pnlDashBoard.Visible = false;   
+            pnlDashBoard.Visible = false;
+            UserManagement_Pnl.Visible = false;
         }
 
         private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, PaintEventArgs e)
@@ -102,6 +108,59 @@ namespace UI
         private void DashBoardMenuItem_Click(object sender, EventArgs e)
         {
             loadDashBoard();
+        }
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadUserManagement();
+        }
+
+        private void loadUserManagement()
+        {
+            UserManagement_Pnl.Visible = true;
+            UserManagement_Pnl.Dock = DockStyle.Fill;
+
+            if (_loggedUser.UserType != UserType.ServiceDesk)
+                UserManagement_Pnl.Hide();
+
+            FillUserManagementListView(_userService.GetAllUsers());
+
+        }
+
+        private void FillUserManagementListView(List<User> users)
+        {
+            User_lstView.Items.Clear();
+
+            foreach (var user in users)
+            {
+                ListViewItem li = new ListViewItem(user.get_id().ToString());
+                li.SubItems.Add(user.get_email());
+                li.SubItems.Add(user.get_name());
+                li.SubItems.Add(user.get_location().ToString());
+                li.SubItems.Add(_userService.countTicketsperUser(user.get_id()));
+                li.Tag = user;
+                User_lstView.Items.Add(li);
+            }
+        }
+
+        private void AddUser_bttn_Click(object sender, EventArgs e)
+        {
+            AddUserViewForm AddUser = new AddUserViewForm();
+            AddUser.ShowDialog();
+            FillUserManagementListView(_userService.GetAllUsers());
+        }
+
+        private void FilterUsersByEmail_bttn_Click(object sender, EventArgs e)
+        {
+            string filterTxt = filter_txtbox.Text;
+            List<User> users = new List<User>();
+
+            if (filter_txtbox.Text == null || filter_txtbox.Text == "")
+                users = _userService.GetAllUsers();
+            else
+                users = _userService.GetFilteredUsersByEmail(filterTxt);
+
+            FillUserManagementListView(users);
         }
     }
 }
