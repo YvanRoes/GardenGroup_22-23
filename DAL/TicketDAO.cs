@@ -26,6 +26,17 @@ namespace DAL
             return tickets;
         }
 
+        public List<Ticket> getTicketsByStatus(TicketStatus status)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            getTickets().ForEach(x =>
+            {
+                if(x.get_status() == status)
+                    tickets.Add(x);
+            });
+            return tickets;
+        }
+
         public int getNewTicketId()
         {
             List<Ticket> tickets = getTickets();
@@ -38,11 +49,7 @@ namespace DAL
             return max + 1;
         }
 
-        public string CountTicketsperUser(int userId)
-        {
-            return executeMatchCountQuery("Ticket", "reportedBy", userId);
-
-        }
+        
 
         //Aleks
 
@@ -61,8 +68,6 @@ namespace DAL
             TicketStatus status = (TicketStatus)(int)doc["status"];
 
             return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
-
-
         }
         public List<Ticket> GetAllTickets()
         {
@@ -75,17 +80,6 @@ namespace DAL
             return tickets;
         }
 
-        private TicketStatus getTicketStatusFromString(string status)
-        {
-            switch (status)
-            {
-                case "open": return TicketStatus.open;
-                case "waiting": return TicketStatus.waiting;
-                case "closed": return TicketStatus.closed;
-                default: return TicketStatus.unknown;
-            }
-        }
-
         public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
         {
             List<Ticket> tickets = new List<Ticket>();
@@ -95,6 +89,12 @@ namespace DAL
                 tickets.Add(getTicket(doc));
 
             return tickets;
+        }
+
+        public string CountTicketsperUser(int userId)
+        {
+            return executeMatchCountQuery("Ticket", "reportedBy", userId);
+
         }
 
     }

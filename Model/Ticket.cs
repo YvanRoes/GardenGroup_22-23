@@ -34,9 +34,9 @@ namespace Model
         {
             switch (_status)
             {
-                case 1: return TicketStatus.open;
-                case 2: return TicketStatus.waiting;
-                case 3: return TicketStatus.closed;
+                case 1: return TicketStatus.unresolved;
+                case 2: return TicketStatus.inProgress;
+                case 3: return TicketStatus.resolved;
                 default: return TicketStatus.unknown;
             }
         }

@@ -19,36 +19,18 @@ namespace UI
         {
             InitializeComponent();
             start();
-        }
-
-        //generating PieChart
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            TicketService ticketService = new TicketService();
-            int totalTickets = ticketService.getAllTickets().Count;
-            List<Ticket> tickets = ticketService.getOpenAndPendingTickets();
-            int open = 0;
-            int pending = 0;
-
-            tickets.ForEach(ticket =>
-            {
-                if (ticket.get_status() == TicketStatus.open)
-                    open++;
-                if (ticket.get_status() == TicketStatus.waiting)
-                    pending++;
-            });
-            //width, height, x, y, TotalNumberOfItems, open, pending, Rest
-             createGraphicPie(200, 200, 20, 20, totalTickets, open,pending, e);
-           
+            this.Size = new Size(960, 540);
+            panel1.Visible = false;
         }
 
         void start()
         {
             TicketService ticketService = new TicketService();
-            List<Ticket> tickets = ticketService.getAllTickets();
-            List<Ticket> openAndPendingtickets = ticketService.getOpenAndPendingTickets();
-            lblTest.Text = $"amount of open and pending tickets: {openAndPendingtickets.Count}\n" +
-                $"amount of total tickets: {tickets.Count}";
+            int totalTickets = ticketService.getTickets().Count;
+            int unResolvedTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
+            int inProgressTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
+            int resolvedTickets = totalTickets - unResolvedTickets - inProgressTickets;
+            lblTest.Text = $"unresolved tickets: {unResolvedTickets}\npending tickets: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
         }
 
         private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, PaintEventArgs e)
@@ -61,9 +43,8 @@ namespace UI
             float ang2 = ang1 + partTwo * sweepStepAngle;
             float rest = ang1 + ang2 + (TotalItems - partOne - partTwo) * sweepStepAngle;
             
-            base.OnPaint(e);
             //graphic component for draw
-            using (Graphics g = this.CreateGraphics())
+            using (Graphics g = PieChartWrapper.CreateGraphics())
             {
                 //init brush
                 SolidBrush brush = new SolidBrush(Color.Red);
@@ -90,12 +71,41 @@ namespace UI
         private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3, float newAngle)
         {
             //change brush color based on partitions
-            if (newAngle < angle1)
-                b.Color = Color.FromArgb(39, 123, 192);
-            if (newAngle > angle1 && newAngle < angle2)
+            if (newAngle < angle1) //unresolved
+                b.Color = Color.FromArgb(224, 20, 76);
+            if (newAngle > angle1 && newAngle < angle2) //inProgress
                 b.Color = Color.FromArgb(255, 178, 0);
-            if(newAngle > angle2 && newAngle < angle3)
-                b.Color = Color.Empty;
+            if (newAngle > angle2 && newAngle < angle3) //resolved
+                b.Color = Color.FromArgb(60, 207, 78);
+            
+        }
+
+        private void DrawPieChart()
+        {
+            PaintEventArgs e = new PaintEventArgs(PieChartWrapper.CreateGraphics(), PieChartWrapper.DisplayRectangle);
+            TicketService ticketService = new TicketService();
+            int totalTickets = ticketService.getTickets().Count;
+            int openTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
+            int pendingTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
+            //width, height, x, y, TotalNumberOfItems, open, pending
+            createGraphicPie(200, 200, 0, 0, totalTickets, openTickets, pendingTickets, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadDashBoard();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;   
+        }
+
+        private void loadDashBoard()
+        {
+            panel1.Visible = true;
+            panel1.Dock = DockStyle.Fill;
+            DrawPieChart();
         }
     }
 }

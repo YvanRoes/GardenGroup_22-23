@@ -27,15 +27,11 @@ namespace Logic
             return ticketDB.GetFilteredTicketByEmail(filterEmail);
         }
 
-        public List<Ticket> getAllTickets()
-        {
-            return ticketDB.getTickets();
-        }
+        public List<Ticket> getTickets() => ticketDB.getTickets();
 
-        public List<Ticket> getOpenAndPendingTickets()
-        {
-            return ticketDB.getOpenAndPendingTickets();
-        }
+        public List<Ticket> getOpenAndPendingTickets() => ticketDB.getOpenAndPendingTickets();  
+
+        public List<Ticket> getTicketsByStatus(TicketStatus status) => ticketDB.getTicketsByStatus(status);
 
 
         public void CreateTickets()
