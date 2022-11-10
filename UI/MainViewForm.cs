@@ -27,7 +27,7 @@ namespace UI
             pnlDashBoard.Visible = false;   
         }
 
-        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, PaintEventArgs e)
+        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo,int partThree, PaintEventArgs e)
         {
             //set stepSize and increment
             float sweepStepAngle = 360.0f / TotalItems;
@@ -35,7 +35,8 @@ namespace UI
             //currently limited to only 3 partitions of PieChart
             float ang1 = partOne * sweepStepAngle;
             float ang2 = ang1 + partTwo * sweepStepAngle;
-            float rest = ang1 + ang2 + (TotalItems - partOne - partTwo) * sweepStepAngle;
+            float ang3 = ang1 + ang2 + partThree * sweepStepAngle;
+            float rest = ang1 + ang2 + ang3 + (TotalItems - partOne - partTwo - partThree) * sweepStepAngle;
 
             //graphic component for draw
             using (Graphics g = PieChartWrapper.CreateGraphics())
@@ -48,9 +49,11 @@ namespace UI
                 {
                     if (startAngle >= 360.0f)
                         break;
+
                     float newAngle = startAngle + sweepStepAngle;
                     //variable brush color based on partitions
-                    colorBrushColorChange(brush, ang1, ang2, rest, newAngle);
+                    colorBrushColorChange(brush, ang1, ang2,ang3, rest, newAngle);
+
                     Rectangle rect = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
                     g.FillPie(brush, rect, newAngle, sweepStepAngle);
                     startAngle += sweepStepAngle;
@@ -62,7 +65,7 @@ namespace UI
             }
         }
 
-        private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3, float newAngle)
+        private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3,float angle4, float newAngle)
         {
             //change brush color based on partitions
             if (newAngle < angle1) //unresolved
@@ -71,14 +74,17 @@ namespace UI
                 b.Color = Color.FromArgb(255, 178, 0);
             if (newAngle > angle2 && newAngle < angle3) //resolved
                 b.Color = Color.FromArgb(60, 207, 78);
+            if (newAngle > angle3 && newAngle < angle4)
+                b.Color = Color.Empty;
 
         }
 
-        private void DrawPieChart(int totalTickets, int unresolvedTickets, int inProgressTickets)
+        private void DrawPieChart(int totalTickets, int unresolvedTickets, int inProgressTickets, int pastDeadline)
         {
             PaintEventArgs e = new PaintEventArgs(PieChartWrapper.CreateGraphics(), PieChartWrapper.DisplayRectangle);
             //width, height, x, y, TotalNumberOfItems, open, pending
-            createGraphicPie(200, 200, 0, 0, totalTickets, unresolvedTickets, inProgressTickets, e);
+            createGraphicPie(200, 200, 0, 0, totalTickets, unresolvedTickets, inProgressTickets, pastDeadline, e);
+            //createGraphicPie(200, 200, 0, 0, 150, 30, 50, 10, e);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,22 +92,23 @@ namespace UI
             pnlDashBoard.Visible = false;
         }
 
-        private void loadDashBoard()
+        private async Task loadDashBoardAsync()
         {
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
             TicketService ticketService = new TicketService();
             int totalTickets = ticketService.getTickets().Count;
-            int unresolvedTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
-            int inProgressTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
+            int unresolvedTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.unresolved)).Count;
+            int inProgressTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.inProgress)).Count;
             int resolvedTickets = totalTickets - unresolvedTickets - inProgressTickets;
-            DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets);
-            lblTest.Text = $"unresolved tickets: {unresolvedTickets}\npending tickets: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
+            int pastDeadline = 12;
+            DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets, pastDeadline);
+            lblTest.Text = $"unresolved tickets: {unresolvedTickets}\ntickets in progress: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
         }
 
         private void DashBoardMenuItem_Click(object sender, EventArgs e)
         {
-            loadDashBoard();
+            _ = loadDashBoardAsync();
         }
     }
 }

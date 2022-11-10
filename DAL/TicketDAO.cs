@@ -26,15 +26,17 @@ namespace DAL
             return tickets;
         }
 
-        public List<Ticket> getTicketsByStatus(TicketStatus status)
+        public async Task<List<Ticket>> getTicketByStatusAsync(TicketStatus status) 
         {
-            List<Ticket> tickets = new List<Ticket>();
-            getTickets().ForEach(x =>
-            {
-                if(x.get_status() == status)
-                    tickets.Add(x);
-            });
-            return tickets;
+            BsonDocument pipe  = new BsonDocument();
+            if(status != TicketStatus.unknown)
+                pipe.Add(new BsonDocument { { "status", (int)status } });
+
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var query = collection.Aggregate()
+                        .Match(pipe);
+            var results = await query.ToListAsync();
+            return results.AsQueryable().ToList();
         }
 
         public int getNewTicketId()
@@ -49,6 +51,10 @@ namespace DAL
             return max + 1;
         }
 
+        /*public List<Ticket> getTicketsByUserid(int id)
+        {
+
+        }*/
 
 
         //Aleks

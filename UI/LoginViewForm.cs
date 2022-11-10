@@ -25,9 +25,7 @@ namespace UI
                 Model.User user = userService.GetUserByUsernameAndPassword(username, password);
                 if (user != null)
                 {
-                    DashboardViewForm dashboardViewForm = new DashboardViewForm();
-                    dashboardViewForm.Show();
-                    this.Hide();
+
                 }
                 labelIndicator.Text = "Your username and password combination are wrong";
             }
