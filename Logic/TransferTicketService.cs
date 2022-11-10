@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-
+using Model;
 namespace Logic
 {
     public class TransferTicketService
     {
-        UserDAO userDb;
-        TicketDAO ticketDb;
+        TransferTicketDAO _transferTicketDAO;
 
         public TransferTicketService()
         {
-            userDb = new UserDAO();
+            _transferTicketDAO = new TransferTicketDAO();
         }
 
-        public GetListOfUsers()
+        public List<User> GetListOfUsers(int userType)
         {
-
+            return _transferTicketDAO.GetListOfEmployees(userType);
         }
 
     }

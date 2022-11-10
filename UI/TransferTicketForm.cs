@@ -22,6 +22,7 @@ namespace UI
 
             Employee_cmboBox.Visible = false;
             Employee_lbl.Visible = false;
+            Transfer_bttn.Enabled = false;
 
             FillDepartmentComboBox();
         }
@@ -46,20 +47,29 @@ namespace UI
 
         private void Departments_cmboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Transfer_bttn.Enabled = true;
             if (Departments_cmboBox.SelectedIndex.Equals((int)Departments.ServiceDesk))
             {
                 Employee_cmboBox.Visible = true;
                 Employee_lbl.Visible = true;
 
-                FillEmployeeComboBox();
+                FillEmployeeComboBox(_transferTicketService.GetListOfUsers((int)UserType.ServiceDesk));
+            } else
+            {
+                Employee_cmboBox.Visible = false;
+                Employee_lbl.Visible = false;
             }
+               
         }
 
-        private void FillEmployeeComboBox()
+        private void FillEmployeeComboBox(List<User> Employees)
         {
             Employee_cmboBox.Items.Clear();
 
-            List<User> listOfEmployees = 
+            foreach (User e in Employees)
+            {
+                Employee_cmboBox.Items.Add(e._name);
+            }
         }
     }
 }

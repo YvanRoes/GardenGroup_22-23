@@ -331,12 +331,10 @@ namespace UI
             }
         }
 
-        private void button_CreateIncident_Click(object sender, EventArgs e)
+        private void button_CreateIncident_Click_1(object sender, EventArgs e)
         {
             AddIncidentForm addIncidentForm = new AddIncidentForm();
             addIncidentForm.ShowDialog();
         }
-
-        
     }
 }
