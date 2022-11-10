@@ -1,5 +1,6 @@
 ﻿using Logic;
 using Microsoft.VisualBasic.ApplicationServices;
+using Model;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Windows.Forms;
@@ -26,6 +27,14 @@ namespace UI
                 if (user != null)
                 {
 
+                    if (checkBoxRememberMe.Checked)
+                    {
+                        //Model.User LoginedUser = new Model.User(user.Id,user.Name,user.Email,user.Phone,user.get_userType(),user.Location,user.Password);
+                    }
+                    DashboardViewForm dashboardViewForm = new DashboardViewForm();
+                    dashboardViewForm.Show();
+                    this.Hide();
+
                 }
                 labelIndicator.Text = "Your username and password combination are wrong";
             }
@@ -37,6 +46,11 @@ namespace UI
         }
 
         private void LoginViewForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxRememberMe_CheckedChanged(object sender, EventArgs e)
         {
 
         }
