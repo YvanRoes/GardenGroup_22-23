@@ -31,7 +31,7 @@ namespace Logic
 
         public List<Ticket> getOpenAndPendingTickets() => ticketDB.getOpenAndPendingTickets();  
 
-        public List<Ticket> getTicketsByStatus(TicketStatus status) => ticketDB.getTicketsByStatus(status);
+        public async Task<List<Ticket>> getTicketsByStatusAsync(TicketStatus status) => await ticketDB.getTicketByStatusAsync(status);
 
 
         public void CreateTickets()
