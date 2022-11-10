@@ -17,10 +17,10 @@ namespace Logic
         {
             ticketDB = new TicketDAO();
         }
-        public List<Ticket> GetAllTickets()
+/*        public List<Ticket> GetAllTickets()
         {
             return ticketDB.GetAllTickets();
-        }
+        }*/
 
         public List<Ticket> GetFilteredTicketsByEmail(string filterEmail)
         {

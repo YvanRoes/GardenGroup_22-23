@@ -49,7 +49,7 @@ namespace DAL
             return max + 1;
         }
 
-        
+
 
         //Aleks
 
@@ -69,7 +69,7 @@ namespace DAL
 
             return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
         }
-        public List<Ticket> GetAllTickets()
+/*        public List<Ticket> GetAllTickets()
         {
             List<Ticket> tickets = new List<Ticket>();
             var documents = GetListOfDocuments("Ticket");
@@ -78,7 +78,7 @@ namespace DAL
                 tickets.Add(getTicket(doc));
 
             return tickets;
-        }
+        }*/
 
         public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
         {
