@@ -16,6 +16,7 @@ namespace UI
     {
         private UserService _userService;
         private User _loggedUser;
+        private TicketService _ticketService;
         public MainViewForm(User user)
         {
             InitializeComponent();
@@ -24,16 +25,18 @@ namespace UI
 
             _userService = new UserService();
             _loggedUser = user;
+            _ticketService = new TicketService();
 
             if (_loggedUser.UserType != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
         }
 
-
+        //Dashboard (Yvan)
         void start()
         {
             pnlDashBoard.Visible = false;
             UserManagement_Pnl.Visible = false;
+            TicketView_Pnl.Visible = false;
         }
 
         private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, PaintEventArgs e)
@@ -97,13 +100,13 @@ namespace UI
 
         private void loadDashBoard()
         {
+            TicketView_Pnl.Visible = false;
             UserManagement_Pnl.Visible = false;
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
-            TicketService ticketService = new TicketService();
-            int totalTickets = ticketService.getTickets().Count;
-            int unresolvedTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
-            int inProgressTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
+            int totalTickets = _ticketService.getTickets().Count;
+            int unresolvedTickets = _ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
+            int inProgressTickets = _ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
             int resolvedTickets = totalTickets - unresolvedTickets - inProgressTickets;
             DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets);
             lblTest.Text = $"unresolved tickets: {unresolvedTickets}\npending tickets: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
@@ -114,6 +117,7 @@ namespace UI
             loadDashBoard();
         }
 
+        //User Management (Andy)
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadUserManagement();
@@ -121,6 +125,7 @@ namespace UI
 
         private void loadUserManagement()
         {
+            TicketView_Pnl.Visible = false;
             pnlDashBoard.Visible = false;
             UserManagement_Pnl.Visible = true;
             UserManagement_Pnl.Dock = DockStyle.Fill;
@@ -163,6 +168,66 @@ namespace UI
                 users = _userService.GetFilteredUsersByEmail(filterTxt);
 
             FillUserManagementListView(users);
+        }
+
+        //Ticket View (Aleksandra)
+
+        private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadTicketView();
+        }
+
+        private void loadTicketView()
+        {
+            pnlDashBoard.Visible = false;
+            UserManagement_Pnl.Visible = false;
+            TicketView_Pnl.Visible = true;
+            TicketView_Pnl.Dock = DockStyle.Fill;
+
+            if (_loggedUser.get_userType() == UserType.Employee)
+            {
+                LoadTicketListViewForRegularEmployee();
+            }
+            else
+            {
+                LoadTicketListViewForServiceDeskEmployee();
+            }
+        }
+
+        private void LoadTicketListViewForRegularEmployee()
+        {
+
+
+            List<Ticket> allTickets = _ticketService.getTickets();
+            foreach (Ticket ticket in allTickets)
+            {
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
+                ListViewItem list = new ListViewItem(output);
+                list.Tag = Id;
+                listView_Tickets.Items.Add(list);
+            }
+        }
+
+        private void LoadTicketListViewForServiceDeskEmployee()
+        {
+            List<Ticket> filteredTickets = new List<Ticket>();
+            filteredTickets = _ticketService.GetFilteredTicketsByEmail(_loggedUser.get_email());
+            // FillListView(users);
+
+            List<Ticket> allTickets = _ticketService.getTickets();
+            foreach (Ticket ticket in allTickets)
+            {
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
+                ListViewItem list = new ListViewItem(output);
+                list.Tag = Id;
+                listView_Tickets.Items.Add(list);
+            }
+        }
+
+        private void button_CreateIncident_Click(object sender, EventArgs e)
+        {
+            AddIncidentForm addIncidentForm = new AddIncidentForm();
+            addIncidentForm.ShowDialog();
         }
     }
 }

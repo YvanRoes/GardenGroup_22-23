@@ -42,12 +42,14 @@
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TicketView_Pnl = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
+            this.TicketView_Pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Filter
             // 
-            this.button_Filter.Location = new System.Drawing.Point(309, 129);
+            this.button_Filter.Location = new System.Drawing.Point(348, 30);
             this.button_Filter.Name = "button_Filter";
             this.button_Filter.Size = new System.Drawing.Size(94, 29);
             this.button_Filter.TabIndex = 12;
@@ -56,14 +58,14 @@
             // 
             // textBox_Filter
             // 
-            this.textBox_Filter.Location = new System.Drawing.Point(12, 130);
+            this.textBox_Filter.Location = new System.Drawing.Point(51, 31);
             this.textBox_Filter.Name = "textBox_Filter";
             this.textBox_Filter.Size = new System.Drawing.Size(279, 27);
             this.textBox_Filter.TabIndex = 11;
             // 
             // button_CreateIncident
             // 
-            this.button_CreateIncident.Location = new System.Drawing.Point(777, 106);
+            this.button_CreateIncident.Location = new System.Drawing.Point(816, 7);
             this.button_CreateIncident.Name = "button_CreateIncident";
             this.button_CreateIncident.Size = new System.Drawing.Size(98, 51);
             this.button_CreateIncident.TabIndex = 10;
@@ -74,7 +76,7 @@
             // label_overview
             // 
             this.label_overview.AutoSize = true;
-            this.label_overview.Location = new System.Drawing.Point(12, 106);
+            this.label_overview.Location = new System.Drawing.Point(51, 7);
             this.label_overview.Name = "label_overview";
             this.label_overview.Size = new System.Drawing.Size(113, 20);
             this.label_overview.TabIndex = 9;
@@ -89,7 +91,7 @@
             this.Date,
             this.Status});
             this.listView_Tickets.HideSelection = false;
-            this.listView_Tickets.Location = new System.Drawing.Point(12, 179);
+            this.listView_Tickets.Location = new System.Drawing.Point(51, 80);
             this.listView_Tickets.Name = "listView_Tickets";
             this.listView_Tickets.Size = new System.Drawing.Size(908, 292);
             this.listView_Tickets.TabIndex = 8;
@@ -129,7 +131,7 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(942, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1102, 28);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -151,22 +153,32 @@
             this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.userManagementToolStripMenuItem.Text = "User Management";
             // 
+            // TicketView_Pnl
+            // 
+            this.TicketView_Pnl.Controls.Add(this.button_Filter);
+            this.TicketView_Pnl.Controls.Add(this.listView_Tickets);
+            this.TicketView_Pnl.Controls.Add(this.textBox_Filter);
+            this.TicketView_Pnl.Controls.Add(this.label_overview);
+            this.TicketView_Pnl.Controls.Add(this.button_CreateIncident);
+            this.TicketView_Pnl.Location = new System.Drawing.Point(12, 54);
+            this.TicketView_Pnl.Name = "TicketView_Pnl";
+            this.TicketView_Pnl.Size = new System.Drawing.Size(1052, 495);
+            this.TicketView_Pnl.TabIndex = 13;
+            // 
             // TicketViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 493);
-            this.Controls.Add(this.button_Filter);
-            this.Controls.Add(this.textBox_Filter);
-            this.Controls.Add(this.button_CreateIncident);
-            this.Controls.Add(this.label_overview);
-            this.Controls.Add(this.listView_Tickets);
+            this.ClientSize = new System.Drawing.Size(1102, 810);
+            this.Controls.Add(this.TicketView_Pnl);
             this.Controls.Add(this.menuStrip1);
             this.Name = "TicketViewForm";
             this.Text = "TicketView";
             this.Load += new System.EventHandler(this.TicketViewForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.TicketView_Pnl.ResumeLayout(false);
+            this.TicketView_Pnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +200,6 @@
         private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ticketManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
+        private System.Windows.Forms.Panel TicketView_Pnl;
     }
 }

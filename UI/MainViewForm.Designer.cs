@@ -47,9 +47,21 @@
             this.AddUser_bttn = new System.Windows.Forms.Button();
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.TicketView_Pnl = new System.Windows.Forms.Panel();
+            this.button_Filter = new System.Windows.Forms.Button();
+            this.listView_Tickets = new System.Windows.Forms.ListView();
+            this.Id = new System.Windows.Forms.ColumnHeader();
+            this.User = new System.Windows.Forms.ColumnHeader();
+            this.Subject = new System.Windows.Forms.ColumnHeader();
+            this.Date = new System.Windows.Forms.ColumnHeader();
+            this.Status = new System.Windows.Forms.ColumnHeader();
+            this.textBox_Filter = new System.Windows.Forms.TextBox();
+            this.label_overview = new System.Windows.Forms.Label();
+            this.button_CreateIncident = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlDashBoard.SuspendLayout();
             this.UserManagement_Pnl.SuspendLayout();
+            this.TicketView_Pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -62,7 +74,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1590, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,6 +90,7 @@
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
             this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
+            this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
@@ -91,7 +104,7 @@
             this.pnlDashBoard.Controls.Add(this.PieChartWrapper);
             this.pnlDashBoard.Controls.Add(this.lblTest);
             this.pnlDashBoard.Controls.Add(this.button2);
-            this.pnlDashBoard.Location = new System.Drawing.Point(46, 97);
+            this.pnlDashBoard.Location = new System.Drawing.Point(12, 97);
             this.pnlDashBoard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlDashBoard.Name = "pnlDashBoard";
             this.pnlDashBoard.Size = new System.Drawing.Size(928, 393);
@@ -131,9 +144,9 @@
             this.UserManagement_Pnl.Controls.Add(this.AddUser_bttn);
             this.UserManagement_Pnl.Controls.Add(this.filter_txtbox);
             this.UserManagement_Pnl.Controls.Add(this.label1);
-            this.UserManagement_Pnl.Location = new System.Drawing.Point(46, 543);
+            this.UserManagement_Pnl.Location = new System.Drawing.Point(12, 543);
             this.UserManagement_Pnl.Name = "UserManagement_Pnl";
-            this.UserManagement_Pnl.Size = new System.Drawing.Size(942, 460);
+            this.UserManagement_Pnl.Size = new System.Drawing.Size(912, 460);
             this.UserManagement_Pnl.TabIndex = 5;
             // 
             // FilterUsersByEmail_bttn
@@ -217,11 +230,99 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "User Management";
             // 
+            // TicketView_Pnl
+            // 
+            this.TicketView_Pnl.Controls.Add(this.button_Filter);
+            this.TicketView_Pnl.Controls.Add(this.listView_Tickets);
+            this.TicketView_Pnl.Controls.Add(this.textBox_Filter);
+            this.TicketView_Pnl.Controls.Add(this.label_overview);
+            this.TicketView_Pnl.Controls.Add(this.button_CreateIncident);
+            this.TicketView_Pnl.Location = new System.Drawing.Point(946, 116);
+            this.TicketView_Pnl.Name = "TicketView_Pnl";
+            this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
+            this.TicketView_Pnl.TabIndex = 14;
+            // 
+            // button_Filter
+            // 
+            this.button_Filter.Location = new System.Drawing.Point(348, 30);
+            this.button_Filter.Name = "button_Filter";
+            this.button_Filter.Size = new System.Drawing.Size(94, 29);
+            this.button_Filter.TabIndex = 12;
+            this.button_Filter.Text = "Filter";
+            this.button_Filter.UseVisualStyleBackColor = true;
+            // 
+            // listView_Tickets
+            // 
+            this.listView_Tickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Id,
+            this.User,
+            this.Subject,
+            this.Date,
+            this.Status});
+            this.listView_Tickets.HideSelection = false;
+            this.listView_Tickets.Location = new System.Drawing.Point(51, 80);
+            this.listView_Tickets.Name = "listView_Tickets";
+            this.listView_Tickets.Size = new System.Drawing.Size(908, 292);
+            this.listView_Tickets.TabIndex = 8;
+            this.listView_Tickets.UseCompatibleStateImageBehavior = false;
+            this.listView_Tickets.View = System.Windows.Forms.View.Details;
+            // 
+            // Id
+            // 
+            this.Id.Text = "Id";
+            // 
+            // User
+            // 
+            this.User.Text = "User";
+            this.User.Width = 200;
+            // 
+            // Subject
+            // 
+            this.Subject.Text = "Subject";
+            this.Subject.Width = 150;
+            // 
+            // Date
+            // 
+            this.Date.Text = "Date";
+            this.Date.Width = 100;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 100;
+            // 
+            // textBox_Filter
+            // 
+            this.textBox_Filter.Location = new System.Drawing.Point(51, 31);
+            this.textBox_Filter.Name = "textBox_Filter";
+            this.textBox_Filter.Size = new System.Drawing.Size(279, 27);
+            this.textBox_Filter.TabIndex = 11;
+            // 
+            // label_overview
+            // 
+            this.label_overview.AutoSize = true;
+            this.label_overview.Location = new System.Drawing.Point(51, 7);
+            this.label_overview.Name = "label_overview";
+            this.label_overview.Size = new System.Drawing.Size(113, 20);
+            this.label_overview.TabIndex = 9;
+            this.label_overview.Text = "Ticket Overview";
+            // 
+            // button_CreateIncident
+            // 
+            this.button_CreateIncident.Location = new System.Drawing.Point(816, 7);
+            this.button_CreateIncident.Name = "button_CreateIncident";
+            this.button_CreateIncident.Size = new System.Drawing.Size(98, 51);
+            this.button_CreateIncident.TabIndex = 10;
+            this.button_CreateIncident.Text = "Create Incident";
+            this.button_CreateIncident.UseVisualStyleBackColor = true;
+            this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click);
+            // 
             // MainViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1590, 1015);
+            this.ClientSize = new System.Drawing.Size(1924, 1015);
+            this.Controls.Add(this.TicketView_Pnl);
             this.Controls.Add(this.UserManagement_Pnl);
             this.Controls.Add(this.pnlDashBoard);
             this.Controls.Add(this.menuStrip1);
@@ -234,6 +335,8 @@
             this.pnlDashBoard.PerformLayout();
             this.UserManagement_Pnl.ResumeLayout(false);
             this.UserManagement_Pnl.PerformLayout();
+            this.TicketView_Pnl.ResumeLayout(false);
+            this.TicketView_Pnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +363,16 @@
         private System.Windows.Forms.Button AddUser_bttn;
         private System.Windows.Forms.TextBox filter_txtbox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel TicketView_Pnl;
+        private System.Windows.Forms.Button button_Filter;
+        private System.Windows.Forms.ListView listView_Tickets;
+        private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.ColumnHeader User;
+        private System.Windows.Forms.ColumnHeader Subject;
+        private System.Windows.Forms.ColumnHeader Date;
+        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.TextBox textBox_Filter;
+        private System.Windows.Forms.Label label_overview;
+        private System.Windows.Forms.Button button_CreateIncident;
     }
 }
