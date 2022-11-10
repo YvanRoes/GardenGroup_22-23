@@ -37,7 +37,7 @@ namespace UI
             this.Size = new Size(1060, 640);
 
             _userService = new UserService();
-            _loggedUser = new User(9000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
+            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
             _ticketService = new TicketService();
 
             if (_loggedUser.get_userType() != UserType.ServiceDesk)
@@ -291,11 +291,16 @@ namespace UI
             if (_loggedUser.get_userType() == UserType.Employee)
             {
                 TransferTicket_bttn.Visible = false;
+                label_overview.Text = "Incident Overview";
+                button_CreateIncident.Text = "Create Incident";
                 LoadTicketListViewForRegularEmployee();
+                
             }
             else
             {
                 TransferTicket_bttn.Enabled = false;
+                label_overview.Text = "Ticket Overview";
+                button_CreateIncident.Text = "Create Ticket";
                 LoadTicketListViewForServiceDeskEmployee();
             }
         }
