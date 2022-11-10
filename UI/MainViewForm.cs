@@ -25,7 +25,7 @@ namespace UI
             _userService = new UserService();
             _loggedUser = user;
 
-            if (_loggedUser.UserType != UserType.ServiceDesk)
+            if (_loggedUser.get_userType() != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
         }
 
