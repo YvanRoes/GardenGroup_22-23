@@ -31,6 +31,20 @@ namespace UI
                 userManagementToolStripMenuItem.Enabled = false;
         }
 
+        public MainViewForm()
+        {
+            InitializeComponent();
+            start();
+            this.Size = new Size(1060, 640);
+
+            _userService = new UserService();
+            _loggedUser = new User(9000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
+            _ticketService = new TicketService();
+
+            if (_loggedUser.get_userType() != UserType.ServiceDesk)
+                userManagementToolStripMenuItem.Enabled = false;
+        }
+
         //Dashboard (Yvan)
         void start()
         {
@@ -170,6 +184,19 @@ namespace UI
             FillUserManagementListView(users);
         }
 
+        private void TransferTicket_bttn_Click(object sender, EventArgs e)
+        {
+            TransferTicketForm transferTicketForm = new TransferTicketForm();
+            transferTicketForm.ShowDialog();
+
+            loadTicketView();
+        }
+
+
+        private void listView_Tickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TransferTicket_bttn.Enabled = true;
+        }
         //Ticket View (Aleksandra)
 
         private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,10 +213,12 @@ namespace UI
 
             if (_loggedUser.get_userType() == UserType.Employee)
             {
+                TransferTicket_bttn.Visible = false;
                 LoadTicketListViewForRegularEmployee();
             }
             else
             {
+                TransferTicket_bttn.Enabled = false;
                 LoadTicketListViewForServiceDeskEmployee();
             }
         }
@@ -204,7 +233,7 @@ namespace UI
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
                 ListViewItem list = new ListViewItem(output);
-                list.Tag = Id;
+                list.Tag = ticket;
                 listView_Tickets.Items.Add(list);
             }
         }
@@ -216,7 +245,7 @@ namespace UI
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
                 ListViewItem list = new ListViewItem(output);
-                list.Tag = Id;
+                list.Tag = ticket;
                 listView_Tickets.Items.Add(list);
             }
         }

@@ -49,20 +49,6 @@ namespace UI
             this.Hide();
         }
 
-        private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TicketViewForm ticketViewForm = new TicketViewForm();
-            ticketViewForm.Show();
-            this.Hide();
-        }
-
-        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //UserManagementViewForm userManagementViewForm = new UserManagementViewForm();
-            //userManagementViewForm.Show();
-            //this.Hide();
-        }
-
         private void labelReportedBy_Click(object sender, EventArgs e)
         {
 

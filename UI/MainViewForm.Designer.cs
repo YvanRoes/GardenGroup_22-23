@@ -48,6 +48,7 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TicketView_Pnl = new System.Windows.Forms.Panel();
+            this.TransferTicket_bttn = new System.Windows.Forms.Button();
             this.button_Filter = new System.Windows.Forms.Button();
             this.listView_Tickets = new System.Windows.Forms.ListView();
             this.Id = new System.Windows.Forms.ColumnHeader();
@@ -232,6 +233,7 @@
             // 
             // TicketView_Pnl
             // 
+            this.TicketView_Pnl.Controls.Add(this.TransferTicket_bttn);
             this.TicketView_Pnl.Controls.Add(this.button_Filter);
             this.TicketView_Pnl.Controls.Add(this.listView_Tickets);
             this.TicketView_Pnl.Controls.Add(this.textBox_Filter);
@@ -241,6 +243,16 @@
             this.TicketView_Pnl.Name = "TicketView_Pnl";
             this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
             this.TicketView_Pnl.TabIndex = 14;
+            // 
+            // TransferTicket_bttn
+            // 
+            this.TransferTicket_bttn.Location = new System.Drawing.Point(732, 8);
+            this.TransferTicket_bttn.Name = "TransferTicket_bttn";
+            this.TransferTicket_bttn.Size = new System.Drawing.Size(94, 51);
+            this.TransferTicket_bttn.TabIndex = 13;
+            this.TransferTicket_bttn.Text = "Transfer Ticket";
+            this.TransferTicket_bttn.UseVisualStyleBackColor = true;
+            this.TransferTicket_bttn.Click += new System.EventHandler(this.TransferTicket_bttn_Click);
             // 
             // button_Filter
             // 
@@ -259,13 +271,16 @@
             this.Subject,
             this.Date,
             this.Status});
+            this.listView_Tickets.FullRowSelect = true;
             this.listView_Tickets.HideSelection = false;
             this.listView_Tickets.Location = new System.Drawing.Point(51, 80);
+            this.listView_Tickets.MultiSelect = false;
             this.listView_Tickets.Name = "listView_Tickets";
             this.listView_Tickets.Size = new System.Drawing.Size(908, 292);
             this.listView_Tickets.TabIndex = 8;
             this.listView_Tickets.UseCompatibleStateImageBehavior = false;
             this.listView_Tickets.View = System.Windows.Forms.View.Details;
+            this.listView_Tickets.SelectedIndexChanged += new System.EventHandler(this.listView_Tickets_SelectedIndexChanged);
             // 
             // Id
             // 
@@ -309,7 +324,7 @@
             // 
             // button_CreateIncident
             // 
-            this.button_CreateIncident.Location = new System.Drawing.Point(816, 7);
+            this.button_CreateIncident.Location = new System.Drawing.Point(846, 8);
             this.button_CreateIncident.Name = "button_CreateIncident";
             this.button_CreateIncident.Size = new System.Drawing.Size(98, 51);
             this.button_CreateIncident.TabIndex = 10;
@@ -374,5 +389,6 @@
         private System.Windows.Forms.TextBox textBox_Filter;
         private System.Windows.Forms.Label label_overview;
         private System.Windows.Forms.Button button_CreateIncident;
+        private System.Windows.Forms.Button TransferTicket_bttn;
     }
 }

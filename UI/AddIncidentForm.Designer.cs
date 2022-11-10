@@ -131,21 +131,18 @@ namespace UI
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
             this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
-            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // ticketManagementToolStripMenuItem
             // 
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
             this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
-            this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
             this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.userManagementToolStripMenuItem.Text = "User Management";
-            this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
             // comboBox_IncidentType
             // 
