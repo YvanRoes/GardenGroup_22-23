@@ -25,7 +25,7 @@ namespace UI
             _userService = new UserService();
             _loggedUser = user;
 
-            if (_loggedUser.UserType != UserType.ServiceDesk)
+            if (_loggedUser.get_userType() != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
         }
 
@@ -181,7 +181,7 @@ namespace UI
 
 
             //draw unresolved and pastdeadline
-            DrawPieChart(unresolvedTickets + pastDeadline, unresolvedTickets, pastDeadline, PieChartWrapper2);
+            DrawPieChart(unresolvedTickets + pastDeadline, unresolvedTickets, pastDeadline, PieChartWrapper);
             lblTest.Text = $"unresolved tickets: {unresolvedTickets}\ntickets in progress: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
         }
 
@@ -221,7 +221,7 @@ namespace UI
             }
         }
 
-        private void AddUser_bttn_Click(object sender, EventArgs e)
+        private void AddUser_btn_Click(object sender, EventArgs e)
         {
             AddUserViewForm AddUser = new AddUserViewForm();
             AddUser.ShowDialog();

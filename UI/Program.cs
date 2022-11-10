@@ -16,7 +16,7 @@ namespace UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainViewForm());
+            Application.Run(new LoginViewForm());
             //Application.Run(new LoginViewForm());
 
 
