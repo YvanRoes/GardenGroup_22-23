@@ -45,5 +45,9 @@ namespace Logic
             ticketDb = new TicketDAO();
             return ticketDb.CountTicketsperUser(userId);
         }
+        public User GetUserByUsernameAndPassword(string email,string password)
+        {
+            return userDb.GetUserByUsernameAndPassword(email,password);
+        }
     }
 }
