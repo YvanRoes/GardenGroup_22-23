@@ -44,9 +44,7 @@ namespace UI
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DashboardViewForm dashboardViewForm = new DashboardViewForm();
-            dashboardViewForm.Show();
-            this.Hide();
+            
         }
 
         private void labelReportedBy_Click(object sender, EventArgs e)

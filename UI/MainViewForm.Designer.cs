@@ -91,7 +91,6 @@
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
             this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
-            this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
@@ -212,7 +211,7 @@
             this.AddUser_bttn.TabIndex = 2;
             this.AddUser_bttn.Text = "Add User";
             this.AddUser_bttn.UseVisualStyleBackColor = true;
-            this.AddUser_bttn.Click += new System.EventHandler(this.AddUser_bttn_Click);
+            this.AddUser_bttn.Click += new System.EventHandler(this.AddUser_btn_Click);
             // 
             // filter_txtbox
             // 
@@ -252,7 +251,6 @@
             this.TransferTicket_bttn.TabIndex = 13;
             this.TransferTicket_bttn.Text = "Transfer Ticket";
             this.TransferTicket_bttn.UseVisualStyleBackColor = true;
-            this.TransferTicket_bttn.Click += new System.EventHandler(this.TransferTicket_bttn_Click);
             // 
             // button_Filter
             // 
@@ -280,7 +278,6 @@
             this.listView_Tickets.TabIndex = 8;
             this.listView_Tickets.UseCompatibleStateImageBehavior = false;
             this.listView_Tickets.View = System.Windows.Forms.View.Details;
-            this.listView_Tickets.SelectedIndexChanged += new System.EventHandler(this.listView_Tickets_SelectedIndexChanged);
             // 
             // Id
             // 
@@ -330,7 +327,6 @@
             this.button_CreateIncident.TabIndex = 10;
             this.button_CreateIncident.Text = "Create Incident";
             this.button_CreateIncident.UseVisualStyleBackColor = true;
-            this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click);
             // 
             // MainViewForm
             // 
