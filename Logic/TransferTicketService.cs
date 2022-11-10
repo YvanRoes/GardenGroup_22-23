@@ -9,6 +9,18 @@ namespace Logic
 {
     public class TransferTicketService
     {
+        UserDAO userDb;
+        TicketDAO ticketDb;
+
+        public TransferTicketService()
+        {
+            userDb = new UserDAO();
+        }
+
+        public GetListOfUsers()
+        {
+
+        }
 
     }
 }
