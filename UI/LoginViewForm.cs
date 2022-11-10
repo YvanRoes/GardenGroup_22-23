@@ -26,8 +26,10 @@ namespace UI
                 if (user != null)
                 {
                     MainViewForm mainViewForm = new MainViewForm(user);
-                    mainViewForm.Show();
                     this.Hide();
+                    mainViewForm.ShowDialog();
+
+                    this.Close();
                 }
                 labelIndicator.Text = "Your username and password combination are wrong";
             }

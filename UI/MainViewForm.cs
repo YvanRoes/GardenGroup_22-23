@@ -20,10 +20,13 @@ namespace UI
         {
             InitializeComponent();
             start();
-            this.Size = new Size(960, 540);
+            this.Size = new Size(1060, 640);
 
             _userService = new UserService();
             _loggedUser = user;
+
+            if (_loggedUser.UserType != UserType.ServiceDesk)
+                userManagementToolStripMenuItem.Enabled = false;
         }
 
 
@@ -94,6 +97,7 @@ namespace UI
 
         private void loadDashBoard()
         {
+            UserManagement_Pnl.Visible = false;
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
             TicketService ticketService = new TicketService();
@@ -117,11 +121,9 @@ namespace UI
 
         private void loadUserManagement()
         {
+            pnlDashBoard.Visible = false;
             UserManagement_Pnl.Visible = true;
             UserManagement_Pnl.Dock = DockStyle.Fill;
-
-            if (_loggedUser.UserType != UserType.ServiceDesk)
-                UserManagement_Pnl.Hide();
 
             FillUserManagementListView(_userService.GetAllUsers());
 
