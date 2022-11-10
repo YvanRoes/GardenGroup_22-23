@@ -28,7 +28,7 @@ namespace UI
                 {
                     if (checkBoxRememberMe.Checked)
                     {
-                        Model.User LoginedUser = new Model.User(user.Id,user.Name,user.Email,user.Phone,user.get_userType(),user.Location,user.Password);
+                        //Model.User LoginedUser = new Model.User(user.Id,user.Name,user.Email,user.Phone,user.get_userType(),user.Location,user.Password);
                     }
                     DashboardViewForm dashboardViewForm = new DashboardViewForm();
                     dashboardViewForm.Show();
