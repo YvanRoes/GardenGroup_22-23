@@ -37,10 +37,10 @@ namespace UI
 
             foreach (var user in users)
             {
-                ListViewItem li = new ListViewItem(user.get_id().ToString());
-                li.SubItems.Add(user.get_email());
-                li.SubItems.Add(user.get_name());
-                li.SubItems.Add(user.get_location().ToString());
+                ListViewItem li = new ListViewItem(user.Id.ToString());
+                li.SubItems.Add(user.Email);
+                li.SubItems.Add(user.Name);
+                li.SubItems.Add(user.Location.ToString());
                 li.Tag = user;
                 User_lstView.Items.Add(li);
             }

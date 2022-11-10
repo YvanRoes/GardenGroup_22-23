@@ -27,21 +27,20 @@ namespace Logic
             return userDb.GetFilteredUserByEmail(filterEmail);
         }
 
-        public int getNewID()
+        //public int getNewID()
+        //{
+        //    int id = 0;
+        //    List<User> users = userDb.GetAllUsers();
+        //    users.ForEach(user =>
+        //    {
+        //        if (user.get_id() > id)
+        //            id = user.get_id();
+        //    });
+        //    return id + 1;
+        //}
+        public User GetUserByUsernameAndPassword(string username,string password)
         {
-            int id = 0;
-            List<User> users = userDb.GetAllUsers();
-            users.ForEach(user =>
-            {
-                if (user.get_id() > id)
-                    id = user.get_id();
-            });
-            return id + 1;
-        }
-        public User GetUserByNameAndPassword(string username, string passowrd)
-        {
-            User user = userDb.GetUserByNameAndPassword(username,passowrd);
-            return user;
+            return userDb.GetUserByUsernameAndPassword(username,password);
         }
     }
 }

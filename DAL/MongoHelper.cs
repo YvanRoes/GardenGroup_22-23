@@ -50,11 +50,5 @@ namespace DAL
 
             return Documents;
         }
-        //protected User GetUserByUsernameAndPassword(string collectionName)
-        //{
-        //    var collection = database.GetCollection<BsonDocument>(collectionName);
-        //    var filter = Builders<BsonDocument>.
-        //    return User;
-        //}
     }
 }

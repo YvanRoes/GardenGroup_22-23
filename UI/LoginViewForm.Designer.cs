@@ -34,6 +34,8 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelUsername = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -59,7 +61,7 @@
             // labelIndicator
             // 
             this.labelIndicator.AutoSize = true;
-            this.labelIndicator.Location = new System.Drawing.Point(265, 240);
+            this.labelIndicator.Location = new System.Drawing.Point(197, 259);
             this.labelIndicator.Name = "labelIndicator";
             this.labelIndicator.Size = new System.Drawing.Size(19, 15);
             this.labelIndicator.TabIndex = 2;
@@ -89,11 +91,31 @@
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
             // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(197, 187);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(57, 15);
+            this.labelPassword.TabIndex = 6;
+            this.labelPassword.Text = "Password";
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Location = new System.Drawing.Point(197, 134);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(60, 15);
+            this.labelUsername.TabIndex = 7;
+            this.labelUsername.Text = "Username";
+            // 
             // LoginViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
+            this.Controls.Add(this.labelUsername);
+            this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
@@ -102,6 +124,7 @@
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginViewForm";
             this.Text = "LoginView";
+            this.Load += new System.EventHandler(this.LoginViewForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +138,7 @@
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.CheckBox checkBoxRememberMe;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label labelUsername;
     }
 }
