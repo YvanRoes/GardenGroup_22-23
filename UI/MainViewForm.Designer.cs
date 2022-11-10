@@ -91,6 +91,7 @@
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
             this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
+            this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
@@ -251,6 +252,7 @@
             this.TransferTicket_bttn.TabIndex = 13;
             this.TransferTicket_bttn.Text = "Transfer Ticket";
             this.TransferTicket_bttn.UseVisualStyleBackColor = true;
+            this.TransferTicket_bttn.Click += new System.EventHandler(this.TransferTicket_bttn_Click);
             // 
             // button_Filter
             // 
@@ -278,6 +280,7 @@
             this.listView_Tickets.TabIndex = 8;
             this.listView_Tickets.UseCompatibleStateImageBehavior = false;
             this.listView_Tickets.View = System.Windows.Forms.View.Details;
+            this.listView_Tickets.SelectedIndexChanged += new System.EventHandler(this.listView_Tickets_SelectedIndexChanged);
             // 
             // Id
             // 
