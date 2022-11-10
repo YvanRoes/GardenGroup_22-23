@@ -20,7 +20,6 @@ namespace Model
         [BsonElement("description")] public string _description;
         [BsonElement("status")] public int _status;
 
-
         public int get_id() { return _id; }
         public int get_ticketedBy() { return _ticketedBy; }
         public int get_reportedBy() { return _reportedBy; }

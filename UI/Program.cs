@@ -17,9 +17,8 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new TestForm());
-            //Application.Run(new DashboardViewForm());
-            Application.Run(new LoginViewForm());
-
+            Model.User defaultUser = new Model.User(-1, "default", "default", 123, (int)Model.UserType.ServiceDesk, 1, "default");
+            Application.Run(new MainViewForm(defaultUser));
         }
     }
 }

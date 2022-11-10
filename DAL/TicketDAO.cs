@@ -26,15 +26,17 @@ namespace DAL
             return tickets;
         }
 
-        public List<Ticket> getTicketsByStatus(TicketStatus status)
+        public async Task<List<Ticket>> getTicketByStatusAsync(TicketStatus status) 
         {
-            List<Ticket> tickets = new List<Ticket>();
-            getTickets().ForEach(x =>
-            {
-                if(x.get_status() == status)
-                    tickets.Add(x);
-            });
-            return tickets;
+            BsonDocument pipe  = new BsonDocument();
+            if(status != TicketStatus.unknown)
+                pipe.Add(new BsonDocument { { "status", (int)status } });
+
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var query = collection.Aggregate()
+                        .Match(pipe);
+            var results = await query.ToListAsync();
+            return results.AsQueryable().ToList();
         }
 
         public int getNewTicketId()
@@ -49,7 +51,11 @@ namespace DAL
             return max + 1;
         }
 
-        
+        /*public List<Ticket> getTicketsByUserid(int id)
+        {
+
+        }*/
+
 
         //Aleks
 
@@ -69,7 +75,7 @@ namespace DAL
 
             return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
         }
-        public List<Ticket> GetAllTickets()
+/*        public List<Ticket> GetAllTickets()
         {
             List<Ticket> tickets = new List<Ticket>();
             var documents = GetListOfDocuments("Ticket");
@@ -78,7 +84,7 @@ namespace DAL
                 tickets.Add(getTicket(doc));
 
             return tickets;
-        }
+        }*/
 
         public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
         {
@@ -91,10 +97,23 @@ namespace DAL
             return tickets;
         }
 
+        //Andy's 
+
         public string CountTicketsperUser(int userId)
         {
-            return executeMatchCountQuery("Ticket", "reportedBy", userId);
+            string result = executeMatchCountQuery("Ticket", "reportedBy", userId);
+            string nrOfTickets = "";
 
+            if (result == "NULL")
+                nrOfTickets = "0";
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (char.IsDigit(result[i]))
+                    nrOfTickets += result[i];
+            }
+
+            return nrOfTickets;
         }
 
     }

@@ -37,7 +37,7 @@ namespace UI
         {
 
 
-            List<Ticket> allTickets = ticketService.GetAllTickets();
+            List<Ticket> allTickets = ticketService.getTickets();
             foreach (Ticket ticket in allTickets)
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
@@ -53,7 +53,7 @@ namespace UI
             filteredTickets = ticketService.GetFilteredTicketsByEmail(loggedInUser.get_email());
            // FillListView(users);
 
-            List<Ticket> allTickets = ticketService.GetAllTickets();
+            List<Ticket> allTickets = ticketService.getTickets();
             foreach (Ticket ticket in allTickets)
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };

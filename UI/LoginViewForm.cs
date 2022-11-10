@@ -26,6 +26,7 @@ namespace UI
                 Model.User user = userService.GetUserByUsernameAndPassword(username, password);
                 if (user != null)
                 {
+
                     if (checkBoxRememberMe.Checked)
                     {
                         //Model.User LoginedUser = new Model.User(user.Id,user.Name,user.Email,user.Phone,user.get_userType(),user.Location,user.Password);
@@ -33,6 +34,7 @@ namespace UI
                     DashboardViewForm dashboardViewForm = new DashboardViewForm();
                     dashboardViewForm.Show();
                     this.Hide();
+
                 }
                 labelIndicator.Text = "Your username and password combination are wrong";
             }

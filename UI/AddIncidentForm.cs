@@ -44,9 +44,7 @@ namespace UI
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DashboardViewForm dashboardViewForm = new DashboardViewForm();
-            dashboardViewForm.Show();
-            this.Hide();
+            
         }
 
         private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,9 +56,6 @@ namespace UI
 
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserManagementViewForm userManagementViewForm = new UserManagementViewForm();
-            userManagementViewForm.Show();
-            this.Hide();
         }
 
         private void labelReportedBy_Click(object sender, EventArgs e)
