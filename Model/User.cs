@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,10 @@ namespace Model
         public Location get_location() { return _location; }
         public UserType get_userType() { return _userType; }
         public string get_password() { return _password; }
+
+        [BsonId]
+        public ObjectId ObjectId { get; set; }
+
         [BsonElement("ID")]
         public int Id { get; set; }
 
@@ -31,7 +36,6 @@ namespace Model
         public string Name { get; set; }
 
         [BsonElement("Email")]
-        [BsonIgnoreIfNull]
         public string Email { get; set; }
 
 

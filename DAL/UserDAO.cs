@@ -18,7 +18,6 @@ namespace DAL
         {
             MongoClient mongoClient = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/test");
             IMongoDatabase database = mongoClient.GetDatabase("NoSqlProjectDatabase");
-
             collection = database.GetCollection<User>("User");
 
         }
