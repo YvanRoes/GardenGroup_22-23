@@ -80,15 +80,15 @@ namespace DAL
             return tickets;
         }*/
 
-        public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
+        public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
-            List<Ticket> tickets = new List<Ticket>();
-            var documents = GetListOfFilteredDocuments("Ticket", "Email", filterEmail);
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
 
-            foreach (var doc in documents)
-                tickets.Add(getTicket(doc));
+            //var filter = Builders<BsonDocument>.Filter.Eq("reportedBy", userId);
+            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket._reportedBy, userId);
+            List<Ticket> filteredTickets = collection.Find(filter).ToList();
 
-            return tickets;
+            return filteredTickets;
         }
 
         //Andy's 

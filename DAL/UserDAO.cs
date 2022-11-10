@@ -46,10 +46,12 @@ namespace DAL
         }
         public User GetUserByUsernameAndPassword(string email, string password)
         {
-            var filter = Builders<User>.Filter.Eq(u => u.Email, email) & Builders<User>.Filter.Eq(u => u.Password, password);
+            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._password, password);
             var user = collection.Find(filter).FirstOrDefault();
+
             return user;
         }
+
         public IMongoCollection<User> GetUserCollection()
         {
             return collection;

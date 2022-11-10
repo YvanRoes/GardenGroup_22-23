@@ -27,7 +27,7 @@ namespace UI
             _loggedUser = user;
             _ticketService = new TicketService();
 
-            if (_loggedUser.UserType != UserType.ServiceDesk)
+            if (_loggedUser.get_userType() != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
         }
 
@@ -196,10 +196,11 @@ namespace UI
 
         private void LoadTicketListViewForRegularEmployee()
         {
+            List<Ticket> filteredTickets = new List<Ticket>();
+            filteredTickets = _ticketService.GetFilteredTicketsByUserId(_loggedUser.get_id());
 
-
-            List<Ticket> allTickets = _ticketService.getTickets();
-            foreach (Ticket ticket in allTickets)
+            // FillListView(users);
+            foreach (Ticket ticket in filteredTickets)
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
                 ListViewItem list = new ListViewItem(output);
@@ -210,10 +211,6 @@ namespace UI
 
         private void LoadTicketListViewForServiceDeskEmployee()
         {
-            List<Ticket> filteredTickets = new List<Ticket>();
-            filteredTickets = _ticketService.GetFilteredTicketsByEmail(_loggedUser.get_email());
-            // FillListView(users);
-
             List<Ticket> allTickets = _ticketService.getTickets();
             foreach (Ticket ticket in allTickets)
             {

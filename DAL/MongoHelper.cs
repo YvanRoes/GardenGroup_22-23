@@ -43,10 +43,10 @@ namespace DAL
             return Documents;
         }
 
-        protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string searchValue, string atribute)
+        protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string field, string atribute)
         {
             var Collection = database.GetCollection<BsonDocument>(collectionName);
-            var filter = Builders<BsonDocument>.Filter.Eq(searchValue, atribute);
+            var filter = Builders<BsonDocument>.Filter.Eq(field, atribute);
             var Documents = Collection.Find(filter).ToList();
 
             return Documents;

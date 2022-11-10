@@ -22,9 +22,9 @@ namespace Logic
             return ticketDB.GetAllTickets();
         }*/
 
-        public List<Ticket> GetFilteredTicketsByEmail(string filterEmail)
+        public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
-            return ticketDB.GetFilteredTicketByEmail(filterEmail);
+            return ticketDB.GetFilteredTicketsByUserId(userId);
         }
 
         public List<Ticket> getTickets() => ticketDB.getTickets();

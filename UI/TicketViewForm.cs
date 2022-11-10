@@ -50,7 +50,7 @@ namespace UI
         private void LoadTicketListViewForServiceDeskEmployee()
         {
             List<Ticket> filteredTickets = new List<Ticket>();
-            filteredTickets = ticketService.GetFilteredTicketsByEmail(loggedInUser.get_email());
+            //filteredTickets = ticketService.GetFilteredTicketsByEmail(loggedInUser.get_email());
            // FillListView(users);
 
             List<Ticket> allTickets = ticketService.getTickets();
