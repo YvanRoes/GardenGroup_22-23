@@ -20,7 +20,6 @@ namespace Model
         [BsonElement("description")] public string _description;
         [BsonElement("status")] public int _status;
 
-
         public int get_id() { return _id; }
         public int get_ticketedBy() { return _ticketedBy; }
         public int get_reportedBy() { return _reportedBy; }
@@ -34,9 +33,9 @@ namespace Model
         {
             switch (_status)
             {
-                case 1: return TicketStatus.open;
-                case 2: return TicketStatus.waiting;
-                case 3: return TicketStatus.closed;
+                case 1: return TicketStatus.unresolved;
+                case 2: return TicketStatus.inProgress;
+                case 3: return TicketStatus.resolved;
                 default: return TicketStatus.unknown;
             }
         }

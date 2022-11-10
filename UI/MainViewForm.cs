@@ -10,27 +10,21 @@ using System.Windows.Forms;
 using Logic;
 using Model;
 
-
 namespace UI
 {
-    public partial class DashboardViewForm : Form
+    public partial class MainViewForm : Form
     {
-        public DashboardViewForm()
+        public MainViewForm()
         {
             InitializeComponent();
             start();
             this.Size = new Size(960, 540);
-            panel1.Visible = false;
         }
+
 
         void start()
         {
-            TicketService ticketService = new TicketService();
-            int totalTickets = ticketService.getTickets().Count;
-            int unResolvedTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
-            int inProgressTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
-            int resolvedTickets = totalTickets - unResolvedTickets - inProgressTickets;
-            lblTest.Text = $"unresolved tickets: {unResolvedTickets}\npending tickets: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
+            pnlDashBoard.Visible = false;   
         }
 
         private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, PaintEventArgs e)
@@ -42,7 +36,7 @@ namespace UI
             float ang1 = partOne * sweepStepAngle;
             float ang2 = ang1 + partTwo * sweepStepAngle;
             float rest = ang1 + ang2 + (TotalItems - partOne - partTwo) * sweepStepAngle;
-            
+
             //graphic component for draw
             using (Graphics g = PieChartWrapper.CreateGraphics())
             {
@@ -50,7 +44,7 @@ namespace UI
                 SolidBrush brush = new SolidBrush(Color.Red);
 
                 //iter trough steps and draw rect as pie
-                for(int i = 0; i < TotalItems; i++)
+                for (int i = 0; i < TotalItems; i++)
                 {
                     if (startAngle >= 360.0f)
                         break;
@@ -77,35 +71,37 @@ namespace UI
                 b.Color = Color.FromArgb(255, 178, 0);
             if (newAngle > angle2 && newAngle < angle3) //resolved
                 b.Color = Color.FromArgb(60, 207, 78);
-            
+
         }
 
-        private void DrawPieChart()
+        private void DrawPieChart(int totalTickets, int unresolvedTickets, int inProgressTickets)
         {
             PaintEventArgs e = new PaintEventArgs(PieChartWrapper.CreateGraphics(), PieChartWrapper.DisplayRectangle);
-            TicketService ticketService = new TicketService();
-            int totalTickets = ticketService.getTickets().Count;
-            int openTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
-            int pendingTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
             //width, height, x, y, TotalNumberOfItems, open, pending
-            createGraphicPie(200, 200, 0, 0, totalTickets, openTickets, pendingTickets, e);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            loadDashBoard();
+            createGraphicPie(200, 200, 0, 0, totalTickets, unresolvedTickets, inProgressTickets, e);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;   
+            pnlDashBoard.Visible = false;
         }
 
         private void loadDashBoard()
         {
-            panel1.Visible = true;
-            panel1.Dock = DockStyle.Fill;
-            DrawPieChart();
+            pnlDashBoard.Visible = true;
+            pnlDashBoard.Dock = DockStyle.Fill;
+            TicketService ticketService = new TicketService();
+            int totalTickets = ticketService.getTickets().Count;
+            int unresolvedTickets = ticketService.getTicketsByStatus(TicketStatus.unresolved).Count;
+            int inProgressTickets = ticketService.getTicketsByStatus(TicketStatus.inProgress).Count;
+            int resolvedTickets = totalTickets - unresolvedTickets - inProgressTickets;
+            DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets);
+            lblTest.Text = $"unresolved tickets: {unresolvedTickets}\npending tickets: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
+        }
+
+        private void DashBoardMenuItem_Click(object sender, EventArgs e)
+        {
+            loadDashBoard();
         }
     }
 }
