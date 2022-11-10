@@ -33,9 +33,9 @@
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashBoard = new System.Windows.Forms.Panel();
+            this.PieChartWrapper2 = new System.Windows.Forms.Panel();
             this.PieChartWrapper = new System.Windows.Forms.Panel();
             this.lblTest = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.UserManagement_Pnl = new System.Windows.Forms.Panel();
             this.FilterUsersByEmail_bttn = new System.Windows.Forms.Button();
             this.User_lstView = new System.Windows.Forms.ListView();
@@ -61,68 +61,63 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1590, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1391, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // DashBoardMenuItem
             // 
             this.DashBoardMenuItem.Name = "DashBoardMenuItem";
-            this.DashBoardMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.DashBoardMenuItem.Size = new System.Drawing.Size(76, 20);
             this.DashBoardMenuItem.Text = "Dashboard";
             this.DashBoardMenuItem.Click += new System.EventHandler(this.DashBoardMenuItem_Click);
             // 
             // ticketManagementToolStripMenuItem
             // 
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
-            this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
             this.userManagementToolStripMenuItem.Text = "User Management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
             // pnlDashBoard
             // 
+            this.pnlDashBoard.Controls.Add(this.PieChartWrapper2);
             this.pnlDashBoard.Controls.Add(this.PieChartWrapper);
             this.pnlDashBoard.Controls.Add(this.lblTest);
-            this.pnlDashBoard.Controls.Add(this.button2);
-            this.pnlDashBoard.Location = new System.Drawing.Point(46, 97);
-            this.pnlDashBoard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlDashBoard.Location = new System.Drawing.Point(40, 73);
             this.pnlDashBoard.Name = "pnlDashBoard";
-            this.pnlDashBoard.Size = new System.Drawing.Size(928, 393);
+            this.pnlDashBoard.Size = new System.Drawing.Size(812, 295);
             this.pnlDashBoard.TabIndex = 4;
+            // 
+            // PieChartWrapper2
+            // 
+            this.PieChartWrapper2.Location = new System.Drawing.Point(540, 62);
+            this.PieChartWrapper2.Name = "PieChartWrapper2";
+            this.PieChartWrapper2.Size = new System.Drawing.Size(201, 201);
+            this.PieChartWrapper2.TabIndex = 4;
             // 
             // PieChartWrapper
             // 
-            this.PieChartWrapper.Location = new System.Drawing.Point(682, 83);
-            this.PieChartWrapper.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PieChartWrapper.Location = new System.Drawing.Point(218, 62);
             this.PieChartWrapper.Name = "PieChartWrapper";
-            this.PieChartWrapper.Size = new System.Drawing.Size(230, 268);
+            this.PieChartWrapper.Size = new System.Drawing.Size(201, 201);
             this.PieChartWrapper.TabIndex = 3;
             // 
             // lblTest
             // 
             this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(165, 83);
+            this.lblTest.Location = new System.Drawing.Point(144, 62);
             this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(50, 20);
+            this.lblTest.Size = new System.Drawing.Size(38, 15);
             this.lblTest.TabIndex = 0;
             this.lblTest.Text = "label1";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(165, 216);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 31);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // UserManagement_Pnl
             // 
@@ -131,16 +126,18 @@
             this.UserManagement_Pnl.Controls.Add(this.AddUser_bttn);
             this.UserManagement_Pnl.Controls.Add(this.filter_txtbox);
             this.UserManagement_Pnl.Controls.Add(this.label1);
-            this.UserManagement_Pnl.Location = new System.Drawing.Point(46, 543);
+            this.UserManagement_Pnl.Location = new System.Drawing.Point(40, 407);
+            this.UserManagement_Pnl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserManagement_Pnl.Name = "UserManagement_Pnl";
-            this.UserManagement_Pnl.Size = new System.Drawing.Size(942, 460);
+            this.UserManagement_Pnl.Size = new System.Drawing.Size(824, 345);
             this.UserManagement_Pnl.TabIndex = 5;
             // 
             // FilterUsersByEmail_bttn
             // 
-            this.FilterUsersByEmail_bttn.Location = new System.Drawing.Point(341, 53);
+            this.FilterUsersByEmail_bttn.Location = new System.Drawing.Point(298, 40);
+            this.FilterUsersByEmail_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FilterUsersByEmail_bttn.Name = "FilterUsersByEmail_bttn";
-            this.FilterUsersByEmail_bttn.Size = new System.Drawing.Size(94, 29);
+            this.FilterUsersByEmail_bttn.Size = new System.Drawing.Size(82, 22);
             this.FilterUsersByEmail_bttn.TabIndex = 4;
             this.FilterUsersByEmail_bttn.Text = "Filter";
             this.FilterUsersByEmail_bttn.UseVisualStyleBackColor = true;
@@ -157,10 +154,11 @@
             this.TicketsHeader});
             this.User_lstView.FullRowSelect = true;
             this.User_lstView.HideSelection = false;
-            this.User_lstView.Location = new System.Drawing.Point(41, 101);
+            this.User_lstView.Location = new System.Drawing.Point(36, 76);
+            this.User_lstView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.User_lstView.MultiSelect = false;
             this.User_lstView.Name = "User_lstView";
-            this.User_lstView.Size = new System.Drawing.Size(858, 348);
+            this.User_lstView.Size = new System.Drawing.Size(751, 262);
             this.User_lstView.TabIndex = 3;
             this.User_lstView.UseCompatibleStateImageBehavior = false;
             this.User_lstView.View = System.Windows.Forms.View.Details;
@@ -192,9 +190,10 @@
             // 
             // AddUser_bttn
             // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(776, 48);
+            this.AddUser_bttn.Location = new System.Drawing.Point(679, 36);
+            this.AddUser_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddUser_bttn.Name = "AddUser_bttn";
-            this.AddUser_bttn.Size = new System.Drawing.Size(123, 41);
+            this.AddUser_bttn.Size = new System.Drawing.Size(108, 31);
             this.AddUser_bttn.TabIndex = 2;
             this.AddUser_bttn.Text = "Add User";
             this.AddUser_bttn.UseVisualStyleBackColor = true;
@@ -202,30 +201,32 @@
             // 
             // filter_txtbox
             // 
-            this.filter_txtbox.Location = new System.Drawing.Point(41, 56);
+            this.filter_txtbox.Location = new System.Drawing.Point(36, 42);
+            this.filter_txtbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.filter_txtbox.Name = "filter_txtbox";
-            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
+            this.filter_txtbox.Size = new System.Drawing.Size(245, 23);
             this.filter_txtbox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(11, 0);
+            this.label1.Location = new System.Drawing.Point(10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 46);
+            this.label1.Size = new System.Drawing.Size(235, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Management";
             // 
             // MainViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1590, 1015);
+            this.ClientSize = new System.Drawing.Size(1391, 761);
             this.Controls.Add(this.UserManagement_Pnl);
             this.Controls.Add(this.pnlDashBoard);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainViewForm";
             this.Text = "MainViewForm";
             this.menuStrip1.ResumeLayout(false);
@@ -248,7 +249,6 @@
         private System.Windows.Forms.Panel pnlDashBoard;
         private System.Windows.Forms.Panel PieChartWrapper;
         private System.Windows.Forms.Label lblTest;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel UserManagement_Pnl;
         private System.Windows.Forms.Button FilterUsersByEmail_bttn;
         private System.Windows.Forms.ListView User_lstView;
@@ -260,5 +260,6 @@
         private System.Windows.Forms.Button AddUser_bttn;
         private System.Windows.Forms.TextBox filter_txtbox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel PieChartWrapper2;
     }
 }
