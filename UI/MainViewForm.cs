@@ -317,6 +317,7 @@ namespace UI
 
         private void LoadTicketListViewForRegularEmployee()
         {
+            
             List<Ticket> filteredTickets = new List<Ticket>();
             filteredTickets = _ticketService.GetFilteredTicketsByUserId(_loggedUser.get_id());
 
@@ -331,6 +332,7 @@ namespace UI
 
         private void LoadTicketListViewForServiceDeskEmployee()
         {
+
             List<Ticket> allTickets = _ticketService.getTickets();
             foreach (Ticket ticket in allTickets)
             {

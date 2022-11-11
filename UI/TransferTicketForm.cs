@@ -81,11 +81,30 @@ namespace UI
 
         private void Transfer_bttn_Click(object sender, EventArgs e)
         {
-            if (Departments_cmboBox.SelectedIndex.Equals((int)UserType.ServiceDesk))
+            try
             {
+                if ((Departments_cmboBox.SelectedIndex == (int)Departments.ServiceDesk))
+                {
+                    User selectedUser = (User)Employee_cmboBox.SelectedItem;
 
-                //_transferTicketService.UpdateTicketedBy(ticket.get_id(), );
+                    _transferTicketService.UpdateTicketedBy(ticket.get_id(), selectedUser._id);
+
+                    if (comment_txtBox.Text.Length > 0)
+                    {
+                        _transferTicketService.UpdateComment(ticket.get_id(), comment_txtBox.Text);
+                    }
+                }
+
+                throw new Exception("Ticket Transfered Succesfully!");
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            this.Close();
+
         }
     }
 }
