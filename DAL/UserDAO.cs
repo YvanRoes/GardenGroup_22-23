@@ -56,8 +56,6 @@ namespace DAL
             var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._id, id);
             var update = Builders<User>.Update.Set("Password", newPassword);
             collection.UpdateOne(filter,update);
-            Console.WriteLine(filter);
-            Console.WriteLine(update);
 
         }
         public User GetFilteredUsersByEmailAndId(string email, int id)
