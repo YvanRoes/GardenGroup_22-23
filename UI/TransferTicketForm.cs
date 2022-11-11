@@ -15,11 +15,13 @@ namespace UI
     public partial class TransferTicketForm : Form
     {
         TransferTicketService _transferTicketService;
-        Ticket ticket;
-        public TransferTicketForm(Ticket ticket)
+        Ticket _ticket;
+        User _loggedUser;
+        public TransferTicketForm(Ticket ticket, User user)
         {
             _transferTicketService = new TransferTicketService();
-            this.ticket = ticket;
+            _ticket = ticket;
+            _loggedUser = user;
 
             InitializeComponent();
 
@@ -73,26 +75,34 @@ namespace UI
    
             Employee_cmboBox.ValueMember = "_id";
             Employee_cmboBox.DataSource = Employees;
-            
+
+            Employee_cmboBox.Items.Remove(_loggedUser); 
         }
 
         private void Transfer_bttn_Click(object sender, EventArgs e)
         {
+
+            User selectedUser = (User)Employee_cmboBox.SelectedItem;
+            string comment = comment_txtBox.Text;
+            Departments selectedDepartment = (Departments)Departments_cmboBox.SelectedIndex;
             try
             {
-                if ((Departments_cmboBox.SelectedIndex == (int)Departments.ServiceDesk))
+                if ((selectedDepartment == Departments.ServiceDesk))
+                    _transferTicketService.UpdateTicketedBy(_ticket.get_id(), selectedUser._id);
+                else
                 {
-                    User selectedUser = (User)Employee_cmboBox.SelectedItem;
-
-                    _transferTicketService.UpdateTicketedBy(ticket.get_id(), selectedUser._id);
-
-                    if (comment_txtBox.Text.Length > 0)
-                    {
-                        _transferTicketService.UpdateComment(ticket.get_id(), comment_txtBox.Text);
-                    }
+                    _transferTicketService.UpdateStatusToTransferred(_ticket.get_id());
                 }
 
-                throw new Exception("Ticket Transfered Succesfully!");
+                if (comment.Length > 0)
+                    comment = ": " + comment;
+
+                _transferTicketService.CreateTransferDetailComment(_ticket, selectedDepartment, selectedUser, _loggedUser, comment);
+
+
+                string transferDetails = _transferTicketService.GetTransferDetails(_ticket);
+
+                throw new Exception(transferDetails);
 
             }
             catch (Exception ex)
@@ -101,7 +111,11 @@ namespace UI
             }
 
             this.Close();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(_transferTicketService.GetTransferDetails(_ticket));
         }
     }
 }

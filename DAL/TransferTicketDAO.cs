@@ -15,6 +15,7 @@ namespace DAL
 
         private IMongoCollection<User> _userCollection;
         private IMongoCollection<Ticket> _ticketCollection;
+
         public TransferTicketDAO()
         {
             MongoClient mongoClient = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/test");
@@ -38,11 +39,36 @@ namespace DAL
             _ticketCollection.UpdateOne(filter, update);
         }
 
-        public void UpdateComment(int ticketid, string comment)
+        public void UpdateStatus(int ticketid)
         {
+
             var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
-            var update = Builders<Ticket>.Update.Set("Comment", comment);
+            var update = Builders<Ticket>.Update.Set("status", (int)TicketStatus.transfered);
+            _ticketCollection.UpdateOne(filter, update);
+        }
+        public void CreateTransferDetailComment(Ticket ticket, Departments department, User user, User loggedUser, string inputComment)
+        {
+            string comment;
+
+            if (department == Departments.ServiceDesk)
+                comment = $"Ticket transfered to Employee {user} By {loggedUser} " + inputComment;
+            else
+                comment = $"Ticket transfered to Department {department} By {loggedUser} " + inputComment;
+
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticket.get_id());
+            var update = Builders<Ticket>.Update.Set("TransferDetails", comment);
+
             _ticketCollection.UpdateOneAsync(filter, update);
+        }
+
+        public string GetTransferDetailCommentById(Ticket ticktet)
+        {
+
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticktet.get_id());
+            var field = Builders<Ticket>.Projection.Include("TransferDetails");
+            var result = _ticketCollection.Find(filter).Project<Ticket>(field).FirstOrDefault();
+
+            return result._transferDetails;
         }
     }
 }

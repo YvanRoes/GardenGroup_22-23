@@ -21,14 +21,23 @@ namespace Logic
             return _transferTicketDAO.GetListOfEmployees(userType);
         }
 
-        public void UpdateComment(int ticketId, string comment)
+        public void CreateTransferDetailComment(Ticket ticket, Departments department, User user, User loggedUser, string inputComment)
         {
-            _transferTicketDAO.UpdateComment(ticketId, comment);
+            _transferTicketDAO.CreateTransferDetailComment(ticket, department, user, loggedUser, inputComment);
         }
 
+        public void UpdateStatusToTransferred(int ticketId)
+        {
+            _transferTicketDAO.UpdateStatus(ticketId);
+        }
         public void UpdateTicketedBy(int ticketId, int userId)
         {
             _transferTicketDAO.UpdateTicketedBy(ticketId, userId);
+        }
+        public string GetTransferDetails(Ticket ticket)
+        {
+            return _transferTicketDAO.GetTransferDetailCommentById(ticket);
+
         }
     }
 }

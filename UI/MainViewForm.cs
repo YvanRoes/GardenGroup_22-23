@@ -239,7 +239,7 @@ namespace UI
         {
             Ticket selectedTicket = (Ticket)listView_ServiceDesk.SelectedItems[0].Tag;
 
-            TransferTicketForm transferTicketForm = new TransferTicketForm(selectedTicket);
+            TransferTicketForm transferTicketForm = new TransferTicketForm(selectedTicket, _loggedUser);
             transferTicketForm.ShowDialog();
 
             loadTicketView();

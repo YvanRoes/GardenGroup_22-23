@@ -41,6 +41,7 @@
             this.Cancel_bttn = new System.Windows.Forms.Button();
             this.transferTicketDAOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transferTicketDAOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
@@ -140,11 +141,22 @@
             // 
             this.userBindingSource1.DataSource = typeof(Model.User);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(211, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TransferTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 464);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Cancel_bttn);
             this.Controls.Add(this.Employee_cmboBox);
             this.Controls.Add(this.Employee_lbl);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.BindingSource userBindingSource;
         private System.Windows.Forms.BindingSource transferTicketDAOBindingSource;
         private System.Windows.Forms.BindingSource userBindingSource1;
+        private System.Windows.Forms.Button button1;
     }
 }

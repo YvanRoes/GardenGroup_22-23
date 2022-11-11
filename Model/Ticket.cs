@@ -19,7 +19,7 @@ namespace Model
         [BsonElement("deadline")] public int _deadline;
         [BsonElement("description")] public string _description;
         [BsonElement("status")] public int _status;
-        [BsonElement("Comment")] public string _comment;
+        [BsonElement("TransferDetails")] public string _transferDetails;
 
         public int get_id() { return _id; }
         public int get_ticketedBy() { return _ticketedBy; }
