@@ -8,18 +8,18 @@ namespace Model
     public class Ticket
     {
 
-        [BsonId] public ObjectId objId;
-        [BsonElement("ID")] public int _id;
-        [BsonElement("ticketedBy")] public int _ticketedBy;
-        [BsonElement("reportedBy")] public int _reportedBy;
-        [BsonElement("subject")] public string _subject;
-        [BsonElement("date")] public DateTime _date;
-        [BsonElement("ticketType")] public int _ticketType;
-        [BsonElement("priority")] public int _priority;
-        [BsonElement("deadline")] public int _deadline;
-        [BsonElement("description")] public string _description;
-        [BsonElement("status")] public int _status;
-        [BsonElement("Comment")] public string _comment;
+        [BsonId] private ObjectId objId;
+        [BsonElement("ID")] private int _id;
+        [BsonElement("ticketedBy")] private int _ticketedBy;
+        [BsonElement("reportedBy")] private int _reportedBy;
+        [BsonElement("subject")] private string _subject;
+        [BsonElement("date")] private DateTime _date;
+        [BsonElement("ticketType")] private int _ticketType;
+        [BsonElement("priority")] private int _priority;
+        [BsonElement("deadline")] private int _deadline;
+        [BsonElement("description")] private string _description;
+        [BsonElement("status")] private int _status;
+        [BsonElement("Comment")] private string _comment;
 
         public int get_id() { return _id; }
         public int get_ticketedBy() { return _ticketedBy; }

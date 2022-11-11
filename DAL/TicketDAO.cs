@@ -23,7 +23,7 @@ namespace DAL
         public List<Ticket> getOpenAndPendingTickets()
         {
             IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
-            List<Ticket> tickets = collection.Aggregate().Match(x => x._status == 1 || x._status == 2).ToList<Ticket>();
+            List<Ticket> tickets = collection.Aggregate().Match(x => (int)x.get_status() == 1 || (int)x.get_status() == 2).ToList<Ticket>();
             return tickets;
         }
 
@@ -66,7 +66,7 @@ namespace DAL
             IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
 
             //var filter = Builders<BsonDocument>.Filter.Eq("reportedBy", userId);
-            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket._reportedBy, userId);
+            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket.get_reportedBy(), userId);
             List<Ticket> filteredTickets = collection.Find(filter).ToList();
 
             return filteredTickets;
