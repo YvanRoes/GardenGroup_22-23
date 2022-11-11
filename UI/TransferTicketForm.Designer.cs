@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Departments_cmboBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comment_txtBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Transfer_bttn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,13 +55,13 @@
             this.Departments_cmboBox.TabIndex = 0;
             this.Departments_cmboBox.SelectedIndexChanged += new System.EventHandler(this.Departments_cmboBox_SelectedIndexChanged);
             // 
-            // textBox1
+            // comment_txtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(24, 233);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(326, 131);
-            this.textBox1.TabIndex = 1;
+            this.comment_txtBox.Location = new System.Drawing.Point(24, 233);
+            this.comment_txtBox.Multiline = true;
+            this.comment_txtBox.Name = "comment_txtBox";
+            this.comment_txtBox.Size = new System.Drawing.Size(326, 131);
+            this.comment_txtBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -152,7 +152,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Transfer_bttn);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comment_txtBox);
             this.Controls.Add(this.Departments_cmboBox);
             this.Name = "TransferTicketForm";
             this.Text = "Transfer Ticket";
@@ -167,7 +167,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox Departments_cmboBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox comment_txtBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Transfer_bttn;
         private System.Windows.Forms.Label label2;

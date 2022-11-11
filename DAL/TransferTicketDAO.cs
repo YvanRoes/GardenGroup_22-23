@@ -32,19 +32,16 @@ namespace DAL
 
         public void UpdateTicketedBy(int ticketid, int userId)
         {
-            //var filter = Builders<User>.Filter.Eq("ID", ticketid);
-            //var update = Builders<User>.Update.Set("ticketedBy", userId);
-            //_ticketCollection.UpdateOne(filter, update).Result;
 
-            var filter = Builders<Ticket>.Filter.Eq(x => x.get_id(), ticketid);
-            var update = Builders<Ticket>.Update.Set(x => x.get_ticketedBy(), userId);
-            _ticketCollection.UpdateOneAsync(filter, update);
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
+            var update = Builders<Ticket>.Update.Set("ticketedBy", userId);
+            _ticketCollection.UpdateOne(filter, update);
         }
 
         public void UpdateComment(int ticketid, string comment)
         {
-            var filter = Builders<Ticket>.Filter.Eq(x => x.get_id(), ticketid);
-            var update = Builders<Ticket>.Update.Set(x => x._comment, comment);
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
+            var update = Builders<Ticket>.Update.Set("Comment", comment);
             _ticketCollection.UpdateOneAsync(filter, update);
         }
     }
