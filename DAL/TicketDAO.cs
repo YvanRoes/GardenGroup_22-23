@@ -40,6 +40,13 @@ namespace DAL
             return results.AsQueryable().ToList();
         }
 
+        public List<Ticket> getTicketSortedByPriority()
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            List<Ticket> tickets = collection.Aggregate().Sort("{priority: -1}").ToList<Ticket>();
+            return tickets;
+        }
+
         public int getNewTicketId()
         {
             List<Ticket> tickets = getTickets();

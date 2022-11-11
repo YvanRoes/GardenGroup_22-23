@@ -369,5 +369,21 @@ namespace UI
                 
             }
         }
+
+        private void button_PrioritySort_Click(object sender, EventArgs e)
+        {
+            List<Ticket> sortedTickets = _ticketService.getTicketSortedByPriority();
+            listView_Tickets.Visible = false;
+            listView_ServiceDesk.Visible = true;
+            listView_ServiceDesk.Items.Clear();
+            foreach (Ticket ticket in sortedTickets)
+            {
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString(), ticket._description, ticket.get_priority().ToString(), ticket.get_deadline().ToString() };
+                ListViewItem list = new ListViewItem(output);
+                list.Tag = ticket;
+                listView_ServiceDesk.Items.Add(list);
+            }
+
+        }
     }
 }

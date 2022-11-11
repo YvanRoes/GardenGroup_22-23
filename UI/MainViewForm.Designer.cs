@@ -54,6 +54,9 @@
             this.SD_Subject = new System.Windows.Forms.ColumnHeader();
             this.SD_Date = new System.Windows.Forms.ColumnHeader();
             this.SD_Status = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.TransferTicket_bttn = new System.Windows.Forms.Button();
             this.button_Filter = new System.Windows.Forms.Button();
             this.listView_Tickets = new System.Windows.Forms.ListView();
@@ -66,9 +69,7 @@
             this.textBox_Filter = new System.Windows.Forms.TextBox();
             this.label_overview = new System.Windows.Forms.Label();
             this.button_CreateIncident = new System.Windows.Forms.Button();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.button_PrioritySort = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlDashBoard.SuspendLayout();
             this.UserManagement_Pnl.SuspendLayout();
@@ -243,6 +244,7 @@
             // 
             // TicketView_Pnl
             // 
+            this.TicketView_Pnl.Controls.Add(this.button_PrioritySort);
             this.TicketView_Pnl.Controls.Add(this.listView_ServiceDesk);
             this.TicketView_Pnl.Controls.Add(this.TransferTicket_bttn);
             this.TicketView_Pnl.Controls.Add(this.button_Filter);
@@ -299,6 +301,20 @@
             // 
             this.SD_Status.Text = "Status";
             this.SD_Status.Width = 100;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Description";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Priority";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Deadline";
+            this.columnHeader3.Width = 100;
             // 
             // TransferTicket_bttn
             // 
@@ -395,19 +411,15 @@
             this.button_CreateIncident.UseVisualStyleBackColor = true;
             this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click_1);
             // 
-            // columnHeader1
+            // button_PrioritySort
             // 
-            this.columnHeader1.Text = "Description";
-            this.columnHeader1.Width = 200;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Priority";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Deadline";
-            this.columnHeader3.Width = 100;
+            this.button_PrioritySort.Location = new System.Drawing.Point(611, 40);
+            this.button_PrioritySort.Name = "button_PrioritySort";
+            this.button_PrioritySort.Size = new System.Drawing.Size(94, 51);
+            this.button_PrioritySort.TabIndex = 15;
+            this.button_PrioritySort.Text = "Sort By Priority";
+            this.button_PrioritySort.UseVisualStyleBackColor = true;
+            this.button_PrioritySort.Click += new System.EventHandler(this.button_PrioritySort_Click);
             // 
             // MainViewForm
             // 
@@ -477,5 +489,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button button_PrioritySort;
     }
 }

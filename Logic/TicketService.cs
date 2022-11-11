@@ -33,22 +33,6 @@ namespace Logic
 
         public async Task<List<Ticket>> getTicketsByStatusAsync(TicketStatus status) => await ticketDB.getTicketByStatusAsync(status);
 
-        public List<Ticket>[] getTicketsBeforeAndPastDeadline()
-        {
-            List<Ticket> unfilteredTickets = getTickets();
-            List<Ticket> pastDeadlinetickets = new List<Ticket>();
-            List<Ticket> beforeDeadlineTickets = new List<Ticket>();
-            unfilteredTickets.ForEach(ticket =>
-            {
-                //if deadline passed add to passedDeadline list else add to beforeDeadline
-                DateTime deadline = ticket.get_date().AddDays((int)ticket.get_deadline());
-                if (deadline > DateTime.Now)
-                    pastDeadlinetickets.Add(ticket);
-                beforeDeadlineTickets.Add(ticket);
-
-            });
-            return new List<Ticket>[] { beforeDeadlineTickets,pastDeadlinetickets};
-        }
         public void CreateTickets()
         {
             for(int i = 0; i < 50; i++)
@@ -84,6 +68,10 @@ namespace Logic
         public void UpdateTicket(Ticket ticket)
         {
             ticketDB.UpdateTicket(ticket);
+        }
+        public List<Ticket> getTicketSortedByPriority()
+        {
+            return ticketDB.getTicketSortedByPriority();
         }
 
     }
