@@ -51,12 +51,6 @@ namespace DAL
             return max + 1;
         }
 
-        /*public List<Ticket> getTicketsByUserid(int id)
-        {
-
-        }*/
-
-
         //Aleks
 
         private Ticket getTicket(BsonDocument doc)
@@ -76,16 +70,6 @@ namespace DAL
 
             return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
         }
-/*        public List<Ticket> GetAllTickets()
-        {
-            List<Ticket> tickets = new List<Ticket>();
-            var documents = GetListOfDocuments("Ticket");
-
-            foreach (var doc in documents)
-                tickets.Add(getTicket(doc));
-
-            return tickets;
-        }*/
 
         public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
