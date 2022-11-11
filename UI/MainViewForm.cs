@@ -17,6 +17,7 @@ namespace UI
         private UserService _userService;
         private User _loggedUser;
         private TicketService _ticketService;
+        private IncidentService _incidentService;
         public MainViewForm(User user)
         {
             InitializeComponent();
@@ -26,24 +27,11 @@ namespace UI
             _userService = new UserService();
             _loggedUser = user;
             _ticketService = new TicketService();
+            _incidentService = new IncidentService();
 
             if (_loggedUser.get_userType() != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
         }
-        public MainViewForm()
-        {
-            InitializeComponent();
-            start();
-            this.Size = new Size(1060, 640);
-
-            _userService = new UserService();
-            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
-            _ticketService = new TicketService();
-
-            if (_loggedUser.get_userType() != UserType.ServiceDesk)
-                userManagementToolStripMenuItem.Enabled = false;
-        }
-
 
         void start()
         {
@@ -94,7 +82,7 @@ namespace UI
                 g.DrawEllipse(p, (float)posX, (float)posY, (float)width, (float)height);
             }
         }
-        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo,int partThree,Panel panel, PaintEventArgs e)
+        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, int partThree, Panel panel, PaintEventArgs e)
         {
             /*
              * Overloaded fucntion with extra pie partition fucntionality
@@ -127,7 +115,7 @@ namespace UI
 
                     float newAngle = startAngle + sweepStepAngle;
                     //variable brush color based on partitions
-                    colorBrushColorChange(brush, ang1, ang2,ang3, rest, newAngle);
+                    colorBrushColorChange(brush, ang1, ang2, ang3, rest, newAngle);
 
                     Rectangle rect = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
                     g.FillPie(brush, rect, newAngle, sweepStepAngle);
@@ -152,7 +140,7 @@ namespace UI
             if (newAngle > angle2 && newAngle < angle3) //obsolete or optional
                 b.Color = Color.Empty;
         }
-        private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3,float angle4, float newAngle)
+        private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3, float angle4, float newAngle)
         {
             /*
              * Works with overloaded createGraphicPie fucntion to assign colors for PieChart
@@ -175,7 +163,7 @@ namespace UI
         private void DrawPieChart(int total, int pie1, int pie2, Panel panel)
         {
             PaintEventArgs e = new PaintEventArgs(panel.CreateGraphics(), panel.DisplayRectangle);
-            createGraphicPie(200, 200, 0, 0, total, pie1, pie2,panel, e);
+            createGraphicPie(200, 200, 0, 0, total, pie1, pie2, panel, e);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -291,13 +279,13 @@ namespace UI
             TicketView_Pnl.Visible = true;
             TicketView_Pnl.Dock = DockStyle.Fill;
 
-            if (_loggedUser.get_userType() == UserType.Employee)
+            if (_loggedUser.get_userType() == 0)
             {
                 TransferTicket_bttn.Visible = false;
                 label_overview.Text = "Incident Overview";
                 button_CreateIncident.Text = "Create Incident";
                 LoadTicketListViewForRegularEmployee();
-                
+
             }
             else
             {
@@ -311,6 +299,7 @@ namespace UI
         private void LoadTicketListViewForRegularEmployee()
         {
             List<Ticket> filteredTickets = new List<Ticket>();
+            listView_Tickets.Items.Clear();
             filteredTickets = _ticketService.GetFilteredTicketsByUserId(_loggedUser.get_id());
 
             foreach (Ticket ticket in filteredTickets)
@@ -325,6 +314,7 @@ namespace UI
         private void LoadTicketListViewForServiceDeskEmployee()
         {
             List<Ticket> allTickets = _ticketService.getTickets();
+            listView_Tickets.Items.Clear();
             foreach (Ticket ticket in allTickets)
             {
                 string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
@@ -336,8 +326,33 @@ namespace UI
 
         private void button_CreateIncident_Click_1(object sender, EventArgs e)
         {
-            AddIncidentForm addIncidentForm = new AddIncidentForm();
-            addIncidentForm.ShowDialog();
+            AddIncidentForm addIncidentForm;
+            int id;
+            Incident selectedIncident;
+            List<Incident> incidents = _incidentService.getAllIncidents();
+
+            this.Close();
+            if (_loggedUser.get_userType() == 0)
+            {
+                addIncidentForm = new AddIncidentForm(_loggedUser);
+                addIncidentForm.Show();
+            }
+            else
+            {
+                
+                    id = int.Parse(listView_Tickets.SelectedItems[0].Text);
+                    foreach (Incident incident in incidents)
+                    {
+
+                        if (incident.get_id() == id)
+                        {
+                            selectedIncident = new Incident(incident.get_id(), incident.get_reportedBy(), incident.get_subject(), incident.get_date(),  incident.get_description(), incident.get_status());
+                            addIncidentForm = new AddIncidentForm(_loggedUser, selectedIncident);
+                            addIncidentForm.Show();
+                        }
+                    }
+                
+            }
         }
     }
 }

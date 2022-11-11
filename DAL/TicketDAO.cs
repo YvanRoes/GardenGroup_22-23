@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
@@ -53,24 +54,6 @@ namespace DAL
 
         //Aleks
 
-        private Ticket getTicket(BsonDocument doc)
-        {
-
-            int id = (int)doc["ID"];
-            int ticketedBy = (int)doc["ticketedBy"];
-            int reportedBy = (int)doc["reportedBy"];
-            string subject = (string)doc["subject"];
-            DateTime date = DateTime.Now; //(DateTime)doc["date"];
-            TicketType ticketType = (TicketType)(int)doc["ticketType"];
-            Priority priority = (Priority)(int)doc["priority"];
-            Deadline deadline = (Deadline)(int)doc["deadline"];
-            string description = (string)doc["description"];
-            TicketStatus status = (TicketStatus)(int)doc["status"];
-            string comment = (string)doc["comment"];
-
-            return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
-        }
-
         public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
             IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
@@ -80,6 +63,19 @@ namespace DAL
             List<Ticket> filteredTickets = collection.Find(filter).ToList();
 
             return filteredTickets;
+        }
+
+        public void UpdateTicket(Ticket ticket)
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticket.get_id());
+
+                var update = Builders<Ticket>.Update.Set("ID" , ticket.get_id()).Set("ticketedBy", ticket.get_ticketedBy()).Set("reportedBy", ticket.get_reportedBy()).Set("subject", ticket.get_subject())
+                .Set("date", ticket.get_date()).Set("ticketType",(int)ticket.get_ticketType()).Set("priority",(int)ticket.get_priority()).Set("deadline", (int)ticket.get_deadline())
+                .Set("description",ticket.get_description()).Set("status",(int)ticket.get_status());
+
+            collection.UpdateOneAsync(filter, update);
+
         }
         
         //Andy's 

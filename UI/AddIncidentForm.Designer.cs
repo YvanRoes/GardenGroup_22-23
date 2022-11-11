@@ -33,14 +33,12 @@ namespace UI
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelDeadline = new System.Windows.Forms.Label();
             this.labelPriority = new System.Windows.Forms.Label();
-            this.labelReportedBy = new System.Windows.Forms.Label();
             this.labelCreateIncident = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox_IncidentType = new System.Windows.Forms.ComboBox();
-            this.comboBox_ReportedBy = new System.Windows.Forms.ComboBox();
             this.comboBox_Priority = new System.Windows.Forms.ComboBox();
             this.comboBox_Deadline = new System.Windows.Forms.ComboBox();
             this.textBoxSubject = new System.Windows.Forms.TextBox();
@@ -57,17 +55,17 @@ namespace UI
             // 
             this.textBoxDescription.AllowDrop = true;
             this.textBoxDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxDescription.Location = new System.Drawing.Point(418, 322);
+            this.textBoxDescription.Location = new System.Drawing.Point(418, 292);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(401, 50);
+            this.textBoxDescription.Size = new System.Drawing.Size(401, 81);
             this.textBoxDescription.TabIndex = 44;
             // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
             this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDescription.Location = new System.Drawing.Point(163, 334);
+            this.labelDescription.Location = new System.Drawing.Point(163, 304);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(88, 20);
             this.labelDescription.TabIndex = 39;
@@ -77,7 +75,7 @@ namespace UI
             // 
             this.labelDeadline.AutoSize = true;
             this.labelDeadline.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDeadline.Location = new System.Drawing.Point(163, 296);
+            this.labelDeadline.Location = new System.Drawing.Point(163, 266);
             this.labelDeadline.Name = "labelDeadline";
             this.labelDeadline.Size = new System.Drawing.Size(141, 20);
             this.labelDeadline.TabIndex = 38;
@@ -87,21 +85,11 @@ namespace UI
             // 
             this.labelPriority.AutoSize = true;
             this.labelPriority.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelPriority.Location = new System.Drawing.Point(163, 261);
+            this.labelPriority.Location = new System.Drawing.Point(163, 226);
             this.labelPriority.Name = "labelPriority";
             this.labelPriority.Size = new System.Drawing.Size(59, 20);
             this.labelPriority.TabIndex = 37;
             this.labelPriority.Text = "Priority:";
-            // 
-            // labelReportedBy
-            // 
-            this.labelReportedBy.AutoSize = true;
-            this.labelReportedBy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelReportedBy.Location = new System.Drawing.Point(163, 190);
-            this.labelReportedBy.Name = "labelReportedBy";
-            this.labelReportedBy.Size = new System.Drawing.Size(125, 20);
-            this.labelReportedBy.TabIndex = 36;
-            this.labelReportedBy.Text = "Reported by user:";
             // 
             // labelCreateIncident
             // 
@@ -147,23 +135,15 @@ namespace UI
             // comboBox_IncidentType
             // 
             this.comboBox_IncidentType.FormattingEnabled = true;
-            this.comboBox_IncidentType.Location = new System.Drawing.Point(418, 217);
+            this.comboBox_IncidentType.Location = new System.Drawing.Point(418, 182);
             this.comboBox_IncidentType.Name = "comboBox_IncidentType";
             this.comboBox_IncidentType.Size = new System.Drawing.Size(189, 28);
             this.comboBox_IncidentType.TabIndex = 49;
             // 
-            // comboBox_ReportedBy
-            // 
-            this.comboBox_ReportedBy.FormattingEnabled = true;
-            this.comboBox_ReportedBy.Location = new System.Drawing.Point(418, 183);
-            this.comboBox_ReportedBy.Name = "comboBox_ReportedBy";
-            this.comboBox_ReportedBy.Size = new System.Drawing.Size(189, 28);
-            this.comboBox_ReportedBy.TabIndex = 50;
-            // 
             // comboBox_Priority
             // 
             this.comboBox_Priority.FormattingEnabled = true;
-            this.comboBox_Priority.Location = new System.Drawing.Point(418, 253);
+            this.comboBox_Priority.Location = new System.Drawing.Point(418, 218);
             this.comboBox_Priority.Name = "comboBox_Priority";
             this.comboBox_Priority.Size = new System.Drawing.Size(189, 28);
             this.comboBox_Priority.TabIndex = 51;
@@ -171,7 +151,7 @@ namespace UI
             // comboBox_Deadline
             // 
             this.comboBox_Deadline.FormattingEnabled = true;
-            this.comboBox_Deadline.Location = new System.Drawing.Point(418, 288);
+            this.comboBox_Deadline.Location = new System.Drawing.Point(418, 258);
             this.comboBox_Deadline.Name = "comboBox_Deadline";
             this.comboBox_Deadline.Size = new System.Drawing.Size(189, 28);
             this.comboBox_Deadline.TabIndex = 52;
@@ -188,7 +168,7 @@ namespace UI
             // 
             this.labelType.AutoSize = true;
             this.labelType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelType.Location = new System.Drawing.Point(163, 227);
+            this.labelType.Location = new System.Drawing.Point(163, 192);
             this.labelType.Name = "labelType";
             this.labelType.Size = new System.Drawing.Size(118, 20);
             this.labelType.TabIndex = 35;
@@ -223,6 +203,7 @@ namespace UI
             this.buttonCancel.TabIndex = 46;
             this.buttonCancel.Text = "CANCEL";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSubmit
             // 
@@ -240,9 +221,9 @@ namespace UI
             this.labelDateTimeValue.AutoSize = true;
             this.labelDateTimeValue.Location = new System.Drawing.Point(418, 117);
             this.labelDateTimeValue.Name = "labelDateTimeValue";
-            this.labelDateTimeValue.Size = new System.Drawing.Size(50, 20);
+            this.labelDateTimeValue.Size = new System.Drawing.Size(149, 20);
             this.labelDateTimeValue.TabIndex = 53;
-            this.labelDateTimeValue.Text = "label1";
+            this.labelDateTimeValue.Text = "label_DateTimeValue";
             // 
             // AddIncidentForm
             // 
@@ -252,7 +233,6 @@ namespace UI
             this.Controls.Add(this.labelDateTimeValue);
             this.Controls.Add(this.comboBox_Deadline);
             this.Controls.Add(this.comboBox_Priority);
-            this.Controls.Add(this.comboBox_ReportedBy);
             this.Controls.Add(this.comboBox_IncidentType);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.buttonSubmit);
@@ -262,7 +242,6 @@ namespace UI
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelDeadline);
             this.Controls.Add(this.labelPriority);
-            this.Controls.Add(this.labelReportedBy);
             this.Controls.Add(this.labelType);
             this.Controls.Add(this.labelSubject);
             this.Controls.Add(this.labelDateTime);
@@ -281,14 +260,12 @@ namespace UI
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Label labelDeadline;
         private System.Windows.Forms.Label labelPriority;
-        private System.Windows.Forms.Label labelReportedBy;
         private System.Windows.Forms.Label labelCreateIncident;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ticketManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox_IncidentType;
-        private System.Windows.Forms.ComboBox comboBox_ReportedBy;
         private System.Windows.Forms.ComboBox comboBox_Priority;
         private System.Windows.Forms.ComboBox comboBox_Deadline;
         private System.Windows.Forms.TextBox textBoxSubject;

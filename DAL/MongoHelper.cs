@@ -58,6 +58,12 @@ namespace DAL
             collection.InsertOne(bdoc);
         }
 
+        public void UpdateDocument(string collectionName, string filter, BsonDocument bdoc)
+        {
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+            collection.UpdateOne(filter, bdoc);
+        }
+
         protected string executeMatchCountQuery(string collectionName, string field, int value)
         {
             var collection = database.GetCollection<BsonDocument>(collectionName);

@@ -17,11 +17,11 @@ namespace DAL
             int reportedBy = (int)doc["reportedBy"];
             string subject = (string)doc["subject"];
             DateTime date = (DateTime)doc["date"];
-            TicketType ticketType = (TicketType)(int)doc["ticketType"];
             string description = (string)doc["description"];
-            string status = (string)doc["status"];
+            int status = (int)doc["status"];
 
-            return new Incident(id, reportedBy, subject, date, ticketType, description, getTicketStatusFromString(status));
+
+            return new Incident(id, reportedBy, subject, date, description, (TicketStatus)status);
 
         }
         public List<Incident> GetAllIncidents()
@@ -44,9 +44,10 @@ namespace DAL
                 default: return TicketStatus.unknown;
             }
         }
+       
         public void AddIncident(Incident incident)
         {
-            var document = new BsonDocument { { "ID", incident.get_id() }, {"reportedBy", incident.get_reportedBy()}, { "subject", incident.get_subject() }, {"date", incident.get_date() }, { "ticketType", (int)incident.get_ticketType() }, { "status", (int)incident.get_status() }, { "description", incident.get_description()} };
+            var document = new BsonDocument { { "ID", incident.get_id() }, {"reportedBy", incident.get_reportedBy()}, { "subject", incident.get_subject() }, {"date", incident.get_date() }, { "status", (int)incident.get_status() }, { "description", incident.get_description()} };
             CreateDocument("Ticket", document);
         }
     }
