@@ -60,7 +60,7 @@ namespace UI
                 //Pass the filepath and filename to the StreamWriter Constructor
                 StreamWriter sw = new StreamWriter("LoginedUser.txt");
                 //Write a line of text
-                sw.WriteLine(user._id+ ","+user._name + ',' + user._email + ',' + user._phone + ',' + user._userType + ',' + user._location + ',' + textBoxPassword.Text);
+                sw.WriteLine(user._id + "," + user._name + ',' + user._email + ',' + user._phone + ',' + user._userType + ',' + user._location + ',' + textBoxPassword.Text);
                 //Close the file
                 sw.Close();
             }
@@ -114,8 +114,7 @@ namespace UI
             }
             catch (Exception)
             {
-
-                throw;
+                File.Create(path);
             }
         }
 

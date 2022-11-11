@@ -10,8 +10,8 @@ namespace Model
 
         [BsonId] private ObjectId objId;
         [BsonElement("ID")] private int _id;
-        [BsonElement("ticketedBy")] private int _ticketedBy;
-        [BsonElement("reportedBy")] private int _reportedBy;
+        [BsonElement("ticketedBy")] public int ticketedBy;
+        [BsonElement("reportedBy")] public int reportedBy;
         [BsonElement("subject")] private string _subject;
         [BsonElement("date")] private DateTime _date;
         [BsonElement("ticketType")] private int _ticketType;
@@ -22,8 +22,8 @@ namespace Model
         [BsonElement("TransferDetails")] private string _transferDetails;
 
         public int get_id() { return _id; }
-        public int get_ticketedBy() { return _ticketedBy; }
-        public int get_reportedBy() { return _reportedBy; }
+        public int get_ticketedBy() { return ticketedBy; }
+        public int get_reportedBy() { return reportedBy; }
         public string get_subject() { return _subject; }
         public DateTime get_date() { return _date; }
         public TicketType get_ticketType() { return (TicketType)_ticketType; }
@@ -46,8 +46,8 @@ namespace Model
         public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, DateTime _date, int _ticketType, int _priority, int _deadline, string _description, int _status)
         {
             this._id = _id;
-            this._ticketedBy = _ticketedBy;
-            this._reportedBy = _reportedBy;
+            this.ticketedBy = _ticketedBy;
+            this.reportedBy = _reportedBy;
             this._subject = _subject;
             this._date = _date;
             this._ticketType = _ticketType;
@@ -60,8 +60,8 @@ namespace Model
         public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, DateTime _date, TicketType _ticketType, Priority _priority, Deadline _deadline, string _description, TicketStatus _status)
         {
             this._id = _id;
-            this._ticketedBy = _ticketedBy;
-            this._reportedBy = _reportedBy;
+            this.ticketedBy = _ticketedBy;
+            this.reportedBy = _reportedBy;
             this._subject = _subject;
             this._date = _date;
             this._ticketType = (int)_ticketType;

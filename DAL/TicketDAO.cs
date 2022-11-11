@@ -66,7 +66,7 @@ namespace DAL
             IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
 
             //var filter = Builders<BsonDocument>.Filter.Eq("reportedBy", userId);
-            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket.get_reportedBy(), userId);
+            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket.reportedBy, userId);
             List<Ticket> filteredTickets = collection.Find(filter).ToList();
 
             return filteredTickets;
