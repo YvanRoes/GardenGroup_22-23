@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Departments {HR, Logistic, Finance, Sales, Administration, ServiceDesk, Production }
+    public enum Departments {HR, Logistic, Finance, Sales, Administration, Production, ServiceDesk }
 }

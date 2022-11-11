@@ -48,10 +48,6 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TicketView_Pnl = new System.Windows.Forms.Panel();
-            this.listView_RegularTickets = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.Description = new System.Windows.Forms.ColumnHeader();
             this.TransferTicket_bttn = new System.Windows.Forms.Button();
             this.button_Filter = new System.Windows.Forms.Button();
             this.listView_Tickets = new System.Windows.Forms.ListView();
@@ -237,7 +233,6 @@
             // 
             // TicketView_Pnl
             // 
-            this.TicketView_Pnl.Controls.Add(this.listView_RegularTickets);
             this.TicketView_Pnl.Controls.Add(this.TransferTicket_bttn);
             this.TicketView_Pnl.Controls.Add(this.button_Filter);
             this.TicketView_Pnl.Controls.Add(this.listView_Tickets);
@@ -249,54 +244,24 @@
             this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
             this.TicketView_Pnl.TabIndex = 14;
             // 
-            // listView_RegularTickets
-            // 
-            this.listView_RegularTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader3,
-            this.Description});
-            this.listView_RegularTickets.FullRowSelect = true;
-            this.listView_RegularTickets.HideSelection = false;
-            this.listView_RegularTickets.Location = new System.Drawing.Point(51, 122);
-            this.listView_RegularTickets.MultiSelect = false;
-            this.listView_RegularTickets.Name = "listView_RegularTickets";
-            this.listView_RegularTickets.Size = new System.Drawing.Size(908, 292);
-            this.listView_RegularTickets.TabIndex = 14;
-            this.listView_RegularTickets.UseCompatibleStateImageBehavior = false;
-            this.listView_RegularTickets.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Subject";
-            this.columnHeader3.Width = 150;
-            // 
-            // Description
-            // 
-            this.Description.Text = "Description";
-            this.Description.Width = 300;
-            // 
             // TransferTicket_bttn
             // 
-            this.TransferTicket_bttn.Location = new System.Drawing.Point(732, 8);
+            this.TransferTicket_bttn.Location = new System.Drawing.Point(732, 40);
             this.TransferTicket_bttn.Name = "TransferTicket_bttn";
             this.TransferTicket_bttn.Size = new System.Drawing.Size(94, 51);
             this.TransferTicket_bttn.TabIndex = 13;
             this.TransferTicket_bttn.Text = "Transfer Ticket";
             this.TransferTicket_bttn.UseVisualStyleBackColor = true;
+            this.TransferTicket_bttn.Click += new System.EventHandler(this.TransferTicket_bttn_Click);
             // 
             // button_Filter
             // 
-            this.button_Filter.Location = new System.Drawing.Point(348, 30);
+            this.button_Filter.Location = new System.Drawing.Point(360, 64);
             this.button_Filter.Name = "button_Filter";
             this.button_Filter.Size = new System.Drawing.Size(94, 29);
             this.button_Filter.TabIndex = 12;
             this.button_Filter.Text = "Filter";
             this.button_Filter.UseVisualStyleBackColor = true;
-            this.button_Filter.Click += new System.EventHandler(this.button_Filter_Click);
             // 
             // listView_Tickets
             // 
@@ -308,13 +273,14 @@
             this.Status});
             this.listView_Tickets.FullRowSelect = true;
             this.listView_Tickets.HideSelection = false;
-            this.listView_Tickets.Location = new System.Drawing.Point(51, 80);
+            this.listView_Tickets.Location = new System.Drawing.Point(36, 126);
             this.listView_Tickets.MultiSelect = false;
             this.listView_Tickets.Name = "listView_Tickets";
             this.listView_Tickets.Size = new System.Drawing.Size(908, 292);
             this.listView_Tickets.TabIndex = 8;
             this.listView_Tickets.UseCompatibleStateImageBehavior = false;
             this.listView_Tickets.View = System.Windows.Forms.View.Details;
+            this.listView_Tickets.SelectedIndexChanged += new System.EventHandler(this.listView_Tickets_SelectedIndexChanged);
             // 
             // Id
             // 
@@ -342,7 +308,7 @@
             // 
             // textBox_Filter
             // 
-            this.textBox_Filter.Location = new System.Drawing.Point(51, 31);
+            this.textBox_Filter.Location = new System.Drawing.Point(51, 64);
             this.textBox_Filter.Name = "textBox_Filter";
             this.textBox_Filter.Size = new System.Drawing.Size(279, 27);
             this.textBox_Filter.TabIndex = 11;
@@ -350,21 +316,22 @@
             // label_overview
             // 
             this.label_overview.AutoSize = true;
-            this.label_overview.Location = new System.Drawing.Point(51, 7);
+            this.label_overview.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_overview.Location = new System.Drawing.Point(36, 24);
             this.label_overview.Name = "label_overview";
-            this.label_overview.Size = new System.Drawing.Size(113, 20);
+            this.label_overview.Size = new System.Drawing.Size(40, 30);
             this.label_overview.TabIndex = 9;
-            this.label_overview.Text = "Ticket Overview";
+            this.label_overview.Text = ". . .";
             // 
             // button_CreateIncident
             // 
-            this.button_CreateIncident.Location = new System.Drawing.Point(846, 8);
+            this.button_CreateIncident.Location = new System.Drawing.Point(846, 40);
             this.button_CreateIncident.Name = "button_CreateIncident";
             this.button_CreateIncident.Size = new System.Drawing.Size(98, 51);
             this.button_CreateIncident.TabIndex = 10;
-            this.button_CreateIncident.Text = "Create Incident";
+            this.button_CreateIncident.Text = "Create . . .";
             this.button_CreateIncident.UseVisualStyleBackColor = true;
-            this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click);
+            this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click_1);
             // 
             // MainViewForm
             // 
@@ -424,9 +391,5 @@
         private System.Windows.Forms.Label label_overview;
         private System.Windows.Forms.Button button_CreateIncident;
         private System.Windows.Forms.Button TransferTicket_bttn;
-        private System.Windows.Forms.ListView listView_RegularTickets;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader Description;
     }
 }

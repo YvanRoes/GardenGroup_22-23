@@ -30,13 +30,14 @@ namespace Model
         public Priority get_priority() { return (Priority)_priority; }
         public Deadline get_deadline() { return (Deadline)_deadline; }
         public string get_description() { return _description; }
-        public TicketStatus get_status()
+        public TicketStatus get_status() 
         {
             switch (_status)
             {
                 case 1: return TicketStatus.unresolved;
                 case 2: return TicketStatus.inProgress;
                 case 3: return TicketStatus.resolved;
+                case 4: return TicketStatus.transfered;
                 default: return TicketStatus.unknown;
             }
         }

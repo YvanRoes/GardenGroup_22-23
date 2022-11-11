@@ -52,12 +52,6 @@ namespace DAL
             return user;
         }
 
-        public IMongoCollection<User> GetUserCollection()
-        {
-            return collection;
-        }
-
-
         public List<User> GetFilteredUserByEmail(string filterEmail)
         {
             List<User> users = new List<User>();

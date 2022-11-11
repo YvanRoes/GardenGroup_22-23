@@ -16,7 +16,7 @@ namespace UI
     {
         private UserService _userService;
         private User _loggedUser;
-        TicketService ticketService = new TicketService();
+        private TicketService _ticketService;
         public MainViewForm(User user)
         {
             InitializeComponent();
@@ -25,6 +25,20 @@ namespace UI
 
             _userService = new UserService();
             _loggedUser = user;
+            _ticketService = new TicketService();
+
+            if (_loggedUser.get_userType() != UserType.ServiceDesk)
+                userManagementToolStripMenuItem.Enabled = false;
+        }
+        public MainViewForm()
+        {
+            InitializeComponent();
+            start();
+            this.Size = new Size(1060, 640);
+
+            _userService = new UserService();
+            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
+            _ticketService = new TicketService();
 
             if (_loggedUser.get_userType() != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
@@ -33,9 +47,12 @@ namespace UI
 
         void start()
         {
-            pnlDashBoard.Visible = false;
+            pnlDashBoard.Visible = true;
             UserManagement_Pnl.Visible = false;
+            TicketView_Pnl.Visible = false;
         }
+
+        // Dashboard (Yvan)
         private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, Panel panel, PaintEventArgs e)
         {
             /*
@@ -169,6 +186,7 @@ namespace UI
         private async Task loadDashBoardAsync()
         {
             UserManagement_Pnl.Visible = false;
+            TicketView_Pnl.Visible = false;
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
             TicketService ticketService = new TicketService();
@@ -191,6 +209,8 @@ namespace UI
             _ = loadDashBoardAsync();
         }
 
+        //User Management (Andy)
+
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadUserManagement();
@@ -198,6 +218,7 @@ namespace UI
 
         private void loadUserManagement()
         {
+            TicketView_Pnl.Visible = false;
             pnlDashBoard.Visible = false;
             UserManagement_Pnl.Visible = true;
             UserManagement_Pnl.Dock = DockStyle.Fill;
@@ -206,59 +227,6 @@ namespace UI
 
         }
 
-        private void loadTicketManagement()
-        {
-            TicketView_Pnl.Visible = true;
-            UserManagement_Pnl.Visible = false;
-            pnlDashBoard.Visible = false;
-            TicketView_Pnl.Dock = DockStyle.Fill;
-
-            if(_loggedUser.get_userType() == UserType.Employee)
-            {
-                FillRegularUserTicketView();
-            }
-            else
-            {
-                FillEmployeeDeskTicketView();
-            }
-        }
-
-        private void FillRegularUserTicketView()
-        {
-            List<Ticket> tickets = ticketService.GetFilteredTicketsByUserId(_loggedUser._id);
-            listView_RegularTickets.Items.Clear();
-            listView_RegularTickets.Visible = true;
-            listView_Tickets.Visible = false;
-
-            foreach (Ticket ticket  in tickets)
-            {
-                ListViewItem li = new ListViewItem(ticket._id.ToString());
-                li.SubItems.Add(ticket._subject);
-                li.SubItems.Add(ticket._description);
-                li.Tag = ticket._id;
-                listView_RegularTickets.Items.Add(li);
-            }
-        }
-
-        private void FillEmployeeDeskTicketView()
-        {
-            List<Ticket> tickets = ticketService.getTickets();
-            listView_Tickets.Items.Clear();
-            listView_RegularTickets.Visible = false;
-            listView_Tickets.Visible = true;
-
-            foreach (Ticket ticket in tickets)
-            {
-                ListViewItem li = new ListViewItem(ticket._id.ToString());
-                li.SubItems.Add(ticket._reportedBy.ToString());
-                li.SubItems.Add(ticket._subject);
-                li.SubItems.Add(ticket._date.ToString());
-                // li.SubItems.Add(ticketService.getTicketsByStatusAsync(ticket._status.ToString()));
-                li.Tag = ticket;
-                listView_Tickets.Items.Add(li);
-            }
-
-        }
         private void FillUserManagementListView(List<User> users)
         {
             User_lstView.Items.Clear();
@@ -295,22 +263,81 @@ namespace UI
             FillUserManagementListView(users);
         }
 
+        private void TransferTicket_bttn_Click(object sender, EventArgs e)
+        {
+            Ticket selectedTicket = (Ticket)listView_Tickets.SelectedItems[0].Tag;
+
+            TransferTicketForm transferTicketForm = new TransferTicketForm(selectedTicket);
+            transferTicketForm.ShowDialog();
+
+            loadTicketView();
+        }
+
+        private void listView_Tickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TransferTicket_bttn.Enabled = true;
+        }
+        //Ticket View (Aleksandra)
+
         private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadTicketManagement();
+            loadTicketView();
         }
 
-        private void button_Filter_Click(object sender, EventArgs e)
+        private void loadTicketView()
         {
-            
-            
+            pnlDashBoard.Visible = false;
+            UserManagement_Pnl.Visible = false;
+            TicketView_Pnl.Visible = true;
+            TicketView_Pnl.Dock = DockStyle.Fill;
+
+            if (_loggedUser.get_userType() == UserType.Employee)
+            {
+                TransferTicket_bttn.Visible = false;
+                label_overview.Text = "Incident Overview";
+                button_CreateIncident.Text = "Create Incident";
+                LoadTicketListViewForRegularEmployee();
+                
+            }
+            else
+            {
+                TransferTicket_bttn.Enabled = false;
+                label_overview.Text = "Ticket Overview";
+                button_CreateIncident.Text = "Create Ticket";
+                LoadTicketListViewForServiceDeskEmployee();
+            }
         }
 
-        private void button_CreateIncident_Click(object sender, EventArgs e)
+        private void LoadTicketListViewForRegularEmployee()
         {
-            this.Close();
+            List<Ticket> filteredTickets = new List<Ticket>();
+            filteredTickets = _ticketService.GetFilteredTicketsByUserId(_loggedUser.get_id());
+
+            foreach (Ticket ticket in filteredTickets)
+            {
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
+                ListViewItem list = new ListViewItem(output);
+                list.Tag = ticket;
+                listView_Tickets.Items.Add(list);
+            }
+        }
+
+        private void LoadTicketListViewForServiceDeskEmployee()
+        {
+            List<Ticket> allTickets = _ticketService.getTickets();
+            foreach (Ticket ticket in allTickets)
+            {
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
+                ListViewItem list = new ListViewItem(output);
+                list.Tag = ticket;
+                listView_Tickets.Items.Add(list);
+            }
+        }
+
+        private void button_CreateIncident_Click_1(object sender, EventArgs e)
+        {
             AddIncidentForm addIncidentForm = new AddIncidentForm();
-            addIncidentForm.Show();
+            addIncidentForm.ShowDialog();
         }
     }
 }

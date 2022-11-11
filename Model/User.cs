@@ -47,5 +47,10 @@ namespace Model
             _password = password;
 
         }
+
+        public override string ToString()
+        {
+            return $"{this._name} ({this._id})";
+        }
     }
 }

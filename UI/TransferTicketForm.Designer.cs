@@ -28,14 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Departments_cmboBox = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Transfer_bttn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Employee_lbl = new System.Windows.Forms.Label();
+            this.Employee_cmboBox = new System.Windows.Forms.ComboBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Cancel_bttn = new System.Windows.Forms.Button();
+            this.transferTicketDAOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transferTicketDAOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // Departments_cmboBox
@@ -45,6 +53,7 @@
             this.Departments_cmboBox.Name = "Departments_cmboBox";
             this.Departments_cmboBox.Size = new System.Drawing.Size(193, 28);
             this.Departments_cmboBox.TabIndex = 0;
+            this.Departments_cmboBox.SelectedIndexChanged += new System.EventHandler(this.Departments_cmboBox_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -71,6 +80,7 @@
             this.Transfer_bttn.TabIndex = 3;
             this.Transfer_bttn.Text = "Transfer";
             this.Transfer_bttn.UseVisualStyleBackColor = true;
+            this.Transfer_bttn.Click += new System.EventHandler(this.Transfer_bttn_Click);
             // 
             // label2
             // 
@@ -91,30 +101,53 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Comment :";
             // 
-            // label4
+            // Employee_lbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 153);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 20);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Employee :";
+            this.Employee_lbl.AutoSize = true;
+            this.Employee_lbl.Location = new System.Drawing.Point(24, 153);
+            this.Employee_lbl.Name = "Employee_lbl";
+            this.Employee_lbl.Size = new System.Drawing.Size(82, 20);
+            this.Employee_lbl.TabIndex = 7;
+            this.Employee_lbl.Text = "Employee :";
             // 
-            // comboBox1
+            // Employee_cmboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(137, 150);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 28);
-            this.comboBox1.TabIndex = 8;
+            this.Employee_cmboBox.FormattingEnabled = true;
+            this.Employee_cmboBox.Location = new System.Drawing.Point(137, 150);
+            this.Employee_cmboBox.Name = "Employee_cmboBox";
+            this.Employee_cmboBox.Size = new System.Drawing.Size(193, 28);
+            this.Employee_cmboBox.TabIndex = 8;
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(Model.User);
+            // 
+            // Cancel_bttn
+            // 
+            this.Cancel_bttn.Location = new System.Drawing.Point(39, 396);
+            this.Cancel_bttn.Name = "Cancel_bttn";
+            this.Cancel_bttn.Size = new System.Drawing.Size(123, 43);
+            this.Cancel_bttn.TabIndex = 9;
+            this.Cancel_bttn.Text = "Cancel";
+            this.Cancel_bttn.UseVisualStyleBackColor = true;
+            this.Cancel_bttn.Click += new System.EventHandler(this.Cancel_bttn_Click);
+            // 
+            // transferTicketDAOBindingSource
+            // 
+            this.transferTicketDAOBindingSource.DataSource = typeof(DAL.TransferTicketDAO);
+            // 
+            // userBindingSource1
+            // 
+            this.userBindingSource1.DataSource = typeof(Model.User);
             // 
             // TransferTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 464);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Cancel_bttn);
+            this.Controls.Add(this.Employee_cmboBox);
+            this.Controls.Add(this.Employee_lbl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Transfer_bttn);
@@ -123,6 +156,9 @@
             this.Controls.Add(this.Departments_cmboBox);
             this.Name = "TransferTicketForm";
             this.Text = "Transfer Ticket";
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transferTicketDAOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,7 +172,11 @@
         private System.Windows.Forms.Button Transfer_bttn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label Employee_lbl;
+        private System.Windows.Forms.ComboBox Employee_cmboBox;
+        private System.Windows.Forms.Button Cancel_bttn;
+        private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.BindingSource transferTicketDAOBindingSource;
+        private System.Windows.Forms.BindingSource userBindingSource1;
     }
 }
