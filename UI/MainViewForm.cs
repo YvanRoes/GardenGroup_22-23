@@ -131,16 +131,6 @@ namespace UI
             if(totalResolvedInProgressUnresolved == 0)
                 return;
 
-            gbMainChart.Visible = true;
-            gbSecondaryChart.Visible = true;
-            lblunResolved.Text = $"Unresolved: {unresolvedTickets.Count}";
-            lblInProgress.Text = $"In progress: {inProgressTickets.Count}";
-            lblResolved.Text = $"Resolved {resolvedTickets.Count}";
-
-
-            //gen main chart
-            ChartGraphicComponent.DrawPieChart(totalResolvedInProgressUnresolved, unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, pnlChartWrapperMain);
-
             //gen sec chart
             List<Ticket> resolvedAndInProgressTickets = new List<Ticket>();
             List<Ticket>[] ticketArr = ticketService.getTicketsBeforeAndPastDeadline(resolvedAndInProgressTickets);
@@ -149,11 +139,28 @@ namespace UI
             int withinDeadline = ticketArr[0].Count;
             int pastDeadline = ticketArr[1].Count;
 
+            setGroupBoxDataRegularEmployee(unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, withinDeadline, pastDeadline);
+        }
+
+        private void setGroupBoxDataRegularEmployee(int unresolvedTickets, int inProgressTickets, int resolvedTickets, int withinDeadline, int pastDeadline)
+        {
+            //add label content
+            lblunResolved.Text = $"Unresolved: {unresolvedTickets}";
+            lblInProgress.Text = $"In progress: {inProgressTickets}";
+            lblResolved.Text = $"Resolved {resolvedTickets}";
             pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
             pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
             pbResolved.BackColor = Color.FromArgb(60, 207, 78);
 
-            ChartGraphicComponent.DrawPieChart(withinDeadline + pastDeadline, withinDeadline, pastDeadline, pnlChartWrapperSecondary);
+            //move labels to dashboard
+            pnlDashBoard.Controls.Add(lblunResolved);
+            pnlDashBoard.Controls.Add(lblInProgress);
+            pnlDashBoard.Controls.Add(lblResolved);
+            pnlDashBoard.Controls.Add(pbunResolved);
+            pnlDashBoard.Controls.Add(pbInProgress);
+            pnlDashBoard.Controls.Add(pbResolved);
+            pnlDashBoard.Controls.Remove(gbMainChart);
+            pnlDashBoard.Controls.Remove(gbSecondaryChart);
         }
 
         private void setGroupBoxDataServiceDesk(int unresolvedTickets, int inProgressTickets, int resolvedTickets, int withinDeadline, int pastDeadline)
