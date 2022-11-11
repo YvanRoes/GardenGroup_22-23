@@ -12,6 +12,7 @@ namespace UI
 {
     public partial class LoginViewForm : Form
     {
+        Model.User user;
         public LoginViewForm()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            paneForgotPassword.Visible = false;
             if (textBoxUsername.Text == "" || textBoxPassword.Text == "")
                 labelIndicator.Text = "Please fill the username and password";
             else
@@ -64,6 +66,7 @@ namespace UI
         }
         private void LoginViewForm_Load(object sender, EventArgs e)
         {
+            paneForgotPassword.Visible = false;
             string path = "LoginedUser.txt";
             string line;
             try
@@ -100,12 +103,42 @@ namespace UI
         }
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
+            paneForgotPassword.Visible = true;
+            textBoxForgetPassowrdNewPassword.Visible= false;
+            labelIndicator.Text = "";
+            labelForgotPasswordNewPassword.Visible = false;
+            buttonSetNewPassword.Visible = false;
+            if (textBoxEmail.Text == "" || textBoxUserId.Text == "")
+                labelIndicator.Text = "Please fill the Email and UserId";
+            else
+            {
+                UserService userService = new UserService();
+                Model.User user = userService.GetFilteredUsersByEmailAndId(textBoxEmail.Text,int.Parse(textBoxUserId.Text));
+                if (user != null)
+                {
+                    this.user = user;
+                    buttonSetNewPassword.Visible = true;
+                    labelForgotPasswordNewPassword.Visible = true;
+                    textBoxForgetPassowrdNewPassword.Visible= true;
+                }
+            }
 
         }
 
         private void checkBoxRememberMe_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSetNewPassword_Click(object sender, EventArgs e)
+        {
+            UserService userService = new UserService();
+            if (textBoxForgetPassowrdNewPassword.Text == "")
+                labelIndicator.Text = "Please fill the new password";
+            else
+            {
+                userService.SetnewPassowrd(textBoxForgetPassowrdNewPassword.Text, user._email, user._id);
+            }
         }
     }
 }
