@@ -23,26 +23,24 @@ namespace DAL
             _userCollection = database.GetCollection<User>("User");
             _ticketCollection = database.GetCollection<Ticket>("Ticket");
         }
-        public List<User> GetListOfEmployees(int userType)
+        public List<User> GetListOfEmployees(Departments department)
         {
-            var filter = Builders<User>.Filter.Eq("UserType", userType);
+            var filter = Builders<User>.Filter.Eq("UserType", (int)department);
             List<User> users = _userCollection.Find(filter).ToList();
 
             return users;
         }
 
-        public void UpdateTicketedBy(int ticketid, int userId)
+        public void UpdateTicketedBy(Ticket ticket, User user)
         {
-
-            var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
-            var update = Builders<Ticket>.Update.Set("ticketedBy", userId);
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticket.get_id());
+            var update = Builders<Ticket>.Update.Set("ticketedBy", user.get_id());
             _ticketCollection.UpdateOne(filter, update);
         }
 
-        public void UpdateStatus(int ticketid)
+        public void UpdateStatusToTransfer(Ticket ticket)
         {
-
-            var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticket.get_id());
             var update = Builders<Ticket>.Update.Set("status", (int)TicketStatus.transfered);
             _ticketCollection.UpdateOne(filter, update);
         }

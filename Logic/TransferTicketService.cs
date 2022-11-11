@@ -18,9 +18,9 @@ namespace Logic
             _transferTicketDAO = new TransferTicketDAO();
         }
 
-        public List<User> GetListOfUsers(int userType)
+        public List<User> GetListOfUsers(Departments department)
         {
-            return _transferTicketDAO.GetListOfEmployees(userType);
+            return _transferTicketDAO.GetListOfEmployees(department);
         }
 
         public void CreateTransferDetailComment(Ticket ticket, Departments department, User user, User loggedUser, string inputComment)
@@ -28,13 +28,13 @@ namespace Logic
             _transferTicketDAO.CreateTransferDetailComment(ticket, department, user, loggedUser, inputComment);
         }
 
-        public void UpdateStatusToTransferred(int ticketId)
+        public void UpdateStatusToTransferred(Ticket ticket)
         {
-            _transferTicketDAO.UpdateStatus(ticketId);
+            _transferTicketDAO.UpdateStatusToTransfer(ticket);
         }
-        public void UpdateTicketedBy(int ticketId, int userId)
+        public void UpdateTicketedBy(Ticket ticket, User user)
         {
-            _transferTicketDAO.UpdateTicketedBy(ticketId, userId);
+            _transferTicketDAO.UpdateTicketedBy(ticket, user);
         }
         public string GetTransferDetails(Ticket ticket)
         {

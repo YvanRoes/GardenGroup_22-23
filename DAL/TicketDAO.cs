@@ -91,7 +91,15 @@ namespace DAL
             
             var personDeleteResult = collection.DeleteOne(filter);
         }
-        
+
+        public void UpdateStatus(int ticketid, int status)
+        {
+
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
+            var update = Builders<Ticket>.Update.Set("status", (int)TicketStatus.transfered);
+            //collection.UpdateOne(filter, update);
+        }
+
         //Andy's 
 
         public string CountTicketsperUser(int userId)

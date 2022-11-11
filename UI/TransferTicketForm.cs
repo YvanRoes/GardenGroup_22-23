@@ -55,12 +55,14 @@ namespace UI
         private void Departments_cmboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Transfer_bttn.Enabled = true;
-            if (Departments_cmboBox.SelectedIndex.Equals((int)Departments.ServiceDesk))
+            Departments selectedDepartment = (Departments)Departments_cmboBox.SelectedIndex;
+
+            if (selectedDepartment == Departments.ServiceDesk)
             {
                 Employee_cmboBox.Visible = true;
                 Employee_lbl.Visible = true;
 
-                FillEmployeeComboBox(_transferTicketService.GetListOfUsers((int)UserType.ServiceDesk));
+                FillEmployeeComboBox(_transferTicketService.GetListOfUsers(selectedDepartment));
             }
             else
             {
@@ -86,13 +88,14 @@ namespace UI
             User selectedUser = (User)Employee_cmboBox.SelectedItem;
             string comment = comment_txtBox.Text;
             Departments selectedDepartment = (Departments)Departments_cmboBox.SelectedIndex;
+
             try
             {
-                if ((selectedDepartment == Departments.ServiceDesk))
-                    _transferTicketService.UpdateTicketedBy(_ticket.get_id(), selectedUser._id);
+                if (selectedDepartment == Departments.ServiceDesk)
+                    _transferTicketService.UpdateTicketedBy(_ticket, selectedUser);
                 else
                 {
-                    _transferTicketService.UpdateStatusToTransferred(_ticket.get_id());
+                    _transferTicketService.UpdateStatusToTransferred(_ticket);
                 }
 
                 if (comment.Length > 0)
