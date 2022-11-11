@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace Model
 {
     //numbers are the days
-    public enum Deadline { FiveDays = 5, TenDays = 10, TwentyDays = 20 }
+    public enum Deadline { Day = 1, Week = 2, Month = 3 }
 }

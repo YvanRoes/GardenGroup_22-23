@@ -48,6 +48,12 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TicketView_Pnl = new System.Windows.Forms.Panel();
+            this.listView_ServiceDesk = new System.Windows.Forms.ListView();
+            this.SD_Id = new System.Windows.Forms.ColumnHeader();
+            this.SD_user = new System.Windows.Forms.ColumnHeader();
+            this.SD_Subject = new System.Windows.Forms.ColumnHeader();
+            this.SD_Date = new System.Windows.Forms.ColumnHeader();
+            this.SD_Status = new System.Windows.Forms.ColumnHeader();
             this.TransferTicket_bttn = new System.Windows.Forms.Button();
             this.button_Filter = new System.Windows.Forms.Button();
             this.listView_Tickets = new System.Windows.Forms.ListView();
@@ -56,9 +62,13 @@
             this.Subject = new System.Windows.Forms.ColumnHeader();
             this.Date = new System.Windows.Forms.ColumnHeader();
             this.Status = new System.Windows.Forms.ColumnHeader();
+            this.Description = new System.Windows.Forms.ColumnHeader();
             this.textBox_Filter = new System.Windows.Forms.TextBox();
             this.label_overview = new System.Windows.Forms.Label();
             this.button_CreateIncident = new System.Windows.Forms.Button();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.menuStrip1.SuspendLayout();
             this.pnlDashBoard.SuspendLayout();
             this.UserManagement_Pnl.SuspendLayout();
@@ -233,6 +243,7 @@
             // 
             // TicketView_Pnl
             // 
+            this.TicketView_Pnl.Controls.Add(this.listView_ServiceDesk);
             this.TicketView_Pnl.Controls.Add(this.TransferTicket_bttn);
             this.TicketView_Pnl.Controls.Add(this.button_Filter);
             this.TicketView_Pnl.Controls.Add(this.listView_Tickets);
@@ -243,6 +254,51 @@
             this.TicketView_Pnl.Name = "TicketView_Pnl";
             this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
             this.TicketView_Pnl.TabIndex = 14;
+            // 
+            // listView_ServiceDesk
+            // 
+            this.listView_ServiceDesk.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SD_Id,
+            this.SD_user,
+            this.SD_Subject,
+            this.SD_Date,
+            this.SD_Status,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView_ServiceDesk.FullRowSelect = true;
+            this.listView_ServiceDesk.HideSelection = false;
+            this.listView_ServiceDesk.Location = new System.Drawing.Point(36, 153);
+            this.listView_ServiceDesk.MultiSelect = false;
+            this.listView_ServiceDesk.Name = "listView_ServiceDesk";
+            this.listView_ServiceDesk.Size = new System.Drawing.Size(908, 292);
+            this.listView_ServiceDesk.TabIndex = 14;
+            this.listView_ServiceDesk.UseCompatibleStateImageBehavior = false;
+            this.listView_ServiceDesk.View = System.Windows.Forms.View.Details;
+            // 
+            // SD_Id
+            // 
+            this.SD_Id.Text = "Id";
+            // 
+            // SD_user
+            // 
+            this.SD_user.Text = "User";
+            this.SD_user.Width = 100;
+            // 
+            // SD_Subject
+            // 
+            this.SD_Subject.Text = "Subject";
+            this.SD_Subject.Width = 150;
+            // 
+            // SD_Date
+            // 
+            this.SD_Date.Text = "Date";
+            this.SD_Date.Width = 100;
+            // 
+            // SD_Status
+            // 
+            this.SD_Status.Text = "Status";
+            this.SD_Status.Width = 100;
             // 
             // TransferTicket_bttn
             // 
@@ -270,7 +326,8 @@
             this.User,
             this.Subject,
             this.Date,
-            this.Status});
+            this.Status,
+            this.Description});
             this.listView_Tickets.FullRowSelect = true;
             this.listView_Tickets.HideSelection = false;
             this.listView_Tickets.Location = new System.Drawing.Point(36, 126);
@@ -306,6 +363,11 @@
             this.Status.Text = "Status";
             this.Status.Width = 100;
             // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 200;
+            // 
             // textBox_Filter
             // 
             this.textBox_Filter.Location = new System.Drawing.Point(51, 64);
@@ -332,6 +394,20 @@
             this.button_CreateIncident.Text = "Create . . .";
             this.button_CreateIncident.UseVisualStyleBackColor = true;
             this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click_1);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Description";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Priority";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Deadline";
+            this.columnHeader3.Width = 100;
             // 
             // MainViewForm
             // 
@@ -391,5 +467,15 @@
         private System.Windows.Forms.Label label_overview;
         private System.Windows.Forms.Button button_CreateIncident;
         private System.Windows.Forms.Button TransferTicket_bttn;
+        private System.Windows.Forms.ListView listView_ServiceDesk;
+        private System.Windows.Forms.ColumnHeader SD_Id;
+        private System.Windows.Forms.ColumnHeader SD_user;
+        private System.Windows.Forms.ColumnHeader SD_Subject;
+        private System.Windows.Forms.ColumnHeader SD_Date;
+        private System.Windows.Forms.ColumnHeader SD_Status;
+        private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

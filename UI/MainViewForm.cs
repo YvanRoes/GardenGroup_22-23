@@ -300,11 +300,13 @@ namespace UI
         {
             List<Ticket> filteredTickets = new List<Ticket>();
             listView_Tickets.Items.Clear();
+            listView_Tickets.Visible = true;
+            listView_ServiceDesk.Visible = false;
             filteredTickets = _ticketService.GetFilteredTicketsByUserId(_loggedUser.get_id());
 
             foreach (Ticket ticket in filteredTickets)
             {
-                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString(), ticket.get_description() };
                 ListViewItem list = new ListViewItem(output);
                 list.Tag = ticket;
                 listView_Tickets.Items.Add(list);
@@ -314,13 +316,15 @@ namespace UI
         private void LoadTicketListViewForServiceDeskEmployee()
         {
             List<Ticket> allTickets = _ticketService.getTickets();
-            listView_Tickets.Items.Clear();
+            listView_Tickets.Visible = false;
+            listView_ServiceDesk.Visible = true;
+            listView_ServiceDesk.Items.Clear();
             foreach (Ticket ticket in allTickets)
             {
-                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString() };
+                string[] output = { ticket.get_id().ToString(), ticket.get_reportedBy().ToString(), ticket.get_subject().ToString(), ticket.get_date().ToString(), ticket.get_status().ToString(), ticket._description, ticket.get_priority().ToString(), ticket.get_deadline().ToString()  };
                 ListViewItem list = new ListViewItem(output);
                 list.Tag = ticket;
-                listView_Tickets.Items.Add(list);
+                listView_ServiceDesk.Items.Add(list);
             }
         }
 
@@ -340,7 +344,7 @@ namespace UI
             else
             {
                 
-                    id = int.Parse(listView_Tickets.SelectedItems[0].Text);
+                    id = int.Parse(listView_ServiceDesk.SelectedItems[0].Text);
                     foreach (Incident incident in incidents)
                     {
 
