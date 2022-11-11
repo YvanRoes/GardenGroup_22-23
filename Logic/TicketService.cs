@@ -33,13 +33,13 @@ namespace Logic
 
         public async Task<List<Ticket>> getTicketsByStatusAsync(TicketStatus status) => await ticketDB.getTicketByStatusAsync(status);
         
-        public List<Ticket>[] getTicketsBeforeAndPastDeadline()
+        public List<Ticket>[] getTicketsBeforeAndPastDeadline(List<Ticket> unfilteredTickets)
         {
-            List<Ticket> unfilteredTickets = getTickets();
+            
             List<Ticket> pastDeadlinetickets = new List<Ticket>();
             List<Ticket> beforeDeadlineTickets = new List<Ticket>();
             unfilteredTickets.ForEach(ticket =>
-            {
+            {               
                 //if deadline passed add to passedDeadline list else add to beforeDeadline
                 int days = 0;
                 if (ticket.get_deadline() == Deadline.Day)

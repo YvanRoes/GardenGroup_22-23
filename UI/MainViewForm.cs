@@ -35,161 +35,67 @@ namespace UI
 
         void start()
         {
-            _ = loadDashBoardAsync();
+            loadDashBoard();
             UserManagement_Pnl.Visible = false;
             TicketView_Pnl.Visible = false;
         }
 
         // Dashboard (Yvan)
-        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, Panel panel, PaintEventArgs e)
+
+        private void SwitchPanel(string name)
         {
-            /*
-             * this function serves the purpose of creating a piechart containing upto 3 different partitions,
-             * if 2 partitions complete the pie, partition 3 is obsolete
-             */
-
-            //set stepSize and increment
-            float sweepStepAngle = 360.0f / TotalItems;
-            float startAngle = 0.0f;
-            //currently limited to only 3 partitions of PieChart
-            float ang1 = partOne * sweepStepAngle;
-            float ang2 = ang1 + partTwo * sweepStepAngle;
-            float rest = ang1 + ang2 + (TotalItems - partOne - partTwo) * sweepStepAngle;
-
-            //graphic component for draw
-            using (Graphics g = panel.CreateGraphics())
+            switch (name)
             {
-                //init brush
-                SolidBrush brush = new SolidBrush(Color.Red);
-
-                //iter trough steps and draw rect as pie
-                for (int i = 0; i < TotalItems; i++)
-                {
-                    if (startAngle >= 360.0f)
-                        break;
-
-                    float newAngle = startAngle + sweepStepAngle;
-                    //variable brush color based on partitions
-                    colorBrushColorChange(brush, ang1, ang2, rest, newAngle);
-
-                    Rectangle rect = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
-                    g.FillPie(brush, rect, newAngle, sweepStepAngle);
-                    startAngle += sweepStepAngle;
-                }
-
-                //add vorder
-                Pen p = new Pen(Color.Black);
-                g.DrawEllipse(p, (float)posX, (float)posY, (float)width, (float)height);
-            }
-        }
-        private void createGraphicPie(float width, float height, float posX, float posY, int TotalItems, int partOne, int partTwo, int partThree, Panel panel, PaintEventArgs e)
-        {
-            /*
-             * Overloaded fucntion with extra pie partition fucntionality
-             * 
-             * this function serves the purpose of creating a piechart containing upto 4 different partitions,
-             * if 3 partitions complete the pie, partition 4 is obsolete
-             */
-
-
-            //set stepSize and increment
-            float sweepStepAngle = 360.0f / TotalItems;
-            float startAngle = 0.0f;
-            //currently limited to only 3 partitions of PieChart
-            float ang1 = partOne * sweepStepAngle;
-            float ang2 = ang1 + partTwo * sweepStepAngle;
-            float ang3 = ang1 + ang2 + partThree * sweepStepAngle;
-            float rest = ang1 + ang2 + ang3 + (TotalItems - partOne - partTwo - partThree) * sweepStepAngle;
-
-            //graphic component for draw
-            using (Graphics g = panel.CreateGraphics())
-            {
-                //init brush
-                SolidBrush brush = new SolidBrush(Color.Red);
-
-                //iter trough steps and draw rect as pie
-                for (int i = 0; i < TotalItems; i++)
-                {
-                    if (startAngle >= 360.0f)
-                        break;
-
-                    float newAngle = startAngle + sweepStepAngle;
-                    //variable brush color based on partitions
-                    colorBrushColorChange(brush, ang1, ang2, ang3, rest, newAngle);
-
-                    Rectangle rect = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
-                    g.FillPie(brush, rect, newAngle, sweepStepAngle);
-                    startAngle += sweepStepAngle;
-                }
-
-                //add vorder
-                Pen p = new Pen(Color.Black);
-                g.DrawEllipse(p, (float)posX, (float)posY, (float)width, (float)height);
+                case "Dashboard":
+                    UserManagement_Pnl.Visible = false;
+                    TicketView_Pnl.Visible = false;
+                    pnlDashBoard.Visible = true;
+                    pnlDashBoard.Dock = DockStyle.Fill;
+                    break;
+                case "userManagement":
+                    TicketView_Pnl.Visible = false;
+                    pnlDashBoard.Visible = false;
+                    UserManagement_Pnl.Visible = true;
+                    UserManagement_Pnl.Dock = DockStyle.Fill;
+                    break;
             }
         }
 
-        private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3, float newAngle)
+        private void loadDashBoard()
         {
-            /*
-             * works with non overloaded function createGraphicPie
-             */
-            if (newAngle < angle1) //within deadline
-                b.Color = Color.FromArgb(41, 52, 98);
-            if (newAngle > angle1 && newAngle < angle2) //past deadline
-                b.Color = Color.FromArgb(214, 28, 78);
+            SwitchPanel("Dashboard");
             
-        }
-        private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3, float angle4, float newAngle)
-        {
-            /*
-             * Works with overloaded createGraphicPie fucntion to assign colors for PieChart
-             */
-            if (newAngle < angle1) //unresolved
-                b.Color = Color.FromArgb(224, 20, 76);
-            if (newAngle > angle1 && newAngle < angle2) //inProgress
-                b.Color = Color.FromArgb(255, 178, 0);
-            if (newAngle > angle2 && newAngle < angle3) //resolved
-                b.Color = Color.FromArgb(60, 207, 78);
-            if (newAngle > angle3 && newAngle < angle4) //obsolete or optional
-                b.Color = Color.Empty;
-
-        }
-        private void DrawPieChart(int total, int pie1, int pie2, int pie3, Panel panel)
-        {
-            PaintEventArgs e = new PaintEventArgs(panel.CreateGraphics(), panel.DisplayRectangle);
-            createGraphicPie(200, 200, 0, 0, total, pie1, pie2, pie3, panel, e);
-        }
-        private void DrawPieChart(int total, int pie1, int pie2, Panel panel)
-        {
-            PaintEventArgs e = new PaintEventArgs(panel.CreateGraphics(), panel.DisplayRectangle);
-            createGraphicPie(200, 200, 0, 0, total, pie1, pie2, panel, e);
+            if(_loggedUser.get_userType() != UserType.ServiceDesk)
+                _ = LoadServiceDeskEmployeeDashboardAsync();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async Task LoadServiceDeskEmployeeDashboardAsync()
         {
-            pnlDashBoard.Visible = false;
-        }
-
-        private async Task loadDashBoardAsync()
-        {
-            //base and visibility settings
-            UserManagement_Pnl.Visible = false;
-            TicketView_Pnl.Visible = false;
-            pnlDashBoard.Visible = true;
-            pnlDashBoard.Dock = DockStyle.Fill;
             TicketService ticketService = new TicketService();
-            int totalTickets = ticketService.getTickets().Count;
-            int unresolvedTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.unresolved)).Count;
-            int inProgressTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.inProgress)).Count;
-            int resolvedTickets = totalTickets - unresolvedTickets - inProgressTickets;
-            int beforeDeadline = ticketService.getTicketsBeforeAndPastDeadline()[0].Count;
-            int pastDeadline = ticketService.getTicketsBeforeAndPastDeadline()[1].Count;
-            //unresolved, inProgress, resolved
-            DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets, resolvedTickets, pnlChartWrapperMain);
+            List<Ticket> unresolvedTickets = await ticketService.getTicketsByStatusAsync(TicketStatus.unresolved);
+            List<Ticket> inProgressTickets = await ticketService.getTicketsByStatusAsync(TicketStatus.inProgress);
+            List<Ticket> resolvedTickets = await ticketService.getTicketsByStatusAsync(TicketStatus.resolved);
+
+            List<Ticket> resolvedAndInProgressTickets = new List<Ticket>();
+            resolvedAndInProgressTickets.AddRange(unresolvedTickets);
+            resolvedAndInProgressTickets.AddRange(inProgressTickets);
+            List<Ticket>[] ticketArr = ticketService.getTicketsBeforeAndPastDeadline(resolvedAndInProgressTickets);
+            int withinDeadline = ticketArr[0].Count;
+            int pastDeadline = ticketArr[1].Count;
+            int totalResolvedInProgressUnresolved = unresolvedTickets.Count + inProgressTickets.Count + resolvedTickets.Count;
+            //draw unresolved, inProgress, resolved
+            ChartGraphicComponent.DrawPieChart(totalResolvedInProgressUnresolved, unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, pnlChartWrapperMain);
 
             //draw unresolved and past deadline
-            DrawPieChart(beforeDeadline + pastDeadline, beforeDeadline, pastDeadline, pnlChartWrapperSecondary);
+            ChartGraphicComponent.DrawPieChart(withinDeadline + pastDeadline, withinDeadline, pastDeadline, pnlChartWrapperSecondary);
 
+            //set component data tickets
+
+            setGroupBoxData(unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, withinDeadline, pastDeadline);
+        }
+
+        private void setGroupBoxData(int unresolvedTickets, int inProgressTickets, int resolvedTickets, int withinDeadline, int pastDeadline)
+        {
             pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
             pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
             pbResolved.BackColor = Color.FromArgb(60, 207, 78);
@@ -197,13 +103,16 @@ namespace UI
             lblInProgress.Text = $"In progress: {inProgressTickets}";
             lblResolved.Text = $"Resolved: {resolvedTickets}";
 
+            //set component data ticket deadlines
             pbWithinDeadline.BackColor = Color.FromArgb(41, 52, 98);
             pbPastDeadline.BackColor = Color.FromArgb(214, 28, 78);
+            lblWithinDeadline.Text = $"deadline: {withinDeadline}";
+            lblPastDeadline.Text = $"Past deadline: {pastDeadline}";
         }
 
         private void DashBoardMenuItem_Click(object sender, EventArgs e)
         {
-            _ = loadDashBoardAsync();
+            loadDashBoard();
         }
 
         //User Management (Andy)
@@ -215,10 +124,7 @@ namespace UI
 
         private void loadUserManagement()
         {
-            TicketView_Pnl.Visible = false;
-            pnlDashBoard.Visible = false;
-            UserManagement_Pnl.Visible = true;
-            UserManagement_Pnl.Dock = DockStyle.Fill;
+            SwitchPanel("userManagement");
 
             FillUserManagementListView(_userService.GetAllUsers());
 
