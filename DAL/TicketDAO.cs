@@ -72,6 +72,7 @@ namespace DAL
             Deadline deadline = (Deadline)(int)doc["deadline"];
             string description = (string)doc["description"];
             TicketStatus status = (TicketStatus)(int)doc["status"];
+            string comment = (string)doc["comment"];
 
             return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
         }

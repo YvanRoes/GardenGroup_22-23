@@ -48,6 +48,10 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TicketView_Pnl = new System.Windows.Forms.Panel();
+            this.listView_RegularTickets = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.Description = new System.Windows.Forms.ColumnHeader();
             this.TransferTicket_bttn = new System.Windows.Forms.Button();
             this.button_Filter = new System.Windows.Forms.Button();
             this.listView_Tickets = new System.Windows.Forms.ListView();
@@ -91,6 +95,7 @@
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
             this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
+            this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
@@ -232,6 +237,7 @@
             // 
             // TicketView_Pnl
             // 
+            this.TicketView_Pnl.Controls.Add(this.listView_RegularTickets);
             this.TicketView_Pnl.Controls.Add(this.TransferTicket_bttn);
             this.TicketView_Pnl.Controls.Add(this.button_Filter);
             this.TicketView_Pnl.Controls.Add(this.listView_Tickets);
@@ -242,6 +248,36 @@
             this.TicketView_Pnl.Name = "TicketView_Pnl";
             this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
             this.TicketView_Pnl.TabIndex = 14;
+            // 
+            // listView_RegularTickets
+            // 
+            this.listView_RegularTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader3,
+            this.Description});
+            this.listView_RegularTickets.FullRowSelect = true;
+            this.listView_RegularTickets.HideSelection = false;
+            this.listView_RegularTickets.Location = new System.Drawing.Point(51, 122);
+            this.listView_RegularTickets.MultiSelect = false;
+            this.listView_RegularTickets.Name = "listView_RegularTickets";
+            this.listView_RegularTickets.Size = new System.Drawing.Size(908, 292);
+            this.listView_RegularTickets.TabIndex = 14;
+            this.listView_RegularTickets.UseCompatibleStateImageBehavior = false;
+            this.listView_RegularTickets.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Subject";
+            this.columnHeader3.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 300;
             // 
             // TransferTicket_bttn
             // 
@@ -260,6 +296,7 @@
             this.button_Filter.TabIndex = 12;
             this.button_Filter.Text = "Filter";
             this.button_Filter.UseVisualStyleBackColor = true;
+            this.button_Filter.Click += new System.EventHandler(this.button_Filter_Click);
             // 
             // listView_Tickets
             // 
@@ -327,6 +364,7 @@
             this.button_CreateIncident.TabIndex = 10;
             this.button_CreateIncident.Text = "Create Incident";
             this.button_CreateIncident.UseVisualStyleBackColor = true;
+            this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click);
             // 
             // MainViewForm
             // 
@@ -386,5 +424,9 @@
         private System.Windows.Forms.Label label_overview;
         private System.Windows.Forms.Button button_CreateIncident;
         private System.Windows.Forms.Button TransferTicket_bttn;
+        private System.Windows.Forms.ListView listView_RegularTickets;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader Description;
     }
 }

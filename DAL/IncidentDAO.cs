@@ -36,11 +36,11 @@ namespace DAL
         }
         private TicketStatus getTicketStatusFromString(string status)
         {
-            switch (status)
+            switch (status.ToLower())
             {
-                case "open": return TicketStatus.open;
-                case "waiting": return TicketStatus.waiting;
-                case "closed": return TicketStatus.closed;
+                case "resolved": return TicketStatus.resolved;
+                case "unresolved": return TicketStatus.unresolved;
+                case "inprogress": return TicketStatus.inProgress;
                 default: return TicketStatus.unknown;
             }
         }

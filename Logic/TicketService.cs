@@ -61,6 +61,10 @@ namespace Logic
             
         }
         
+        public int getNewTicketId()
+        {
+            return ticketDB.getNewTicketId();
+        }
 
 
     }

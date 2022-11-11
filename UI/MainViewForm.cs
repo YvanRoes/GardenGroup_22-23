@@ -16,6 +16,7 @@ namespace UI
     {
         private UserService _userService;
         private User _loggedUser;
+        TicketService ticketService = new TicketService();
         public MainViewForm(User user)
         {
             InitializeComponent();
@@ -205,6 +206,57 @@ namespace UI
 
         }
 
+        private void loadTicketManagement()
+        {
+            TicketView_Pnl.Visible = true;
+            UserManagement_Pnl.Visible = false;
+            pnlDashBoard.Visible = false;
+            TicketView_Pnl.Dock = DockStyle.Fill;
+
+            if(_loggedUser.get_userType() == UserType.Employee)
+            {
+                FillRegularUserTicketView();
+            }
+            else
+            {
+                FillEmployeeDeskTicketView();
+            }
+        }
+
+        private void FillRegularUserTicketView()
+        {
+            List<Ticket> tickets = ticketService.GetFilteredTicketsByUserId(_loggedUser._id);
+            listView_RegularTickets.Items.Clear();
+            listView_RegularTickets.Visible = true;
+            listView_Tickets.Visible = false;
+
+            foreach (Ticket ticket  in tickets)
+            {
+                ListViewItem li = new ListViewItem(ticket._id.ToString());
+                li.SubItems.Add(ticket._subject);
+                li.SubItems.Add(ticket._description);
+                li.Tag = ticket._id;
+                listView_RegularTickets.Items.Add(li);
+            }
+        }
+
+        private void FillEmployeeDeskTicketView()
+        {
+            List<Ticket> tickets = ticketService.getTickets();
+            listView_Tickets.Items.Clear();
+            listView_RegularTickets.Visible = false;
+            listView_Tickets.Visible = true;
+
+            foreach (Ticket ticket in tickets)
+            {
+                ListViewItem li = new ListViewItem(ticket._id.ToString());
+                li.SubItems.Add(ticket._subject);
+                li.SubItems.Add(ticket._description);
+                li.Tag = ticket._id;
+                listView_RegularTickets.Items.Add(li);
+            }
+
+        }
         private void FillUserManagementListView(List<User> users)
         {
             User_lstView.Items.Clear();
@@ -239,6 +291,24 @@ namespace UI
                 users = _userService.GetFilteredUsersByEmail(filterTxt);
 
             FillUserManagementListView(users);
+        }
+
+        private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadTicketManagement();
+        }
+
+        private void button_Filter_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void button_CreateIncident_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AddIncidentForm addIncidentForm = new AddIncidentForm();
+            addIncidentForm.Show();
         }
     }
 }

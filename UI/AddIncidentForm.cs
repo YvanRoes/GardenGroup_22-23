@@ -77,13 +77,13 @@ namespace UI
         {
             try
             {
-                int id = ticketService.generateId();
+                int id = ticketService.getNewTicketId();
                 string subject = textBoxSubject.Text;
                 DateTime dateTime = DateTime.Now;
                 TicketType ticketType = (TicketType)Enum.Parse(typeof(TicketType), comboBox_IncidentType.SelectedItem.ToString());
                 string description = textBoxDescription.Text;
                 //napravi ticketedBy da e id-to na current usera
-                Incident incident = new Incident(id, loggedInUser.get_id() , subject, dateTime, ticketType, description, TicketStatus.waiting);
+                Incident incident = new Incident(id, loggedInUser.get_id() , subject, dateTime, ticketType, description, TicketStatus.unresolved);
                 incidentService.AddIncident(incident);
 
             }
