@@ -185,23 +185,30 @@ namespace UI
 
         private async Task loadDashBoardAsync()
         {
+            //base and visibility settings
             UserManagement_Pnl.Visible = false;
             TicketView_Pnl.Visible = false;
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
+
+            pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
+            pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
+            pbResolved.BackColor = Color.FromArgb(60, 207, 78);
+
+
             TicketService ticketService = new TicketService();
             int totalTickets = ticketService.getTickets().Count;
             int unresolvedTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.unresolved)).Count;
             int inProgressTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.inProgress)).Count;
             int resolvedTickets = totalTickets - unresolvedTickets - inProgressTickets;
-            int pastDeadline = 12;
+            int pastDeadline = ticketService.getTicketsBeforeAndPastDeadline()[1].Count;
+            int beforeDeadline = ticketService.getTicketsBeforeAndPastDeadline()[0].Count;
             //unresolved, inProgress, resolved
-            DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets, resolvedTickets, PieChartWrapper);
+            DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets, resolvedTickets, pnlChartWrapperMain);
 
 
-            //draw unresolved and pastdeadline
-            DrawPieChart(unresolvedTickets + pastDeadline, unresolvedTickets, pastDeadline, PieChartWrapper);
-            lblTest.Text = $"unresolved tickets: {unresolvedTickets}\ntickets in progress: {inProgressTickets}\nclosed tickets: {resolvedTickets}";
+            //draw unresolved and past deadline
+            DrawPieChart(beforeDeadline + pastDeadline, beforeDeadline, pastDeadline, pnlChartWrapperSecondary);
         }
 
         private void DashBoardMenuItem_Click(object sender, EventArgs e)
