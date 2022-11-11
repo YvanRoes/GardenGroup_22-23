@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using System.Collections;
 
 namespace DAL
 {
@@ -42,10 +43,10 @@ namespace DAL
             return Documents;
         }
 
-        protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string searchValue, string atribute)
+        protected List<BsonDocument> GetListOfFilteredDocuments(string collectionName, string field, string atribute)
         {
             var Collection = database.GetCollection<BsonDocument>(collectionName);
-            var filter = Builders<BsonDocument>.Filter.Eq(searchValue, atribute);
+            var filter = Builders<BsonDocument>.Filter.Eq(field, atribute);
             var Documents = Collection.Find(filter).ToList();
 
             return Documents;
@@ -71,7 +72,7 @@ namespace DAL
 
             var pipelinestage2 = new BsonDocument
             {
-                {"$count", " " }
+                {"$count", "result" }
             };
 
             BsonDocument[] pipeline = new BsonDocument[]
@@ -82,7 +83,7 @@ namespace DAL
             var result = collection.Aggregate<BsonDocument>(pipeline).SingleOrDefault();
 
             if (result == null)
-                return "0";
+                return "NULL";
 
             
             return result.ToString();

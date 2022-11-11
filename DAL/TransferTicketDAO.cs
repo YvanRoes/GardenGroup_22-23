@@ -4,7 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace DAL
 {
-    public enum TicketStatus { unresolved = 1, inProgress = 2, resolved = 3 , unknown = 4 }
+    public class TransferTicketDAO : MongoHelper
+    {
+        //Andy's Extra Functionality
+
+
+    }
 }

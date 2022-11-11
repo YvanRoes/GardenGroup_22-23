@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
-namespace Model
+namespace Logic
 {
-    public enum TicketStatus { unresolved = 1, inProgress = 2, resolved = 3 , unknown = 4 }
+    public class TransferTicketService
+    {
+
+    }
 }

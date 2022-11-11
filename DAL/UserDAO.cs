@@ -12,6 +12,15 @@ namespace DAL
 {
     public class UserDAO : MongoHelper
     {
+
+        private IMongoCollection<User> collection;
+        public UserDAO()
+        {
+            MongoClient mongoClient = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/test");
+            IMongoDatabase database = mongoClient.GetDatabase("NoSqlProjectDatabase");
+            collection = database.GetCollection<User>("User");
+
+        }
         private User getUser(BsonDocument doc)
         {
             int id = (int)doc["ID"];
@@ -35,6 +44,19 @@ namespace DAL
 
             return users;
         }
+        public User GetUserByUsernameAndPassword(string email, string password)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._password, password);
+            var user = collection.Find(filter).FirstOrDefault();
+
+            return user;
+        }
+
+        public IMongoCollection<User> GetUserCollection()
+        {
+            return collection;
+        }
+
 
         public List<User> GetFilteredUserByEmail(string filterEmail)
         {

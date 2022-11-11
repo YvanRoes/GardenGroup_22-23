@@ -17,25 +17,21 @@ namespace Logic
         {
             ticketDB = new TicketDAO();
         }
-        public List<Ticket> GetAllTickets()
+/*        public List<Ticket> GetAllTickets()
         {
             return ticketDB.GetAllTickets();
+        }*/
+
+        public List<Ticket> GetFilteredTicketsByUserId(int userId)
+        {
+            return ticketDB.GetFilteredTicketsByUserId(userId);
         }
 
-        public List<Ticket> GetFilteredTicketsByEmail(string filterEmail)
-        {
-            return ticketDB.GetFilteredTicketByEmail(filterEmail);
-        }
+        public List<Ticket> getTickets() => ticketDB.getTickets();
 
-        public List<Ticket> getAllTickets()
-        {
-            return ticketDB.getTickets();
-        }
+        public List<Ticket> getOpenAndPendingTickets() => ticketDB.getOpenAndPendingTickets();  
 
-        public List<Ticket> getOpenAndPendingTickets()
-        {
-            return ticketDB.getOpenAndPendingTickets();
-        }
+        public async Task<List<Ticket>> getTicketsByStatusAsync(TicketStatus status) => await ticketDB.getTicketByStatusAsync(status);
 
 
         public void CreateTickets()

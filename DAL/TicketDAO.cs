@@ -26,6 +26,19 @@ namespace DAL
             return tickets;
         }
 
+        public async Task<List<Ticket>> getTicketByStatusAsync(TicketStatus status) 
+        {
+            BsonDocument pipe  = new BsonDocument();
+            if(status != TicketStatus.unknown)
+                pipe.Add(new BsonDocument { { "status", (int)status } });
+
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var query = collection.Aggregate()
+                        .Match(pipe);
+            var results = await query.ToListAsync();
+            return results.AsQueryable().ToList();
+        }
+
         public int getNewTicketId()
         {
             List<Ticket> tickets = getTickets();
@@ -38,11 +51,11 @@ namespace DAL
             return max + 1;
         }
 
-        public string CountTicketsperUser(int userId)
+        /*public List<Ticket> getTicketsByUserid(int id)
         {
-            return executeMatchCountQuery("Ticket", "reportedBy", userId);
 
-        }
+        }*/
+
 
         //Aleks
 
@@ -61,10 +74,8 @@ namespace DAL
             TicketStatus status = (TicketStatus)(int)doc["status"];
 
             return new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, status);
-
-
         }
-        public List<Ticket> GetAllTickets()
+/*        public List<Ticket> GetAllTickets()
         {
             List<Ticket> tickets = new List<Ticket>();
             var documents = GetListOfDocuments("Ticket");
@@ -73,28 +84,36 @@ namespace DAL
                 tickets.Add(getTicket(doc));
 
             return tickets;
+        }*/
+
+        public List<Ticket> GetFilteredTicketsByUserId(int userId)
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+
+            //var filter = Builders<BsonDocument>.Filter.Eq("reportedBy", userId);
+            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket._reportedBy, userId);
+            List<Ticket> filteredTickets = collection.Find(filter).ToList();
+
+            return filteredTickets;
         }
 
-        private TicketStatus getTicketStatusFromString(string status)
+        //Andy's 
+
+        public string CountTicketsperUser(int userId)
         {
-            switch (status)
+            string result = executeMatchCountQuery("Ticket", "reportedBy", userId);
+            string nrOfTickets = "";
+
+            if (result == "NULL")
+                nrOfTickets = "0";
+
+            for (int i = 0; i < result.Length; i++)
             {
-                case "open": return TicketStatus.open;
-                case "waiting": return TicketStatus.waiting;
-                case "closed": return TicketStatus.closed;
-                default: return TicketStatus.unknown;
+                if (char.IsDigit(result[i]))
+                    nrOfTickets += result[i];
             }
-        }
 
-        public List<Ticket> GetFilteredTicketByEmail(string filterEmail)
-        {
-            List<Ticket> tickets = new List<Ticket>();
-            var documents = GetListOfFilteredDocuments("Ticket", "Email", filterEmail);
-
-            foreach (var doc in documents)
-                tickets.Add(getTicket(doc));
-
-            return tickets;
+            return nrOfTickets;
         }
 
     }
