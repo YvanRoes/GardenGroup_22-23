@@ -40,7 +40,7 @@ namespace UI
             this.Size = new Size(1060, 640);
 
             _userService = new UserService();
-            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 0, 2, "1");
+            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
             _ticketService = new TicketService();
             _incidentService = new IncidentService();
 
@@ -237,7 +237,7 @@ namespace UI
 
         private void TransferTicket_bttn_Click(object sender, EventArgs e)
         {
-            Ticket selectedTicket = (Ticket)listView_Tickets.SelectedItems[0].Tag;
+            Ticket selectedTicket = (Ticket)listView_ServiceDesk.SelectedItems[0].Tag;
 
             TransferTicketForm transferTicketForm = new TransferTicketForm(selectedTicket);
             transferTicketForm.ShowDialog();
