@@ -34,6 +34,21 @@ namespace UI
                 userManagementToolStripMenuItem.Enabled = false;
         }
 
+        public MainViewForm()
+        {
+            InitializeComponent();
+            this.Size = new Size(1060, 640);
+
+            _userService = new UserService();
+            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 0, 2, "1");
+            _ticketService = new TicketService();
+            _incidentService = new IncidentService();
+
+            start();
+
+            if (_loggedUser.get_userType() != UserType.ServiceDesk)
+                userManagementToolStripMenuItem.Enabled = false;
+        }
         void start()
         {
             loadDashBoard();
@@ -56,6 +71,12 @@ namespace UI
                     pnlDashBoard.Visible = false;
                     UserManagement_Pnl.Visible = true;
                     UserManagement_Pnl.Dock = DockStyle.Fill;
+                    break;
+                case "ticketManagement":
+                    pnlDashBoard.Visible = false;
+                    UserManagement_Pnl.Visible = false;
+                    TicketView_Pnl.Visible = true;
+                    TicketView_Pnl.Dock = DockStyle.Fill;
                     break;
             }
         }
@@ -217,29 +238,25 @@ namespace UI
             loadTicketView();
         }
 
-        private void listView_Tickets_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TransferTicket_bttn.Enabled = true;
-        }
         //Ticket View (Aleksandra)
 
         private void ticketManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SwitchPanel("ticketManagement");
+
             loadTicketView();
         }
 
         private void loadTicketView()
         {
-            pnlDashBoard.Visible = false;
-            UserManagement_Pnl.Visible = false;
-            TicketView_Pnl.Visible = true;
-            TicketView_Pnl.Dock = DockStyle.Fill;
 
             if (_loggedUser.get_userType() == 0)
             {
                 TransferTicket_bttn.Visible = false;
                 label_overview.Text = "Incident Overview";
                 button_CreateIncident.Text = "Create Incident";
+                button_deleteTicket.Text = "Delete Incident";
+                button_PrioritySort.Visible = false;
                 LoadTicketListViewForRegularEmployee();
 
             }
@@ -248,6 +265,8 @@ namespace UI
                 TransferTicket_bttn.Enabled = false;
                 label_overview.Text = "Ticket Overview";
                 button_CreateIncident.Text = "Create Ticket";
+                button_deleteTicket.Text = "Delete Tcket";
+
                 LoadTicketListViewForServiceDeskEmployee();
             }
         }
@@ -293,28 +312,36 @@ namespace UI
             Incident selectedIncident;
             List<Incident> incidents = _incidentService.getAllIncidents();
 
-            this.Close();
-            if (_loggedUser.get_userType() == 0)
+            //this.Close();
+
+            try
             {
-                addIncidentForm = new AddIncidentForm(_loggedUser);
-                addIncidentForm.Show();
-            }
-            else
-            {
-                
+                if (_loggedUser.get_userType() == 0)
+                {
+                    addIncidentForm = new AddIncidentForm(_loggedUser);
+                    addIncidentForm.Show();
+                }
+                else
+                {
+
                     id = int.Parse(listView_ServiceDesk.SelectedItems[0].Text);
                     foreach (Incident incident in incidents)
                     {
 
                         if (incident.get_id() == id)
                         {
-                            selectedIncident = new Incident(incident.get_id(), incident.get_reportedBy(), incident.get_subject(), incident.get_date(),  incident.get_description(), incident.get_status());
+                            selectedIncident = new Incident(incident.get_id(), incident.get_reportedBy(), incident.get_subject(), incident.get_date(), incident.get_description(), incident.get_status());
                             addIncidentForm = new AddIncidentForm(_loggedUser, selectedIncident);
                             addIncidentForm.Show();
                         }
                     }
-                
+
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void button_PrioritySort_Click(object sender, EventArgs e)
@@ -335,9 +362,21 @@ namespace UI
 
         private void button_deleteTicket_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(listView_ServiceDesk.SelectedItems[0].Text);
-            _ticketService.DeleteTicket(id);
-            LoadTicketListViewForServiceDeskEmployee();
+            try
+            {
+                int id = int.Parse(listView_ServiceDesk.SelectedItems[0].Text);
+                _ticketService.DeleteTicket(id);
+                LoadTicketListViewForServiceDeskEmployee();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void listView_ServiceDesk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TransferTicket_bttn.Enabled = true;
         }
     }
 }
