@@ -18,6 +18,7 @@ namespace Model
         [BsonElement("Location")] public int _location;
         [BsonElement("UserType")] public int _userType;
         [BsonElement("Password")][BsonIgnoreIfNull] public string _password;
+        string firstname;
 
         //private int _id;
         //private string _name;
@@ -35,6 +36,12 @@ namespace Model
         public Location get_location() { return (Location)_location; }
         public UserType get_userType() { return (UserType)_userType; }
         public string get_password() { return _password; }
+        public string get_firstName(string name)
+        {
+            string[] fullname= name.Split(' ');
+            firstname= fullname[0];
+            return firstname; 
+        }
 
         public User() { }
 

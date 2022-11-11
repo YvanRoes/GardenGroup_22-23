@@ -7,6 +7,8 @@ using MongoDB.Driver;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using System.Collections;
+using System.Globalization;
 
 namespace DAL
 {
@@ -53,9 +55,9 @@ namespace DAL
         public void SetnewPassowrd(string newPassword,string email,int id)
         {
             IMongoCollection<User> collection = database.GetCollection<User>("User");
-            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._id, id);
             var update = Builders<User>.Update.Set("Password", newPassword);
-            collection.UpdateOne(filter,update);
+            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._id, id);
+            collection.UpdateOne(filter, update);
 
         }
         public User GetFilteredUsersByEmailAndId(string email, int id)
