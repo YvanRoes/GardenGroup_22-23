@@ -37,13 +37,14 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.paneForgotPassword = new System.Windows.Forms.Panel();
+            this.buttonForgetPasswordCheckEmailandId = new System.Windows.Forms.Button();
+            this.buttonSetNewPassword = new System.Windows.Forms.Button();
             this.labelForgotPasswordNewPassword = new System.Windows.Forms.Label();
             this.textBoxForgetPassowrdNewPassword = new System.Windows.Forms.TextBox();
             this.labelForgotPasswordId = new System.Windows.Forms.Label();
             this.labelForgetPasswordUsername = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxUserId = new System.Windows.Forms.TextBox();
-            this.buttonSetNewPassword = new System.Windows.Forms.Button();
             this.paneForgotPassword.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,12 +80,14 @@
             // textBoxUsername
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(91, 97);
+            this.textBoxUsername.Multiline = true;
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(185, 23);
             this.textBoxUsername.TabIndex = 3;
             // 
             // textBoxPassword
             // 
+            this.textBoxPassword.AllowDrop = true;
             this.textBoxPassword.Location = new System.Drawing.Point(91, 149);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(185, 23);
@@ -99,7 +102,6 @@
             this.checkBoxRememberMe.TabIndex = 5;
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
-            this.checkBoxRememberMe.CheckedChanged += new System.EventHandler(this.checkBoxRememberMe_CheckedChanged);
             // 
             // labelPassword
             // 
@@ -121,6 +123,7 @@
             // 
             // paneForgotPassword
             // 
+            this.paneForgotPassword.Controls.Add(this.buttonForgetPasswordCheckEmailandId);
             this.paneForgotPassword.Controls.Add(this.buttonSetNewPassword);
             this.paneForgotPassword.Controls.Add(this.labelForgotPasswordNewPassword);
             this.paneForgotPassword.Controls.Add(this.textBoxForgetPassowrdNewPassword);
@@ -128,10 +131,30 @@
             this.paneForgotPassword.Controls.Add(this.labelForgetPasswordUsername);
             this.paneForgotPassword.Controls.Add(this.textBoxEmail);
             this.paneForgotPassword.Controls.Add(this.textBoxUserId);
-            this.paneForgotPassword.Location = new System.Drawing.Point(91, 44);
+            this.paneForgotPassword.Location = new System.Drawing.Point(91, 25);
             this.paneForgotPassword.Name = "paneForgotPassword";
             this.paneForgotPassword.Size = new System.Drawing.Size(370, 203);
             this.paneForgotPassword.TabIndex = 8;
+            // 
+            // buttonForgetPasswordCheckEmailandId
+            // 
+            this.buttonForgetPasswordCheckEmailandId.Location = new System.Drawing.Point(222, 44);
+            this.buttonForgetPasswordCheckEmailandId.Name = "buttonForgetPasswordCheckEmailandId";
+            this.buttonForgetPasswordCheckEmailandId.Size = new System.Drawing.Size(136, 34);
+            this.buttonForgetPasswordCheckEmailandId.TabIndex = 13;
+            this.buttonForgetPasswordCheckEmailandId.Text = "Check Email and Id";
+            this.buttonForgetPasswordCheckEmailandId.UseVisualStyleBackColor = true;
+            this.buttonForgetPasswordCheckEmailandId.Click += new System.EventHandler(this.buttonForgetPasswordCheckEmailandId_Click);
+            // 
+            // buttonSetNewPassword
+            // 
+            this.buttonSetNewPassword.Location = new System.Drawing.Point(222, 149);
+            this.buttonSetNewPassword.Name = "buttonSetNewPassword";
+            this.buttonSetNewPassword.Size = new System.Drawing.Size(136, 34);
+            this.buttonSetNewPassword.TabIndex = 9;
+            this.buttonSetNewPassword.Text = "Set new password";
+            this.buttonSetNewPassword.UseVisualStyleBackColor = true;
+            this.buttonSetNewPassword.Click += new System.EventHandler(this.buttonSetNewPassword_Click);
             // 
             // labelForgotPasswordNewPassword
             // 
@@ -181,16 +204,6 @@
             this.textBoxUserId.Size = new System.Drawing.Size(100, 23);
             this.textBoxUserId.TabIndex = 0;
             // 
-            // buttonSetNewPassword
-            // 
-            this.buttonSetNewPassword.Location = new System.Drawing.Point(222, 149);
-            this.buttonSetNewPassword.Name = "buttonSetNewPassword";
-            this.buttonSetNewPassword.Size = new System.Drawing.Size(136, 34);
-            this.buttonSetNewPassword.TabIndex = 9;
-            this.buttonSetNewPassword.Text = "Set new password";
-            this.buttonSetNewPassword.UseVisualStyleBackColor = true;
-            this.buttonSetNewPassword.Click += new System.EventHandler(this.buttonSetNewPassword_Click);
-            // 
             // LoginViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -233,5 +246,6 @@
         private System.Windows.Forms.Label labelForgotPasswordNewPassword;
         private System.Windows.Forms.TextBox textBoxForgetPassowrdNewPassword;
         private System.Windows.Forms.Button buttonSetNewPassword;
+        private System.Windows.Forms.Button buttonForgetPasswordCheckEmailandId;
     }
 }
