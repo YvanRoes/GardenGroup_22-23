@@ -32,7 +32,17 @@ namespace Logic
         public List<Ticket> getOpenAndPendingTickets() => ticketDB.getOpenAndPendingTickets();  
 
         public async Task<List<Ticket>> getTicketsByStatusAsync(TicketStatus status) => await ticketDB.getTicketByStatusAsync(status);
-        
+        public List<Ticket> getTicketsByStatus(List<Ticket> tickets, TicketStatus status)
+        {
+            List<Ticket> result = new List<Ticket>();
+            tickets.ForEach(ticket =>
+            {
+                if (ticket.get_status() == status)
+                    result.Add(ticket);
+            });
+            return result;
+        }
+
         public List<Ticket>[] getTicketsBeforeAndPastDeadline(List<Ticket> unfilteredTickets)
         {
             

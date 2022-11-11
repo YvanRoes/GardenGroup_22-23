@@ -33,13 +33,13 @@
             this.ticketManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashBoard = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbSecondaryChart = new System.Windows.Forms.GroupBox();
             this.lblPastDeadline = new System.Windows.Forms.Label();
             this.lblWithinDeadline = new System.Windows.Forms.Label();
             this.pbPastDeadline = new System.Windows.Forms.PictureBox();
             this.pbWithinDeadline = new System.Windows.Forms.PictureBox();
             this.pnlChartWrapperSecondary = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbMainChart = new System.Windows.Forms.GroupBox();
             this.lblResolved = new System.Windows.Forms.Label();
             this.lblInProgress = new System.Windows.Forms.Label();
             this.lblunResolved = new System.Windows.Forms.Label();
@@ -84,10 +84,10 @@
             this.button_CreateIncident = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlDashBoard.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbSecondaryChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPastDeadline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWithinDeadline)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbMainChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbResolved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbunResolved)).BeginInit();
@@ -132,28 +132,28 @@
             // 
             // pnlDashBoard
             // 
-            this.pnlDashBoard.Controls.Add(this.groupBox2);
-            this.pnlDashBoard.Controls.Add(this.groupBox1);
+            this.pnlDashBoard.Controls.Add(this.gbSecondaryChart);
+            this.pnlDashBoard.Controls.Add(this.gbMainChart);
             this.pnlDashBoard.Location = new System.Drawing.Point(10, 73);
             this.pnlDashBoard.Name = "pnlDashBoard";
             this.pnlDashBoard.Size = new System.Drawing.Size(812, 295);
             this.pnlDashBoard.TabIndex = 4;
             // 
-            // groupBox2
+            // gbSecondaryChart
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox2.Controls.Add(this.lblPastDeadline);
-            this.groupBox2.Controls.Add(this.lblWithinDeadline);
-            this.groupBox2.Controls.Add(this.pbPastDeadline);
-            this.groupBox2.Controls.Add(this.pbWithinDeadline);
-            this.groupBox2.Controls.Add(this.pnlChartWrapperSecondary);
-            this.groupBox2.Location = new System.Drawing.Point(409, 32);
-            this.groupBox2.MaximumSize = new System.Drawing.Size(382, 235);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(382, 235);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ticket deadlines";
+            this.gbSecondaryChart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gbSecondaryChart.Controls.Add(this.lblPastDeadline);
+            this.gbSecondaryChart.Controls.Add(this.lblWithinDeadline);
+            this.gbSecondaryChart.Controls.Add(this.pbPastDeadline);
+            this.gbSecondaryChart.Controls.Add(this.pbWithinDeadline);
+            this.gbSecondaryChart.Controls.Add(this.pnlChartWrapperSecondary);
+            this.gbSecondaryChart.Location = new System.Drawing.Point(409, 32);
+            this.gbSecondaryChart.MaximumSize = new System.Drawing.Size(382, 235);
+            this.gbSecondaryChart.Name = "gbSecondaryChart";
+            this.gbSecondaryChart.Size = new System.Drawing.Size(382, 235);
+            this.gbSecondaryChart.TabIndex = 16;
+            this.gbSecondaryChart.TabStop = false;
+            this.gbSecondaryChart.Text = "Ticket deadlines";
             // 
             // lblPastDeadline
             // 
@@ -196,23 +196,23 @@
             this.pnlChartWrapperSecondary.Size = new System.Drawing.Size(201, 201);
             this.pnlChartWrapperSecondary.TabIndex = 4;
             // 
-            // groupBox1
+            // gbMainChart
             // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.lblResolved);
-            this.groupBox1.Controls.Add(this.lblInProgress);
-            this.groupBox1.Controls.Add(this.lblunResolved);
-            this.groupBox1.Controls.Add(this.pbResolved);
-            this.groupBox1.Controls.Add(this.pbInProgress);
-            this.groupBox1.Controls.Add(this.pbunResolved);
-            this.groupBox1.Controls.Add(this.pnlChartWrapperMain);
-            this.groupBox1.Location = new System.Drawing.Point(21, 32);
-            this.groupBox1.MaximumSize = new System.Drawing.Size(382, 235);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(382, 235);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tickets";
+            this.gbMainChart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gbMainChart.Controls.Add(this.lblResolved);
+            this.gbMainChart.Controls.Add(this.lblInProgress);
+            this.gbMainChart.Controls.Add(this.lblunResolved);
+            this.gbMainChart.Controls.Add(this.pbResolved);
+            this.gbMainChart.Controls.Add(this.pbInProgress);
+            this.gbMainChart.Controls.Add(this.pbunResolved);
+            this.gbMainChart.Controls.Add(this.pnlChartWrapperMain);
+            this.gbMainChart.Location = new System.Drawing.Point(21, 32);
+            this.gbMainChart.MaximumSize = new System.Drawing.Size(382, 235);
+            this.gbMainChart.Name = "gbMainChart";
+            this.gbMainChart.Size = new System.Drawing.Size(382, 235);
+            this.gbMainChart.TabIndex = 15;
+            this.gbMainChart.TabStop = false;
+            this.gbMainChart.Text = "Tickets";
             // 
             // lblResolved
             // 
@@ -381,7 +381,7 @@
             this.TicketView_Pnl.Controls.Add(this.textBox_Filter);
             this.TicketView_Pnl.Controls.Add(this.label_overview);
             this.TicketView_Pnl.Controls.Add(this.button_CreateIncident);
-            this.TicketView_Pnl.Location = new System.Drawing.Point(828, 87);
+            this.TicketView_Pnl.Location = new System.Drawing.Point(828, 73);
             this.TicketView_Pnl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TicketView_Pnl.Name = "TicketView_Pnl";
             this.TicketView_Pnl.Size = new System.Drawing.Size(871, 371);
@@ -585,10 +585,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlDashBoard.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.gbSecondaryChart.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbPastDeadline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWithinDeadline)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gbMainChart.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbResolved)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInProgress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbunResolved)).EndInit();
@@ -643,13 +643,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button button_PrioritySort;
         private System.Windows.Forms.Button button_deleteTicket;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbSecondaryChart;
         private System.Windows.Forms.Label lblPastDeadline;
         private System.Windows.Forms.Label lblWithinDeadline;
         private System.Windows.Forms.PictureBox pbPastDeadline;
         private System.Windows.Forms.PictureBox pbWithinDeadline;
         private System.Windows.Forms.Panel pnlChartWrapperSecondary;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbMainChart;
         private System.Windows.Forms.Label lblResolved;
         private System.Windows.Forms.Label lblInProgress;
         private System.Windows.Forms.Label lblunResolved;

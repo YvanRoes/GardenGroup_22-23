@@ -37,8 +37,6 @@ namespace UI
         void start()
         {
             loadDashBoard();
-            UserManagement_Pnl.Visible = false;
-            TicketView_Pnl.Visible = false;
         }
 
         // Dashboard (Yvan)
@@ -65,9 +63,11 @@ namespace UI
         private void loadDashBoard()
         {
             SwitchPanel("Dashboard");
-            
-            if(_loggedUser.get_userType() == UserType.ServiceDesk)
+
+            if (_loggedUser.get_userType() == UserType.ServiceDesk)
                 _ = LoadServiceDeskEmployeeDashboardAsync();
+            if(_loggedUser.get_userType() == UserType.Employee)
+                LoadRegularEmployeeDashboard();
         }
 
         private async Task LoadServiceDeskEmployeeDashboardAsync()
@@ -92,10 +92,50 @@ namespace UI
 
             //set component data tickets
 
-            setGroupBoxData(unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, withinDeadline, pastDeadline);
+            setGroupBoxDataServiceDesk(unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, withinDeadline, pastDeadline);
         }
 
-        private void setGroupBoxData(int unresolvedTickets, int inProgressTickets, int resolvedTickets, int withinDeadline, int pastDeadline)
+        private void LoadRegularEmployeeDashboard()
+        {
+            TicketService ticketService = new TicketService();
+            List<Ticket> userTickets = ticketService.GetFilteredTicketsByUserId(_loggedUser.get_id());
+
+            //get personal tickets
+            List<Ticket> unresolvedTickets = ticketService.getTicketsByStatus(userTickets, TicketStatus.unresolved);
+            List<Ticket> inProgressTickets = ticketService.getTicketsByStatus(userTickets, TicketStatus.inProgress);
+            List<Ticket> resolvedTickets = ticketService.getTicketsByStatus(userTickets, TicketStatus.resolved);
+            int totalResolvedInProgressUnresolved = unresolvedTickets.Count + inProgressTickets.Count + resolvedTickets.Count;
+
+            //if no tickets display nothing
+            if(totalResolvedInProgressUnresolved == 0)
+                return;
+
+            gbMainChart.Visible = true;
+            gbSecondaryChart.Visible = true;
+            lblunResolved.Text = $"Unresolved: {unresolvedTickets.Count}";
+            lblInProgress.Text = $"In progress: {inProgressTickets.Count}";
+            lblResolved.Text = $"Resolved {resolvedTickets.Count}";
+
+
+            //gen main chart
+            ChartGraphicComponent.DrawPieChart(totalResolvedInProgressUnresolved, unresolvedTickets.Count, inProgressTickets.Count, resolvedTickets.Count, pnlChartWrapperMain);
+
+            //gen sec chart
+            List<Ticket> resolvedAndInProgressTickets = new List<Ticket>();
+            List<Ticket>[] ticketArr = ticketService.getTicketsBeforeAndPastDeadline(resolvedAndInProgressTickets);
+            resolvedAndInProgressTickets.AddRange(unresolvedTickets);
+            resolvedAndInProgressTickets.AddRange(inProgressTickets);
+            int withinDeadline = ticketArr[0].Count;
+            int pastDeadline = ticketArr[1].Count;
+
+            pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
+            pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
+            pbResolved.BackColor = Color.FromArgb(60, 207, 78);
+
+            ChartGraphicComponent.DrawPieChart(withinDeadline + pastDeadline, withinDeadline, pastDeadline, pnlChartWrapperSecondary);
+        }
+
+        private void setGroupBoxDataServiceDesk(int unresolvedTickets, int inProgressTickets, int resolvedTickets, int withinDeadline, int pastDeadline)
         {
             pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
             pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
@@ -107,7 +147,7 @@ namespace UI
             //set component data ticket deadlines
             pbWithinDeadline.BackColor = Color.FromArgb(41, 52, 98);
             pbPastDeadline.BackColor = Color.FromArgb(214, 28, 78);
-            lblWithinDeadline.Text = $"deadline: {withinDeadline}";
+            lblWithinDeadline.Text = $"within deadline: {withinDeadline}";
             lblPastDeadline.Text = $"Past deadline: {pastDeadline}";
         }
 
