@@ -33,7 +33,6 @@ namespace Logic
 
         public async Task<List<Ticket>> getTicketsByStatusAsync(TicketStatus status) => await ticketDB.getTicketByStatusAsync(status);
 
-
         public void CreateTickets()
         {
             for(int i = 0; i < 50; i++)
@@ -69,6 +68,10 @@ namespace Logic
         public void UpdateTicket(Ticket ticket)
         {
             ticketDB.UpdateTicket(ticket);
+        }
+        public List<Ticket> getTicketSortedByPriority()
+        {
+            return ticketDB.getTicketSortedByPriority();
         }
 
     }
