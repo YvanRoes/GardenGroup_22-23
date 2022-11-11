@@ -80,7 +80,11 @@ namespace Logic
         {
             return ticketDB.getNewTicketId();
         }
-
+        
+        public void UpdateTicket(Ticket ticket)
+        {
+            ticketDB.UpdateTicket(ticket);
+        }
 
     }
 }

@@ -20,6 +20,10 @@ namespace Logic
         {
             IncidentDb.AddIncident(incident);
         }
-
+        public List<Incident> getAllIncidents()
+        {
+            return IncidentDb.GetAllIncidents();
+        }
+        
     }
 }
