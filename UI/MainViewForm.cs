@@ -47,7 +47,7 @@ namespace UI
 
         void start()
         {
-            pnlDashBoard.Visible = false;
+            pnlDashBoard.Visible = true;
             UserManagement_Pnl.Visible = false;
             TicketView_Pnl.Visible = false;
         }
@@ -186,6 +186,7 @@ namespace UI
         private async Task loadDashBoardAsync()
         {
             UserManagement_Pnl.Visible = false;
+            TicketView_Pnl.Visible = false;
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
             TicketService ticketService = new TicketService();
@@ -264,7 +265,9 @@ namespace UI
 
         private void TransferTicket_bttn_Click(object sender, EventArgs e)
         {
-            TransferTicketForm transferTicketForm = new TransferTicketForm();
+            Ticket selectedTicket = (Ticket)listView_Tickets.SelectedItems[0].Tag;
+
+            TransferTicketForm transferTicketForm = new TransferTicketForm(selectedTicket);
             transferTicketForm.ShowDialog();
 
             loadTicketView();

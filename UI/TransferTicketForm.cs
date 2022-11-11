@@ -15,14 +15,18 @@ namespace UI
     public partial class TransferTicketForm : Form
     {
         TransferTicketService _transferTicketService;
-        public TransferTicketForm()
+        Ticket ticket;
+        public TransferTicketForm(Ticket ticket)
         {
-            _transferTicketService = new TransferTicketService();   
+            _transferTicketService = new TransferTicketService();
+            this.ticket = ticket;
+
             InitializeComponent();
 
             Employee_cmboBox.Visible = false;
             Employee_lbl.Visible = false;
             Transfer_bttn.Enabled = false;
+            
 
             FillDepartmentComboBox();
         }
@@ -54,7 +58,8 @@ namespace UI
                 Employee_lbl.Visible = true;
 
                 FillEmployeeComboBox(_transferTicketService.GetListOfUsers((int)UserType.ServiceDesk));
-            } else
+            }
+            else
             {
                 Employee_cmboBox.Visible = false;
                 Employee_lbl.Visible = false;
@@ -66,9 +71,18 @@ namespace UI
         {
             Employee_cmboBox.Items.Clear();
 
-            foreach (User e in Employees)
+                Employee_cmboBox.DataSource = Employees;
+                Employee_cmboBox.ValueMember = "ID";
+                //Employee_cmboBox.Items.Add($"{e._name} ({e.get_id()})");
+            
+        }
+
+        private void Transfer_bttn_Click(object sender, EventArgs e)
+        {
+            if (Departments_cmboBox.SelectedIndex.Equals((int)UserType.ServiceDesk))
             {
-                Employee_cmboBox.Items.Add(e._name);
+
+                //_transferTicketService.UpdateTicketedBy(ticket.get_id(), );
             }
         }
     }

@@ -19,6 +19,7 @@ namespace Model
         [BsonElement("deadline")] public int _deadline;
         [BsonElement("description")] public string _description;
         [BsonElement("status")] public int _status;
+        [BsonElement("Comment")] public string _comment;
 
         public int get_id() { return _id; }
         public int get_ticketedBy() { return _ticketedBy; }
@@ -29,13 +30,14 @@ namespace Model
         public Priority get_priority() { return (Priority)_priority; }
         public Deadline get_deadline() { return (Deadline)_deadline; }
         public string get_description() { return _description; }
-        public TicketStatus get_status()
+        public TicketStatus get_status() 
         {
             switch (_status)
             {
                 case 1: return TicketStatus.unresolved;
                 case 2: return TicketStatus.inProgress;
                 case 3: return TicketStatus.resolved;
+                case 4: return TicketStatus.transfered;
                 default: return TicketStatus.unknown;
             }
         }
