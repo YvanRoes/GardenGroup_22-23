@@ -47,7 +47,7 @@ namespace UI
 
         void start()
         {
-            pnlDashBoard.Visible = true;
+            loadDashBoardAsync();
             UserManagement_Pnl.Visible = false;
             TicketView_Pnl.Visible = false;
         }
@@ -205,9 +205,9 @@ namespace UI
             pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
             pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
             pbResolved.BackColor = Color.FromArgb(60, 207, 78);
-            lblunResolved.Text += $" {unresolvedTickets}";
-            lblInProgress.Text += $" {inProgressTickets}";
-            lblResolved.Text += $" {resolvedTickets}";
+            lblunResolved.Text = $"Unresolved: {unresolvedTickets}";
+            lblInProgress.Text = $"In progress: {inProgressTickets}";
+            lblResolved.Text = $"Resolved: {resolvedTickets}";
 
             pbWithinDeadline.BackColor = Color.FromArgb(41, 52, 98);
             pbPastDeadline.BackColor = Color.FromArgb(214, 28, 78);
