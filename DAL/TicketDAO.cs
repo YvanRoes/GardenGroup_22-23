@@ -13,11 +13,14 @@ namespace DAL
     public class TicketDAO : MongoHelper
     {
         IMongoCollection<Ticket> collection;
-
+        public TicketDAO()
+        {
+            collection = database.GetCollection<Ticket>("Ticket");
+        }
         //Yvan Roes
         public List<Ticket> getTickets()
         {
-            collection = database.GetCollection<Ticket>("Ticket");
+            
             return collection.AsQueryable().ToList();
         }
 
@@ -80,7 +83,8 @@ namespace DAL
 
         }
         public void DeleteDocument(int id)
-        {
+        { 
+
             var filter = Builders<Ticket>.Filter.Eq("ID" ,id);
             
             var personDeleteResult = collection.DeleteOne(filter);
@@ -88,7 +92,6 @@ namespace DAL
 
         public void UpdateTicketStatus(int ticketid, int status)
         {
-
             var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
             var update = Builders<Ticket>.Update.Set("status", status);
             collection.UpdateOne(filter, update);

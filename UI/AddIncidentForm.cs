@@ -29,8 +29,8 @@ namespace UI
             _reportedIncident = incident;
             fillInComboBoxes();
             SetStyleOfServiceDeskEmployeeForm();
-            
 
+            updateTicket_bttn.Enabled = false;
 
         }
 
@@ -62,6 +62,9 @@ namespace UI
                 comboBox_IncidentType.Items.Add((TicketType)index);
             }
 
+            foreach (int index in TicketStatus.GetValues(typeof(TicketStatus)))
+                Status_cmboBox.Items.Add((TicketStatus)index);
+
         }
         private void SetStyleOfServiceDeskEmployeeForm()
         {
@@ -82,6 +85,7 @@ namespace UI
             comboBox_IncidentType.Visible = false;
             labelDescription.Location = new Point(163, 296);
             textBoxDescription.Location = new Point(418, 296);
+            updateTicket_bttn.Visible = false;
 
         }
         //Adds Incidents created by regular employees
@@ -135,6 +139,20 @@ namespace UI
             this.Close();
             mainViewForm = new MainViewForm(_loggedUser);
             mainViewForm.Show();
+        }
+
+        private void updateTicket_bttn_Click(object sender, EventArgs e)
+        {
+            int ticketId = _reportedIncident.get_id();
+            int status = (int)_reportedIncident.get_status();
+            ticketService.UpdateTicketStatus(ticketId, status);
+
+            this.Close();
+        }
+
+        private void Status_cmboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateTicket_bttn.Enabled = true;
         }
     }
 }

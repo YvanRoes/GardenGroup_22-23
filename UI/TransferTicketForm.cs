@@ -38,13 +38,8 @@ namespace UI
         {
             Departments_cmboBox.Items.Clear();
 
-            Departments_cmboBox.Items.Add(Departments.HR);
-            Departments_cmboBox.Items.Add(Departments.Logistic);
-            Departments_cmboBox.Items.Add(Departments.Finance);
-            Departments_cmboBox.Items.Add(Departments.Sales);
-            Departments_cmboBox.Items.Add(Departments.Administration);
-            Departments_cmboBox.Items.Add(Departments.Production);
-            Departments_cmboBox.Items.Add(Departments.ServiceDesk);
+            foreach (int index in Departments.GetValues(typeof(Departments)))
+                Departments_cmboBox.Items.Add((Departments)index);
         }
 
         private void Cancel_bttn_Click(object sender, EventArgs e)

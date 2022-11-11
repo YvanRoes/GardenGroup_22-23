@@ -48,6 +48,9 @@ namespace UI
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelDateTimeValue = new System.Windows.Forms.Label();
+            this.updateTicket_bttn = new System.Windows.Forms.Button();
+            this.Status_cmboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,7 +200,7 @@ namespace UI
             // buttonCancel
             // 
             this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancel.Location = new System.Drawing.Point(173, 407);
+            this.buttonCancel.Location = new System.Drawing.Point(173, 470);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(126, 59);
             this.buttonCancel.TabIndex = 46;
@@ -208,7 +211,7 @@ namespace UI
             // buttonSubmit
             // 
             this.buttonSubmit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSubmit.Location = new System.Drawing.Point(622, 407);
+            this.buttonSubmit.Location = new System.Drawing.Point(421, 460);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(146, 59);
             this.buttonSubmit.TabIndex = 47;
@@ -225,11 +228,42 @@ namespace UI
             this.labelDateTimeValue.TabIndex = 53;
             this.labelDateTimeValue.Text = "label_DateTimeValue";
             // 
+            // updateTicket_bttn
+            // 
+            this.updateTicket_bttn.Location = new System.Drawing.Point(681, 460);
+            this.updateTicket_bttn.Name = "updateTicket_bttn";
+            this.updateTicket_bttn.Size = new System.Drawing.Size(150, 59);
+            this.updateTicket_bttn.TabIndex = 54;
+            this.updateTicket_bttn.Text = "Update Status";
+            this.updateTicket_bttn.UseVisualStyleBackColor = true;
+            this.updateTicket_bttn.Click += new System.EventHandler(this.updateTicket_bttn_Click);
+            // 
+            // Status_cmboBox
+            // 
+            this.Status_cmboBox.FormattingEnabled = true;
+            this.Status_cmboBox.Location = new System.Drawing.Point(421, 396);
+            this.Status_cmboBox.Name = "Status_cmboBox";
+            this.Status_cmboBox.Size = new System.Drawing.Size(151, 28);
+            this.Status_cmboBox.TabIndex = 55;
+            this.Status_cmboBox.SelectedIndexChanged += new System.EventHandler(this.Status_cmboBox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(163, 404);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Ticket Status:";
+            // 
             // AddIncidentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 493);
+            this.ClientSize = new System.Drawing.Size(942, 602);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Status_cmboBox);
+            this.Controls.Add(this.updateTicket_bttn);
             this.Controls.Add(this.labelDateTimeValue);
             this.Controls.Add(this.comboBox_Deadline);
             this.Controls.Add(this.comboBox_Priority);
@@ -275,5 +309,8 @@ namespace UI
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelDateTimeValue;
+        private System.Windows.Forms.Button updateTicket_bttn;
+        private System.Windows.Forms.ComboBox Status_cmboBox;
+        private System.Windows.Forms.Label label1;
     }
 }

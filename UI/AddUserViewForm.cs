@@ -25,15 +25,13 @@ namespace UI
         private void FillConboBoxes()
         {
             TypeUser_cmbBox.Items.Clear();
-            TypeUser_cmbBox.Items.Add(UserType.Employee);
-            TypeUser_cmbBox.Items.Add(UserType.ServiceDesk);
+            foreach (int index in UserType.GetValues(typeof(UserType)))
+                TypeUser_cmbBox.Items.Add((UserType)index);
 
 
             Location_cmbBox.Items.Clear();
-            Location_cmbBox.Items.Add(Model.Location.Haarlem);
-            Location_cmbBox.Items.Add(Model.Location.Amsterdam);
-            Location_cmbBox.Items.Add(Model.Location.HQ);
-            Location_cmbBox.Items.Add(Model.Location.Knuppeldam);
+            foreach (int index in Model.Location.GetValues(typeof(Location)))
+                Location_cmbBox.Items.Add((Location)index);
         }
 
         private void Cancel_bttn_Click(object sender, EventArgs e)

@@ -109,29 +109,29 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1684, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // DashBoardMenuItem
             // 
             this.DashBoardMenuItem.Name = "DashBoardMenuItem";
-            this.DashBoardMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.DashBoardMenuItem.Size = new System.Drawing.Size(96, 24);
             this.DashBoardMenuItem.Text = "Dashboard";
             this.DashBoardMenuItem.Click += new System.EventHandler(this.DashBoardMenuItem_Click);
             // 
             // ticketManagementToolStripMenuItem
             // 
             this.ticketManagementToolStripMenuItem.Name = "ticketManagementToolStripMenuItem";
-            this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
+            this.ticketManagementToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.ticketManagementToolStripMenuItem.Text = "Ticket Management";
             this.ticketManagementToolStripMenuItem.Click += new System.EventHandler(this.ticketManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.userManagementToolStripMenuItem.Text = "User Management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
@@ -139,10 +139,9 @@
             // 
             this.pnlDashBoard.Controls.Add(this.gbSecondaryChart);
             this.pnlDashBoard.Controls.Add(this.gbMainChart);
-            this.pnlDashBoard.Location = new System.Drawing.Point(9, 55);
-            this.pnlDashBoard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlDashBoard.Location = new System.Drawing.Point(10, 73);
             this.pnlDashBoard.Name = "pnlDashBoard";
-            this.pnlDashBoard.Size = new System.Drawing.Size(812, 295);
+            this.pnlDashBoard.Size = new System.Drawing.Size(928, 393);
             this.pnlDashBoard.TabIndex = 4;
             // 
             // gbSecondaryChart
@@ -150,11 +149,9 @@
             this.gbSecondaryChart.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gbSecondaryChart.Controls.Add(this.pnlColorLegendSecondary);
             this.gbSecondaryChart.Controls.Add(this.pnlChartWrapperSecondary);
-            this.gbSecondaryChart.Location = new System.Drawing.Point(425, 24);
-            this.gbSecondaryChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbSecondaryChart.Location = new System.Drawing.Point(486, 32);
             this.gbSecondaryChart.Name = "gbSecondaryChart";
-            this.gbSecondaryChart.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbSecondaryChart.Size = new System.Drawing.Size(384, 237);
+            this.gbSecondaryChart.Size = new System.Drawing.Size(439, 316);
             this.gbSecondaryChart.TabIndex = 16;
             this.gbSecondaryChart.TabStop = false;
             this.gbSecondaryChart.Text = "Ticket deadlines";
@@ -165,50 +162,54 @@
             this.pnlColorLegendSecondary.Controls.Add(this.lblPastDeadline);
             this.pnlColorLegendSecondary.Controls.Add(this.pbPastDeadline);
             this.pnlColorLegendSecondary.Controls.Add(this.lblWithinDeadline);
-            this.pnlColorLegendSecondary.Location = new System.Drawing.Point(211, 26);
+            this.pnlColorLegendSecondary.Location = new System.Drawing.Point(241, 35);
+            this.pnlColorLegendSecondary.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlColorLegendSecondary.Name = "pnlColorLegendSecondary";
-            this.pnlColorLegendSecondary.Size = new System.Drawing.Size(173, 100);
+            this.pnlColorLegendSecondary.Size = new System.Drawing.Size(198, 133);
             this.pnlColorLegendSecondary.TabIndex = 12;
             // 
             // pbWithinDeadline
             // 
-            this.pbWithinDeadline.Location = new System.Drawing.Point(3, 3);
+            this.pbWithinDeadline.Location = new System.Drawing.Point(3, 4);
+            this.pbWithinDeadline.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbWithinDeadline.Name = "pbWithinDeadline";
-            this.pbWithinDeadline.Size = new System.Drawing.Size(25, 25);
+            this.pbWithinDeadline.Size = new System.Drawing.Size(29, 33);
             this.pbWithinDeadline.TabIndex = 5;
             this.pbWithinDeadline.TabStop = false;
             // 
             // lblPastDeadline
             // 
-            this.lblPastDeadline.Location = new System.Drawing.Point(34, 34);
+            this.lblPastDeadline.Location = new System.Drawing.Point(39, 45);
             this.lblPastDeadline.Name = "lblPastDeadline";
-            this.lblPastDeadline.Size = new System.Drawing.Size(111, 25);
+            this.lblPastDeadline.Size = new System.Drawing.Size(127, 33);
             this.lblPastDeadline.TabIndex = 9;
             this.lblPastDeadline.Text = "Past deadline";
             this.lblPastDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pbPastDeadline
             // 
-            this.pbPastDeadline.Location = new System.Drawing.Point(3, 34);
+            this.pbPastDeadline.Location = new System.Drawing.Point(3, 45);
+            this.pbPastDeadline.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbPastDeadline.Name = "pbPastDeadline";
-            this.pbPastDeadline.Size = new System.Drawing.Size(25, 25);
+            this.pbPastDeadline.Size = new System.Drawing.Size(29, 33);
             this.pbPastDeadline.TabIndex = 6;
             this.pbPastDeadline.TabStop = false;
             // 
             // lblWithinDeadline
             // 
-            this.lblWithinDeadline.Location = new System.Drawing.Point(34, 3);
+            this.lblWithinDeadline.Location = new System.Drawing.Point(39, 4);
             this.lblWithinDeadline.Name = "lblWithinDeadline";
-            this.lblWithinDeadline.Size = new System.Drawing.Size(111, 25);
+            this.lblWithinDeadline.Size = new System.Drawing.Size(127, 33);
             this.lblWithinDeadline.TabIndex = 8;
             this.lblWithinDeadline.Text = "Within deadline";
             this.lblWithinDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlChartWrapperSecondary
             // 
-            this.pnlChartWrapperSecondary.Location = new System.Drawing.Point(5, 20);
+            this.pnlChartWrapperSecondary.Location = new System.Drawing.Point(6, 27);
+            this.pnlChartWrapperSecondary.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlChartWrapperSecondary.Name = "pnlChartWrapperSecondary";
-            this.pnlChartWrapperSecondary.Size = new System.Drawing.Size(201, 201);
+            this.pnlChartWrapperSecondary.Size = new System.Drawing.Size(230, 268);
             this.pnlChartWrapperSecondary.TabIndex = 4;
             // 
             // gbMainChart
@@ -216,11 +217,9 @@
             this.gbMainChart.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gbMainChart.Controls.Add(this.pnlColorLegendMain);
             this.gbMainChart.Controls.Add(this.pnlChartWrapperMain);
-            this.gbMainChart.Location = new System.Drawing.Point(18, 24);
-            this.gbMainChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbMainChart.Location = new System.Drawing.Point(21, 32);
             this.gbMainChart.Name = "gbMainChart";
-            this.gbMainChart.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbMainChart.Size = new System.Drawing.Size(401, 237);
+            this.gbMainChart.Size = new System.Drawing.Size(458, 316);
             this.gbMainChart.TabIndex = 15;
             this.gbMainChart.TabStop = false;
             this.gbMainChart.Text = "Tickets";
@@ -233,67 +232,72 @@
             this.pnlColorLegendMain.Controls.Add(this.lblInProgress);
             this.pnlColorLegendMain.Controls.Add(this.pbResolved);
             this.pnlColorLegendMain.Controls.Add(this.lblunResolved);
-            this.pnlColorLegendMain.Location = new System.Drawing.Point(212, 26);
+            this.pnlColorLegendMain.Location = new System.Drawing.Point(242, 35);
+            this.pnlColorLegendMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlColorLegendMain.Name = "pnlColorLegendMain";
-            this.pnlColorLegendMain.Size = new System.Drawing.Size(173, 100);
+            this.pnlColorLegendMain.Size = new System.Drawing.Size(198, 133);
             this.pnlColorLegendMain.TabIndex = 11;
             // 
             // pbunResolved
             // 
-            this.pbunResolved.Location = new System.Drawing.Point(3, 3);
+            this.pbunResolved.Location = new System.Drawing.Point(3, 4);
+            this.pbunResolved.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbunResolved.Name = "pbunResolved";
-            this.pbunResolved.Size = new System.Drawing.Size(25, 25);
+            this.pbunResolved.Size = new System.Drawing.Size(29, 33);
             this.pbunResolved.TabIndex = 5;
             this.pbunResolved.TabStop = false;
             // 
             // lblResolved
             // 
-            this.lblResolved.Location = new System.Drawing.Point(34, 65);
+            this.lblResolved.Location = new System.Drawing.Point(39, 87);
             this.lblResolved.Name = "lblResolved";
-            this.lblResolved.Size = new System.Drawing.Size(111, 25);
+            this.lblResolved.Size = new System.Drawing.Size(127, 33);
             this.lblResolved.TabIndex = 10;
             this.lblResolved.Text = "Resolved";
             this.lblResolved.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pbInProgress
             // 
-            this.pbInProgress.Location = new System.Drawing.Point(3, 34);
+            this.pbInProgress.Location = new System.Drawing.Point(3, 45);
+            this.pbInProgress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbInProgress.Name = "pbInProgress";
-            this.pbInProgress.Size = new System.Drawing.Size(25, 25);
+            this.pbInProgress.Size = new System.Drawing.Size(29, 33);
             this.pbInProgress.TabIndex = 6;
             this.pbInProgress.TabStop = false;
             // 
             // lblInProgress
             // 
-            this.lblInProgress.Location = new System.Drawing.Point(34, 34);
+            this.lblInProgress.Location = new System.Drawing.Point(39, 45);
             this.lblInProgress.Name = "lblInProgress";
-            this.lblInProgress.Size = new System.Drawing.Size(111, 25);
+            this.lblInProgress.Size = new System.Drawing.Size(127, 33);
             this.lblInProgress.TabIndex = 9;
             this.lblInProgress.Text = "In progress";
             this.lblInProgress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pbResolved
             // 
-            this.pbResolved.Location = new System.Drawing.Point(3, 65);
+            this.pbResolved.Location = new System.Drawing.Point(3, 87);
+            this.pbResolved.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbResolved.Name = "pbResolved";
-            this.pbResolved.Size = new System.Drawing.Size(25, 25);
+            this.pbResolved.Size = new System.Drawing.Size(29, 33);
             this.pbResolved.TabIndex = 7;
             this.pbResolved.TabStop = false;
             // 
             // lblunResolved
             // 
-            this.lblunResolved.Location = new System.Drawing.Point(34, 3);
+            this.lblunResolved.Location = new System.Drawing.Point(39, 4);
             this.lblunResolved.Name = "lblunResolved";
-            this.lblunResolved.Size = new System.Drawing.Size(111, 25);
+            this.lblunResolved.Size = new System.Drawing.Size(127, 33);
             this.lblunResolved.TabIndex = 8;
             this.lblunResolved.Text = "Unresolved";
             this.lblunResolved.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlChartWrapperMain
             // 
-            this.pnlChartWrapperMain.Location = new System.Drawing.Point(5, 20);
+            this.pnlChartWrapperMain.Location = new System.Drawing.Point(6, 27);
+            this.pnlChartWrapperMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlChartWrapperMain.Name = "pnlChartWrapperMain";
-            this.pnlChartWrapperMain.Size = new System.Drawing.Size(201, 201);
+            this.pnlChartWrapperMain.Size = new System.Drawing.Size(230, 268);
             this.pnlChartWrapperMain.TabIndex = 4;
             // 
             // UserManagement_Pnl
@@ -303,18 +307,16 @@
             this.UserManagement_Pnl.Controls.Add(this.AddUser_bttn);
             this.UserManagement_Pnl.Controls.Add(this.filter_txtbox);
             this.UserManagement_Pnl.Controls.Add(this.label1);
-            this.UserManagement_Pnl.Location = new System.Drawing.Point(10, 407);
-            this.UserManagement_Pnl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.UserManagement_Pnl.Location = new System.Drawing.Point(11, 543);
             this.UserManagement_Pnl.Name = "UserManagement_Pnl";
-            this.UserManagement_Pnl.Size = new System.Drawing.Size(798, 345);
+            this.UserManagement_Pnl.Size = new System.Drawing.Size(912, 460);
             this.UserManagement_Pnl.TabIndex = 5;
             // 
             // FilterUsersByEmail_bttn
             // 
-            this.FilterUsersByEmail_bttn.Location = new System.Drawing.Point(298, 40);
-            this.FilterUsersByEmail_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FilterUsersByEmail_bttn.Location = new System.Drawing.Point(341, 53);
             this.FilterUsersByEmail_bttn.Name = "FilterUsersByEmail_bttn";
-            this.FilterUsersByEmail_bttn.Size = new System.Drawing.Size(82, 22);
+            this.FilterUsersByEmail_bttn.Size = new System.Drawing.Size(94, 29);
             this.FilterUsersByEmail_bttn.TabIndex = 4;
             this.FilterUsersByEmail_bttn.Text = "Filter";
             this.FilterUsersByEmail_bttn.UseVisualStyleBackColor = true;
@@ -331,11 +333,10 @@
             this.TicketsHeader});
             this.User_lstView.FullRowSelect = true;
             this.User_lstView.HideSelection = false;
-            this.User_lstView.Location = new System.Drawing.Point(36, 76);
-            this.User_lstView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.User_lstView.Location = new System.Drawing.Point(41, 101);
             this.User_lstView.MultiSelect = false;
             this.User_lstView.Name = "User_lstView";
-            this.User_lstView.Size = new System.Drawing.Size(751, 262);
+            this.User_lstView.Size = new System.Drawing.Size(858, 348);
             this.User_lstView.TabIndex = 3;
             this.User_lstView.UseCompatibleStateImageBehavior = false;
             this.User_lstView.View = System.Windows.Forms.View.Details;
@@ -367,10 +368,9 @@
             // 
             // AddUser_bttn
             // 
-            this.AddUser_bttn.Location = new System.Drawing.Point(679, 36);
-            this.AddUser_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddUser_bttn.Location = new System.Drawing.Point(776, 48);
             this.AddUser_bttn.Name = "AddUser_bttn";
-            this.AddUser_bttn.Size = new System.Drawing.Size(108, 31);
+            this.AddUser_bttn.Size = new System.Drawing.Size(123, 41);
             this.AddUser_bttn.TabIndex = 2;
             this.AddUser_bttn.Text = "Add User";
             this.AddUser_bttn.UseVisualStyleBackColor = true;
@@ -378,19 +378,18 @@
             // 
             // filter_txtbox
             // 
-            this.filter_txtbox.Location = new System.Drawing.Point(36, 42);
-            this.filter_txtbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.filter_txtbox.Location = new System.Drawing.Point(41, 56);
             this.filter_txtbox.Name = "filter_txtbox";
-            this.filter_txtbox.Size = new System.Drawing.Size(245, 23);
+            this.filter_txtbox.Size = new System.Drawing.Size(279, 27);
             this.filter_txtbox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(10, 0);
+            this.label1.Location = new System.Drawing.Point(11, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 37);
+            this.label1.Size = new System.Drawing.Size(296, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Management";
             // 
@@ -406,17 +405,17 @@
             this.TicketView_Pnl.Controls.Add(this.textBox_Filter);
             this.TicketView_Pnl.Controls.Add(this.label_overview);
             this.TicketView_Pnl.Controls.Add(this.button_CreateIncident);
-            this.TicketView_Pnl.Location = new System.Drawing.Point(828, 87);
-            this.TicketView_Pnl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TicketView_Pnl.Location = new System.Drawing.Point(946, 116);
             this.TicketView_Pnl.Name = "TicketView_Pnl";
-            this.TicketView_Pnl.Size = new System.Drawing.Size(871, 371);
+            this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
             this.TicketView_Pnl.TabIndex = 14;
             // 
             // btnArchive
             // 
-            this.btnArchive.Location = new System.Drawing.Point(693, 340);
+            this.btnArchive.Location = new System.Drawing.Point(792, 453);
+            this.btnArchive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Size = new System.Drawing.Size(134, 32);
+            this.btnArchive.Size = new System.Drawing.Size(153, 43);
             this.btnArchive.TabIndex = 17;
             this.btnArchive.Text = "Archive old tickets";
             this.btnArchive.UseVisualStyleBackColor = true;
@@ -424,10 +423,9 @@
             // 
             // button_deleteTicket
             // 
-            this.button_deleteTicket.Location = new System.Drawing.Point(745, 32);
-            this.button_deleteTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_deleteTicket.Location = new System.Drawing.Point(851, 43);
             this.button_deleteTicket.Name = "button_deleteTicket";
-            this.button_deleteTicket.Size = new System.Drawing.Size(82, 38);
+            this.button_deleteTicket.Size = new System.Drawing.Size(94, 51);
             this.button_deleteTicket.TabIndex = 16;
             this.button_deleteTicket.Text = "Delete .  . .\r\n";
             this.button_deleteTicket.UseVisualStyleBackColor = true;
@@ -435,10 +433,9 @@
             // 
             // button_PrioritySort
             // 
-            this.button_PrioritySort.Location = new System.Drawing.Point(412, 48);
-            this.button_PrioritySort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_PrioritySort.Location = new System.Drawing.Point(472, 66);
             this.button_PrioritySort.Name = "button_PrioritySort";
-            this.button_PrioritySort.Size = new System.Drawing.Size(114, 20);
+            this.button_PrioritySort.Size = new System.Drawing.Size(130, 27);
             this.button_PrioritySort.TabIndex = 15;
             this.button_PrioritySort.Text = "Sort By Priority";
             this.button_PrioritySort.UseVisualStyleBackColor = true;
@@ -457,11 +454,10 @@
             this.columnHeader3});
             this.listView_ServiceDesk.FullRowSelect = true;
             this.listView_ServiceDesk.HideSelection = false;
-            this.listView_ServiceDesk.Location = new System.Drawing.Point(32, 115);
-            this.listView_ServiceDesk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView_ServiceDesk.Location = new System.Drawing.Point(37, 153);
             this.listView_ServiceDesk.MultiSelect = false;
             this.listView_ServiceDesk.Name = "listView_ServiceDesk";
-            this.listView_ServiceDesk.Size = new System.Drawing.Size(795, 220);
+            this.listView_ServiceDesk.Size = new System.Drawing.Size(908, 292);
             this.listView_ServiceDesk.TabIndex = 14;
             this.listView_ServiceDesk.UseCompatibleStateImageBehavior = false;
             this.listView_ServiceDesk.View = System.Windows.Forms.View.Details;
@@ -507,10 +503,9 @@
             // 
             // TransferTicket_bttn
             // 
-            this.TransferTicket_bttn.Location = new System.Drawing.Point(566, 32);
-            this.TransferTicket_bttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TransferTicket_bttn.Location = new System.Drawing.Point(635, 42);
             this.TransferTicket_bttn.Name = "TransferTicket_bttn";
-            this.TransferTicket_bttn.Size = new System.Drawing.Size(82, 38);
+            this.TransferTicket_bttn.Size = new System.Drawing.Size(94, 51);
             this.TransferTicket_bttn.TabIndex = 13;
             this.TransferTicket_bttn.Text = "Transfer Ticket";
             this.TransferTicket_bttn.UseVisualStyleBackColor = true;
@@ -518,10 +513,9 @@
             // 
             // button_Filter
             // 
-            this.button_Filter.Location = new System.Drawing.Point(315, 48);
-            this.button_Filter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Filter.Location = new System.Drawing.Point(360, 64);
             this.button_Filter.Name = "button_Filter";
-            this.button_Filter.Size = new System.Drawing.Size(82, 22);
+            this.button_Filter.Size = new System.Drawing.Size(94, 29);
             this.button_Filter.TabIndex = 12;
             this.button_Filter.Text = "Filter";
             this.button_Filter.UseVisualStyleBackColor = true;
@@ -537,11 +531,10 @@
             this.Description});
             this.listView_Tickets.FullRowSelect = true;
             this.listView_Tickets.HideSelection = false;
-            this.listView_Tickets.Location = new System.Drawing.Point(32, 94);
-            this.listView_Tickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView_Tickets.Location = new System.Drawing.Point(37, 125);
             this.listView_Tickets.MultiSelect = false;
             this.listView_Tickets.Name = "listView_Tickets";
-            this.listView_Tickets.Size = new System.Drawing.Size(795, 220);
+            this.listView_Tickets.Size = new System.Drawing.Size(908, 292);
             this.listView_Tickets.TabIndex = 8;
             this.listView_Tickets.UseCompatibleStateImageBehavior = false;
             this.listView_Tickets.View = System.Windows.Forms.View.Details;
@@ -577,28 +570,26 @@
             // 
             // textBox_Filter
             // 
-            this.textBox_Filter.Location = new System.Drawing.Point(45, 48);
-            this.textBox_Filter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_Filter.Location = new System.Drawing.Point(51, 64);
             this.textBox_Filter.Name = "textBox_Filter";
-            this.textBox_Filter.Size = new System.Drawing.Size(245, 23);
+            this.textBox_Filter.Size = new System.Drawing.Size(279, 27);
             this.textBox_Filter.TabIndex = 11;
             // 
             // label_overview
             // 
             this.label_overview.AutoSize = true;
             this.label_overview.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_overview.Location = new System.Drawing.Point(32, 18);
+            this.label_overview.Location = new System.Drawing.Point(37, 24);
             this.label_overview.Name = "label_overview";
-            this.label_overview.Size = new System.Drawing.Size(34, 25);
+            this.label_overview.Size = new System.Drawing.Size(40, 30);
             this.label_overview.TabIndex = 9;
             this.label_overview.Text = ". . .";
             // 
             // button_CreateIncident
             // 
-            this.button_CreateIncident.Location = new System.Drawing.Point(654, 32);
-            this.button_CreateIncident.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_CreateIncident.Location = new System.Drawing.Point(747, 43);
             this.button_CreateIncident.Name = "button_CreateIncident";
-            this.button_CreateIncident.Size = new System.Drawing.Size(86, 38);
+            this.button_CreateIncident.Size = new System.Drawing.Size(98, 51);
             this.button_CreateIncident.TabIndex = 10;
             this.button_CreateIncident.Text = "Create . . .";
             this.button_CreateIncident.UseVisualStyleBackColor = true;
@@ -606,15 +597,14 @@
             // 
             // MainViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1684, 761);
+            this.ClientSize = new System.Drawing.Size(1924, 1015);
             this.Controls.Add(this.TicketView_Pnl);
             this.Controls.Add(this.UserManagement_Pnl);
             this.Controls.Add(this.pnlDashBoard);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainViewForm";
             this.Text = "MainViewForm";
             this.menuStrip1.ResumeLayout(false);
