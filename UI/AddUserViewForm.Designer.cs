@@ -34,15 +34,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Password_CheckBox = new System.Windows.Forms.CheckBox();
             this.Cancel_bttn = new System.Windows.Forms.Button();
             this.Add_bttn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.TypeUser_cmbBox = new System.Windows.Forms.ComboBox();
             this.Location_cmbBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Name_TxtBox = new System.Windows.Forms.TextBox();
+            this.Email_TxtBox = new System.Windows.Forms.TextBox();
+            this.Phone_TxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -99,15 +99,15 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Send Password?";
             // 
-            // checkBox1
+            // Password_CheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(181, 339);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(334, 24);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Yes, a password e-mail will be sent to the user";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.Password_CheckBox.AutoSize = true;
+            this.Password_CheckBox.Location = new System.Drawing.Point(181, 339);
+            this.Password_CheckBox.Name = "Password_CheckBox";
+            this.Password_CheckBox.Size = new System.Drawing.Size(334, 24);
+            this.Password_CheckBox.TabIndex = 6;
+            this.Password_CheckBox.Text = "Yes, a password e-mail will be sent to the user";
+            this.Password_CheckBox.UseVisualStyleBackColor = true;
             // 
             // Cancel_bttn
             // 
@@ -155,48 +155,48 @@
             this.Location_cmbBox.Size = new System.Drawing.Size(238, 28);
             this.Location_cmbBox.TabIndex = 11;
             // 
-            // textBox1
+            // Name_TxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 27);
-            this.textBox1.TabIndex = 12;
+            this.Name_TxtBox.Location = new System.Drawing.Point(181, 93);
+            this.Name_TxtBox.Name = "Name_TxtBox";
+            this.Name_TxtBox.Size = new System.Drawing.Size(238, 27);
+            this.Name_TxtBox.TabIndex = 12;
             // 
-            // textBox2
+            // Email_TxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(181, 189);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 27);
-            this.textBox2.TabIndex = 13;
+            this.Email_TxtBox.Location = new System.Drawing.Point(181, 189);
+            this.Email_TxtBox.Name = "Email_TxtBox";
+            this.Email_TxtBox.Size = new System.Drawing.Size(238, 27);
+            this.Email_TxtBox.TabIndex = 13;
             // 
-            // textBox3
+            // Phone_TxtBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(181, 232);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(238, 27);
-            this.textBox3.TabIndex = 14;
+            this.Phone_TxtBox.Location = new System.Drawing.Point(181, 232);
+            this.Phone_TxtBox.Name = "Phone_TxtBox";
+            this.Phone_TxtBox.Size = new System.Drawing.Size(238, 27);
+            this.Phone_TxtBox.TabIndex = 14;
             // 
-            // AddUserView
+            // AddUserViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 474);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Phone_TxtBox);
+            this.Controls.Add(this.Email_TxtBox);
+            this.Controls.Add(this.Name_TxtBox);
             this.Controls.Add(this.Location_cmbBox);
             this.Controls.Add(this.TypeUser_cmbBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Add_bttn);
             this.Controls.Add(this.Cancel_bttn);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.Password_CheckBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "AddUserView";
+            this.Name = "AddUserViewForm";
             this.Text = "AddUserView";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,14 +211,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox Password_CheckBox;
         private System.Windows.Forms.Button Cancel_bttn;
         private System.Windows.Forms.Button Add_bttn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox TypeUser_cmbBox;
         private System.Windows.Forms.ComboBox Location_cmbBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Name_TxtBox;
+        private System.Windows.Forms.TextBox Email_TxtBox;
+        private System.Windows.Forms.TextBox Phone_TxtBox;
     }
 }

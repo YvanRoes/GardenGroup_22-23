@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Deadline { deadline1, deadline2, deadline3 }
+    //numbers are the days
+    public enum Deadline { Day = 1, Week = 2, Month = 3 }
 }
