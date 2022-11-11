@@ -21,13 +21,14 @@ namespace UI
         public MainViewForm(User user)
         {
             InitializeComponent();
-            start();
             this.Size = new Size(1060, 640);
 
             _userService = new UserService();
             _loggedUser = user;
             _ticketService = new TicketService();
             _incidentService = new IncidentService();
+
+            start();
 
             if (_loggedUser.get_userType() != UserType.ServiceDesk)
                 userManagementToolStripMenuItem.Enabled = false;
@@ -65,7 +66,7 @@ namespace UI
         {
             SwitchPanel("Dashboard");
             
-            if(_loggedUser.get_userType() != UserType.ServiceDesk)
+            if(_loggedUser.get_userType() == UserType.ServiceDesk)
                 _ = LoadServiceDeskEmployeeDashboardAsync();
         }
 

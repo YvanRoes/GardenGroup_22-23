@@ -36,6 +36,8 @@ namespace Model
         public UserType get_userType() { return (UserType)_userType; }
         public string get_password() { return _password; }
 
+        public User() { }
+
         public User(int id, string name, string email, long phone, int usertype, int location, string password)
         {
             _id = id;
