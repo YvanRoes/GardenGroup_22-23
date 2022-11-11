@@ -236,6 +236,7 @@ namespace UI
             this.buttonSubmit.TabIndex = 47;
             this.buttonSubmit.Text = "SUBMIT TICKET";
             this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // labelDateTimeValue
             // 
