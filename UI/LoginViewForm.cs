@@ -44,14 +44,23 @@ namespace UI
                 labelIndicator.Text = "Your username and password combination are wrong";
             }
         }
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            paneForgotPassword.Visible = true;
+            textBoxForgetPassowrdNewPassword.Visible = false;
+            labelIndicator.Text = "";
+            labelForgotPasswordNewPassword.Visible = false;
+            buttonSetNewPassword.Visible = false;
+
+        }
         private void WriteIntoAFile(Model.User user)
         {
             try
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter("LoginedUser.txt", true);
+                StreamWriter sw = new StreamWriter("LoginedUser.txt");
                 //Write a line of text
-                sw.WriteLine(user._id + ',' + user._name + ',' + user._email + ',' + user._phone + ',' + user._userType + ',' + user._location + ',' + user._password);
+                sw.WriteLine(user._id+ ","+user._name + ',' + user._email + ',' + user._phone + ',' + user._userType + ',' + user._location + ',' + textBoxPassword.Text);
                 //Close the file
                 sw.Close();
             }
@@ -59,14 +68,20 @@ namespace UI
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
-            }
+        }
+        private void DisplayRememberdLoginUser(List<Model.User> users)
+        {
+            textBoxUsername.Text = users[0]._email;
+            textBoxPassword.Text = users[0]._password;
         }
         private void LoginViewForm_Load(object sender, EventArgs e)
         {
             paneForgotPassword.Visible = false;
+            ReadAfile();
+        }
+
+        private void ReadAfile()
+        {
             string path = "LoginedUser.txt";
             string line;
             try
@@ -93,42 +108,17 @@ namespace UI
                         users.Add(user);
                         lineCOunt--;
                     }
+                    streamReader.Close();
+                    DisplayRememberdLoginUser(users);
                 }
-
             }
             catch (Exception)
             {
-                
+
+                throw;
             }
         }
-        private void btnForgotPassword_Click(object sender, EventArgs e)
-        {
-            paneForgotPassword.Visible = true;
-            textBoxForgetPassowrdNewPassword.Visible= false;
-            labelIndicator.Text = "";
-            labelForgotPasswordNewPassword.Visible = false;
-            buttonSetNewPassword.Visible = false;
-            if (textBoxEmail.Text == "" || textBoxUserId.Text == "")
-                labelIndicator.Text = "Please fill the Email and UserId";
-            else
-            {
-                UserService userService = new UserService();
-                Model.User user = userService.GetFilteredUsersByEmailAndId(textBoxEmail.Text,int.Parse(textBoxUserId.Text));
-                if (user != null)
-                {
-                    this.user = user;
-                    buttonSetNewPassword.Visible = true;
-                    labelForgotPasswordNewPassword.Visible = true;
-                    textBoxForgetPassowrdNewPassword.Visible= true;
-                }
-            }
 
-        }
-
-        private void checkBoxRememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonSetNewPassword_Click(object sender, EventArgs e)
         {
@@ -137,7 +127,27 @@ namespace UI
                 labelIndicator.Text = "Please fill the new password";
             else
             {
-                userService.SetnewPassowrd(textBoxForgetPassowrdNewPassword.Text, user._email, user._id);
+                string password = textBoxForgetPassowrdNewPassword.Text;
+                userService.SetnewPassowrd(password, user._email, user._id);
+            }
+        }
+
+        private void buttonForgetPasswordCheckEmailandId_Click(object sender, EventArgs e)
+        {
+
+            if (textBoxEmail.Text == "" || textBoxUserId.Text == "")
+                labelIndicator.Text = "Please fill the Email and UserId";
+            else
+            {
+                UserService userService = new UserService();
+                Model.User user = userService.GetFilteredUsersByEmailAndId(textBoxEmail.Text, int.Parse(textBoxUserId.Text));
+                if (user != null)
+                {
+                    this.user = user;
+                    buttonSetNewPassword.Visible = true;
+                    labelForgotPasswordNewPassword.Visible = true;
+                    textBoxForgetPassowrdNewPassword.Visible = true;
+                }
             }
         }
     }

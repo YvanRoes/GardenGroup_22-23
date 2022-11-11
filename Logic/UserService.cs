@@ -38,7 +38,7 @@ namespace Logic
         }
         public void SetnewPassowrd(string newPassword,string email,int id)
         {
-            userDb.SetnewPassowrd(newPassword, email, id);
+            userDb.SetnewPassowrd(PasswordHasher.Base64Encode(newPassword), email, id);
         }
         public void addNewUser(User user)
         {
@@ -49,9 +49,9 @@ namespace Logic
             ticketDb = new TicketDAO();
             return ticketDb.CountTicketsperUser(userId);
         }
-        public User GetUserByUsernameAndPassword(string email,string password)
+        public User GetUserByUsernameAndPassword(string email, string password)
         {
-            return userDb.GetUserByUsernameAndPassword(email,password);
+            return userDb.GetUserByUsernameAndPassword(email, PasswordHasher.Base64Encode(password));
         }
         public User GetFilteredUsersByEmailAndId(string email,int id)
         {
