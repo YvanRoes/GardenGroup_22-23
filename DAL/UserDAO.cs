@@ -48,10 +48,22 @@ namespace DAL
         {
             var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._password, password);
             var user = collection.Find(filter).FirstOrDefault();
-
             return user;
         }
+        public void SetnewPassowrd(string newPassword,string email,int id)
+        {
+            IMongoCollection<User> collection = database.GetCollection<User>("User");
+            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._id, id);
+            var update = Builders<User>.Update.Set("Password", newPassword);
+            collection.UpdateOne(filter,update);
 
+        }
+        public User GetFilteredUsersByEmailAndId(string email, int id)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._id, id);
+            var user = collection.Find(filter).FirstOrDefault();
+            return user;
+        }
         public List<User> GetFilteredUserByEmail(string filterEmail)
         {
             List<User> users = new List<User>();
@@ -68,7 +80,6 @@ namespace DAL
             var document = new BsonDocument { { "ID", getNewId() }, { "Name", user.get_name() }, { "Email", user.get_email() }, { "Phone", user.get_phone() }, { "Location", (int)user.get_location() }, { "UserType", (int)user.get_userType() }, { "Password", user.get_password() } };
             CreateDocument("User", document);
         }
-
         private int getNewId()
         {
             int id = 0;
@@ -94,8 +105,6 @@ namespace DAL
         {
             return getPassword(id, name);
         }
-
-
     }
 }
 
