@@ -84,6 +84,13 @@ namespace DAL
             collection.UpdateOneAsync(filter, update);
 
         }
+        public void DeleteDocument(int id)
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var filter = Builders<Ticket>.Filter.Eq("ID" ,id);
+            
+            var personDeleteResult = collection.DeleteOne(filter);
+        }
         
         //Andy's 
 

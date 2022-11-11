@@ -48,6 +48,7 @@
             this.filter_txtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TicketView_Pnl = new System.Windows.Forms.Panel();
+            this.button_PrioritySort = new System.Windows.Forms.Button();
             this.listView_ServiceDesk = new System.Windows.Forms.ListView();
             this.SD_Id = new System.Windows.Forms.ColumnHeader();
             this.SD_user = new System.Windows.Forms.ColumnHeader();
@@ -69,7 +70,7 @@
             this.textBox_Filter = new System.Windows.Forms.TextBox();
             this.label_overview = new System.Windows.Forms.Label();
             this.button_CreateIncident = new System.Windows.Forms.Button();
-            this.button_PrioritySort = new System.Windows.Forms.Button();
+            this.button_deleteTicket = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlDashBoard.SuspendLayout();
             this.UserManagement_Pnl.SuspendLayout();
@@ -244,6 +245,7 @@
             // 
             // TicketView_Pnl
             // 
+            this.TicketView_Pnl.Controls.Add(this.button_deleteTicket);
             this.TicketView_Pnl.Controls.Add(this.button_PrioritySort);
             this.TicketView_Pnl.Controls.Add(this.listView_ServiceDesk);
             this.TicketView_Pnl.Controls.Add(this.TransferTicket_bttn);
@@ -256,6 +258,16 @@
             this.TicketView_Pnl.Name = "TicketView_Pnl";
             this.TicketView_Pnl.Size = new System.Drawing.Size(995, 495);
             this.TicketView_Pnl.TabIndex = 14;
+            // 
+            // button_PrioritySort
+            // 
+            this.button_PrioritySort.Location = new System.Drawing.Point(611, 40);
+            this.button_PrioritySort.Name = "button_PrioritySort";
+            this.button_PrioritySort.Size = new System.Drawing.Size(94, 51);
+            this.button_PrioritySort.TabIndex = 15;
+            this.button_PrioritySort.Text = "Sort By Priority";
+            this.button_PrioritySort.UseVisualStyleBackColor = true;
+            this.button_PrioritySort.Click += new System.EventHandler(this.button_PrioritySort_Click);
             // 
             // listView_ServiceDesk
             // 
@@ -411,15 +423,15 @@
             this.button_CreateIncident.UseVisualStyleBackColor = true;
             this.button_CreateIncident.Click += new System.EventHandler(this.button_CreateIncident_Click_1);
             // 
-            // button_PrioritySort
+            // button_deleteTicket
             // 
-            this.button_PrioritySort.Location = new System.Drawing.Point(611, 40);
-            this.button_PrioritySort.Name = "button_PrioritySort";
-            this.button_PrioritySort.Size = new System.Drawing.Size(94, 51);
-            this.button_PrioritySort.TabIndex = 15;
-            this.button_PrioritySort.Text = "Sort By Priority";
-            this.button_PrioritySort.UseVisualStyleBackColor = true;
-            this.button_PrioritySort.Click += new System.EventHandler(this.button_PrioritySort_Click);
+            this.button_deleteTicket.Location = new System.Drawing.Point(511, 40);
+            this.button_deleteTicket.Name = "button_deleteTicket";
+            this.button_deleteTicket.Size = new System.Drawing.Size(94, 51);
+            this.button_deleteTicket.TabIndex = 16;
+            this.button_deleteTicket.Text = "Delete Ticket";
+            this.button_deleteTicket.UseVisualStyleBackColor = true;
+            this.button_deleteTicket.Click += new System.EventHandler(this.button_deleteTicket_Click);
             // 
             // MainViewForm
             // 
@@ -490,5 +502,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button button_PrioritySort;
+        private System.Windows.Forms.Button button_deleteTicket;
     }
 }
