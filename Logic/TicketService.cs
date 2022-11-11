@@ -13,14 +13,7 @@ namespace Logic
     {
         TicketDAO ticketDB; 
 
-        public TicketService()
-        {
-            ticketDB = new TicketDAO();
-        }
-/*        public List<Ticket> GetAllTickets()
-        {
-            return ticketDB.GetAllTickets();
-        }*/
+        public TicketService() => ticketDB = new TicketDAO();
 
         public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
@@ -78,7 +71,7 @@ namespace Logic
                 int ticketedBy = new Random().Next(1000, max);
                 int reportedBy = new Random().Next(1000, max);
                 string subject = "Some Subject";
-                DateTime date = DateTime.Now;
+                DateTime date = DateTime.Now.AddMonths(-3).AddDays(new Random().Next(0, 32));
                 int ticketType = new Random().Next(1, 5);
                 int priority = new Random().Next(1, 4);
                 int deadline = new Random().Next(1, 4);
@@ -87,7 +80,7 @@ namespace Logic
 
                 BsonDocument bdoc = new BsonDocument { { "ID", id},
                 {"ticketedBy", ticketedBy }, {"reportedBy", reportedBy},
-                {"subject", subject }, {"ticketType", ticketType},
+                {"subject", subject },{"date", date }, {"ticketType", ticketType},
                 {"priority", priority }, {"deadline", deadline},
                 {"description", description}, {"status", status}};
                 ticketDB.CreateDocument("Ticket", bdoc);

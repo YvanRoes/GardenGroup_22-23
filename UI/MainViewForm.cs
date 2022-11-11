@@ -40,14 +40,17 @@ namespace UI
             this.Size = new Size(1060, 640);
 
             _userService = new UserService();
-            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 0, 2, "1");
+            _loggedUser = new User(1000, "John Snow", "JohnSnow", 78903142, 1, 2, "1");
             _ticketService = new TicketService();
             _incidentService = new IncidentService();
 
             start();
 
             if (_loggedUser.get_userType() != UserType.ServiceDesk)
+            {
                 userManagementToolStripMenuItem.Enabled = false;
+                btnArchive.Visible = false;
+            }
         }
         void start()
         {
@@ -144,21 +147,33 @@ namespace UI
 
         private void setGroupBoxDataRegularEmployee(int unresolvedTickets, int inProgressTickets, int resolvedTickets, int withinDeadline, int pastDeadline)
         {
-            //add label content
+            //add component data tickets
             lblunResolved.Text = $"Unresolved: {unresolvedTickets}";
             lblInProgress.Text = $"In progress: {inProgressTickets}";
             lblResolved.Text = $"Resolved {resolvedTickets}";
             pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
             pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
             pbResolved.BackColor = Color.FromArgb(60, 207, 78);
+            //set component data ticket deadlines
+            pbWithinDeadline.BackColor = Color.FromArgb(41, 52, 98);
+            pbPastDeadline.BackColor = Color.FromArgb(214, 28, 78);
+            lblWithinDeadline.Text = $"Within deadline: {withinDeadline}";
+            lblPastDeadline.Text = $"Past deadline: {pastDeadline}";
 
             //move labels to dashboard
-            pnlDashBoard.Controls.Add(lblunResolved);
-            pnlDashBoard.Controls.Add(lblInProgress);
-            pnlDashBoard.Controls.Add(lblResolved);
-            pnlDashBoard.Controls.Add(pbunResolved);
-            pnlDashBoard.Controls.Add(pbInProgress);
-            pnlDashBoard.Controls.Add(pbResolved);
+
+            Label userLabel = new Label();
+            userLabel.Location = new Point(25, 25);
+            userLabel.Font = new Font("Arial", 16);
+            userLabel.Size = new Size(250, 50);
+            userLabel.Text = $"{_loggedUser.get_name()}'s tickets";
+            pnlDashBoard.Controls.Add(userLabel);
+
+            pnlDashBoard.Controls.Add(pnlColorLegendMain);
+            pnlDashBoard.Controls.Add(pnlColorLegendSecondary);
+            pnlColorLegendMain.Location = new Point(25,100);
+            pnlColorLegendSecondary.Location = new Point(250, 100);
+            //remove group boxes
             pnlDashBoard.Controls.Remove(gbMainChart);
             pnlDashBoard.Controls.Remove(gbSecondaryChart);
         }
@@ -384,6 +399,14 @@ namespace UI
         private void listView_ServiceDesk_SelectedIndexChanged(object sender, EventArgs e)
         {
             TransferTicket_bttn.Enabled = true;
+        }
+
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            TicketArchiveService archiveService = new TicketArchiveService();
+            TicketService ticketService = new TicketService();
+            //if ticket more than 2 months old
+            archiveService.AddTicketsToArchive(ticketService.getTickets(), 2);
         }
     }
 }
