@@ -121,6 +121,9 @@
             // 
             // pnlDashBoard
             // 
+            this.pnlDashBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDashBoard.Controls.Add(this.groupBox2);
             this.pnlDashBoard.Controls.Add(this.groupBox1);
             this.pnlDashBoard.Location = new System.Drawing.Point(10, 73);
@@ -130,12 +133,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.pbPastDeadline);
             this.groupBox2.Controls.Add(this.pbWithinDeadline);
             this.groupBox2.Controls.Add(this.pnlChartWrapperSecondary);
             this.groupBox2.Location = new System.Drawing.Point(407, 62);
+            this.groupBox2.MaximumSize = new System.Drawing.Size(382, 235);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(382, 235);
             this.groupBox2.TabIndex = 11;
@@ -185,6 +190,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.lblResolved);
             this.groupBox1.Controls.Add(this.lblInProgress);
             this.groupBox1.Controls.Add(this.lblunResolved);
@@ -193,11 +199,12 @@
             this.groupBox1.Controls.Add(this.pbunResolved);
             this.groupBox1.Controls.Add(this.pnlChartWrapperMain);
             this.groupBox1.Location = new System.Drawing.Point(19, 62);
+            this.groupBox1.MaximumSize = new System.Drawing.Size(382, 235);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(382, 235);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ticket status";
+            this.groupBox1.Text = "Tickets";
             // 
             // lblResolved
             // 

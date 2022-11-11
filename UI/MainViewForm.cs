@@ -145,12 +145,11 @@ namespace UI
             /*
              * works with non overloaded function createGraphicPie
              */
-            if (newAngle < angle1) //unresolved
-                b.Color = Color.FromArgb(224, 20, 76);
-            if (newAngle > angle1 && newAngle < angle2) //inProgress
-                b.Color = Color.FromArgb(255, 178, 0);
-            if (newAngle > angle2 && newAngle < angle3) //obsolete or optional
-                b.Color = Color.Empty;
+            if (newAngle < angle1) //within deadline
+                b.Color = Color.FromArgb(41, 52, 98);
+            if (newAngle > angle1 && newAngle < angle2) //past deadline
+                b.Color = Color.FromArgb(214, 28, 78);
+            
         }
         private void colorBrushColorChange(SolidBrush b, float angle1, float angle2, float angle3,float angle4, float newAngle)
         {
@@ -190,25 +189,28 @@ namespace UI
             TicketView_Pnl.Visible = false;
             pnlDashBoard.Visible = true;
             pnlDashBoard.Dock = DockStyle.Fill;
-
-            pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
-            pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
-            pbResolved.BackColor = Color.FromArgb(60, 207, 78);
-
-
             TicketService ticketService = new TicketService();
             int totalTickets = ticketService.getTickets().Count;
             int unresolvedTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.unresolved)).Count;
             int inProgressTickets = (await ticketService.getTicketsByStatusAsync(TicketStatus.inProgress)).Count;
             int resolvedTickets = totalTickets - unresolvedTickets - inProgressTickets;
-            int pastDeadline = ticketService.getTicketsBeforeAndPastDeadline()[1].Count;
             int beforeDeadline = ticketService.getTicketsBeforeAndPastDeadline()[0].Count;
+            int pastDeadline = ticketService.getTicketsBeforeAndPastDeadline()[1].Count;
             //unresolved, inProgress, resolved
             DrawPieChart(totalTickets, unresolvedTickets, inProgressTickets, resolvedTickets, pnlChartWrapperMain);
 
-
             //draw unresolved and past deadline
             DrawPieChart(beforeDeadline + pastDeadline, beforeDeadline, pastDeadline, pnlChartWrapperSecondary);
+
+            pbunResolved.BackColor = Color.FromArgb(224, 20, 76);
+            pbInProgress.BackColor = Color.FromArgb(255, 178, 0);
+            pbResolved.BackColor = Color.FromArgb(60, 207, 78);
+            lblunResolved.Text += $" {unresolvedTickets}";
+            lblInProgress.Text += $" {inProgressTickets}";
+            lblResolved.Text += $" {resolvedTickets}";
+
+            pbWithinDeadline.BackColor = Color.FromArgb(41, 52, 98);
+            pbPastDeadline.BackColor = Color.FromArgb(214, 28, 78);
         }
 
         private void DashBoardMenuItem_Click(object sender, EventArgs e)

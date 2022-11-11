@@ -47,7 +47,7 @@ namespace Logic
                 beforeDeadlineTickets.Add(ticket);
 
             });
-            return new List<Ticket>[] {pastDeadlinetickets, beforeDeadlineTickets};
+            return new List<Ticket>[] { beforeDeadlineTickets,pastDeadlinetickets};
         }
         public void CreateTickets()
         {
