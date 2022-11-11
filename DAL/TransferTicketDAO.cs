@@ -23,9 +23,9 @@ namespace DAL
             _userCollection = database.GetCollection<User>("User");
             _ticketCollection = database.GetCollection<Ticket>("Ticket");
         }
-        public List<User> GetListOfEmployees(Departments department)
+        public List<User> GetListOfEmployees(UserType userType)
         {
-            var filter = Builders<User>.Filter.Eq("UserType", (int)department);
+            var filter = Builders<User>.Filter.Eq("UserType", (int)userType);
             List<User> users = _userCollection.Find(filter).ToList();
 
             return users;

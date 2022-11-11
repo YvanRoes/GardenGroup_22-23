@@ -57,7 +57,7 @@ namespace UI
                 Employee_cmboBox.Visible = true;
                 Employee_lbl.Visible = true;
 
-                FillEmployeeComboBox(_transferTicketService.GetListOfUsers(selectedDepartment));
+                FillEmployeeComboBox(_transferTicketService.GetListOfUsers(UserType.ServiceDesk));
             }
             else
             {
