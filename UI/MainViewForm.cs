@@ -35,7 +35,7 @@ namespace UI
 
         void start()
         {
-            loadDashBoardAsync();
+            _ = loadDashBoardAsync();
             UserManagement_Pnl.Visible = false;
             TicketView_Pnl.Visible = false;
         }
