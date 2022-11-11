@@ -167,7 +167,7 @@
             this.pnlColorLegendSecondary.Controls.Add(this.lblWithinDeadline);
             this.pnlColorLegendSecondary.Location = new System.Drawing.Point(211, 26);
             this.pnlColorLegendSecondary.Name = "pnlColorLegendSecondary";
-            this.pnlColorLegendSecondary.Size = new System.Drawing.Size(173, 100);
+            this.pnlColorLegendSecondary.Size = new System.Drawing.Size(167, 100);
             this.pnlColorLegendSecondary.TabIndex = 12;
             // 
             // pbWithinDeadline
