@@ -70,12 +70,9 @@ namespace UI
         private void FillEmployeeComboBox(List<User> Employees)
         {
             Employee_cmboBox.Items.Clear();
-
-            
+   
             Employee_cmboBox.ValueMember = "_id";
             Employee_cmboBox.DataSource = Employees;
-                
-                //Employee_cmboBox.Items.Add($"{e._name} ({e.get_id()})");
             
         }
 
