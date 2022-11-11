@@ -14,17 +14,9 @@ namespace DAL
     public class MongoHelper
     {
         protected static MongoClient _client;
-        protected static MongoHelper _helper;
         protected IMongoDatabase database;
 
-        protected MongoHelper() { _client = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/?retryWrites=true&w=majority"); database = _client.GetDatabase("NoSqlProjectDatabase"); }
-
-        public static MongoHelper getInstance()
-        {
-            if (_helper == null)
-                _helper = new MongoHelper();
-            return _helper;
-        }
+        public MongoHelper() { _client = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/?retryWrites=true&w=majority"); database = _client.GetDatabase("NoSqlProjectDatabase"); }
 
         public List<DatabaseModel> getAllDbs()
         {

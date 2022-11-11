@@ -34,18 +34,20 @@
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashBoard = new System.Windows.Forms.Panel();
             this.gbSecondaryChart = new System.Windows.Forms.GroupBox();
-            this.lblPastDeadline = new System.Windows.Forms.Label();
-            this.lblWithinDeadline = new System.Windows.Forms.Label();
-            this.pbPastDeadline = new System.Windows.Forms.PictureBox();
+            this.pnlColorLegendSecondary = new System.Windows.Forms.Panel();
             this.pbWithinDeadline = new System.Windows.Forms.PictureBox();
+            this.lblPastDeadline = new System.Windows.Forms.Label();
+            this.pbPastDeadline = new System.Windows.Forms.PictureBox();
+            this.lblWithinDeadline = new System.Windows.Forms.Label();
             this.pnlChartWrapperSecondary = new System.Windows.Forms.Panel();
             this.gbMainChart = new System.Windows.Forms.GroupBox();
-            this.lblResolved = new System.Windows.Forms.Label();
-            this.lblInProgress = new System.Windows.Forms.Label();
-            this.lblunResolved = new System.Windows.Forms.Label();
-            this.pbResolved = new System.Windows.Forms.PictureBox();
-            this.pbInProgress = new System.Windows.Forms.PictureBox();
+            this.pnlColorLegendMain = new System.Windows.Forms.Panel();
             this.pbunResolved = new System.Windows.Forms.PictureBox();
+            this.lblResolved = new System.Windows.Forms.Label();
+            this.pbInProgress = new System.Windows.Forms.PictureBox();
+            this.lblInProgress = new System.Windows.Forms.Label();
+            this.pbResolved = new System.Windows.Forms.PictureBox();
+            this.lblunResolved = new System.Windows.Forms.Label();
             this.pnlChartWrapperMain = new System.Windows.Forms.Panel();
             this.UserManagement_Pnl = new System.Windows.Forms.Panel();
             this.FilterUsersByEmail_bttn = new System.Windows.Forms.Button();
@@ -86,12 +88,14 @@
             this.menuStrip1.SuspendLayout();
             this.pnlDashBoard.SuspendLayout();
             this.gbSecondaryChart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPastDeadline)).BeginInit();
+            this.pnlColorLegendSecondary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbWithinDeadline)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPastDeadline)).BeginInit();
             this.gbMainChart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbResolved)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInProgress)).BeginInit();
+            this.pnlColorLegendMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbunResolved)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInProgress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResolved)).BeginInit();
             this.UserManagement_Pnl.SuspendLayout();
             this.TicketView_Pnl.SuspendLayout();
             this.SuspendLayout();
@@ -144,10 +148,7 @@
             // gbSecondaryChart
             // 
             this.gbSecondaryChart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.gbSecondaryChart.Controls.Add(this.lblPastDeadline);
-            this.gbSecondaryChart.Controls.Add(this.lblWithinDeadline);
-            this.gbSecondaryChart.Controls.Add(this.pbPastDeadline);
-            this.gbSecondaryChart.Controls.Add(this.pbWithinDeadline);
+            this.gbSecondaryChart.Controls.Add(this.pnlColorLegendSecondary);
             this.gbSecondaryChart.Controls.Add(this.pnlChartWrapperSecondary);
             this.gbSecondaryChart.Location = new System.Drawing.Point(425, 24);
             this.gbSecondaryChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -158,39 +159,50 @@
             this.gbSecondaryChart.TabStop = false;
             this.gbSecondaryChart.Text = "Ticket deadlines";
             // 
+            // pnlColorLegendSecondary
+            // 
+            this.pnlColorLegendSecondary.Controls.Add(this.pbWithinDeadline);
+            this.pnlColorLegendSecondary.Controls.Add(this.lblPastDeadline);
+            this.pnlColorLegendSecondary.Controls.Add(this.pbPastDeadline);
+            this.pnlColorLegendSecondary.Controls.Add(this.lblWithinDeadline);
+            this.pnlColorLegendSecondary.Location = new System.Drawing.Point(211, 26);
+            this.pnlColorLegendSecondary.Name = "pnlColorLegendSecondary";
+            this.pnlColorLegendSecondary.Size = new System.Drawing.Size(173, 100);
+            this.pnlColorLegendSecondary.TabIndex = 12;
+            // 
+            // pbWithinDeadline
+            // 
+            this.pbWithinDeadline.Location = new System.Drawing.Point(3, 3);
+            this.pbWithinDeadline.Name = "pbWithinDeadline";
+            this.pbWithinDeadline.Size = new System.Drawing.Size(25, 25);
+            this.pbWithinDeadline.TabIndex = 5;
+            this.pbWithinDeadline.TabStop = false;
+            // 
             // lblPastDeadline
             // 
-            this.lblPastDeadline.Location = new System.Drawing.Point(265, 77);
+            this.lblPastDeadline.Location = new System.Drawing.Point(34, 34);
             this.lblPastDeadline.Name = "lblPastDeadline";
             this.lblPastDeadline.Size = new System.Drawing.Size(111, 25);
             this.lblPastDeadline.TabIndex = 9;
             this.lblPastDeadline.Text = "Past deadline";
             this.lblPastDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblWithinDeadline
-            // 
-            this.lblWithinDeadline.Location = new System.Drawing.Point(265, 46);
-            this.lblWithinDeadline.Name = "lblWithinDeadline";
-            this.lblWithinDeadline.Size = new System.Drawing.Size(111, 25);
-            this.lblWithinDeadline.TabIndex = 8;
-            this.lblWithinDeadline.Text = "Within deadline";
-            this.lblWithinDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pbPastDeadline
             // 
-            this.pbPastDeadline.Location = new System.Drawing.Point(234, 77);
+            this.pbPastDeadline.Location = new System.Drawing.Point(3, 34);
             this.pbPastDeadline.Name = "pbPastDeadline";
             this.pbPastDeadline.Size = new System.Drawing.Size(25, 25);
             this.pbPastDeadline.TabIndex = 6;
             this.pbPastDeadline.TabStop = false;
             // 
-            // pbWithinDeadline
+            // lblWithinDeadline
             // 
-            this.pbWithinDeadline.Location = new System.Drawing.Point(234, 46);
-            this.pbWithinDeadline.Name = "pbWithinDeadline";
-            this.pbWithinDeadline.Size = new System.Drawing.Size(25, 25);
-            this.pbWithinDeadline.TabIndex = 5;
-            this.pbWithinDeadline.TabStop = false;
+            this.lblWithinDeadline.Location = new System.Drawing.Point(34, 3);
+            this.lblWithinDeadline.Name = "lblWithinDeadline";
+            this.lblWithinDeadline.Size = new System.Drawing.Size(111, 25);
+            this.lblWithinDeadline.TabIndex = 8;
+            this.lblWithinDeadline.Text = "Within deadline";
+            this.lblWithinDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlChartWrapperSecondary
             // 
@@ -202,12 +214,7 @@
             // gbMainChart
             // 
             this.gbMainChart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.gbMainChart.Controls.Add(this.lblResolved);
-            this.gbMainChart.Controls.Add(this.lblInProgress);
-            this.gbMainChart.Controls.Add(this.lblunResolved);
-            this.gbMainChart.Controls.Add(this.pbResolved);
-            this.gbMainChart.Controls.Add(this.pbInProgress);
-            this.gbMainChart.Controls.Add(this.pbunResolved);
+            this.gbMainChart.Controls.Add(this.pnlColorLegendMain);
             this.gbMainChart.Controls.Add(this.pnlChartWrapperMain);
             this.gbMainChart.Location = new System.Drawing.Point(18, 24);
             this.gbMainChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -218,56 +225,69 @@
             this.gbMainChart.TabStop = false;
             this.gbMainChart.Text = "Tickets";
             // 
+            // pnlColorLegendMain
+            // 
+            this.pnlColorLegendMain.Controls.Add(this.pbunResolved);
+            this.pnlColorLegendMain.Controls.Add(this.lblResolved);
+            this.pnlColorLegendMain.Controls.Add(this.pbInProgress);
+            this.pnlColorLegendMain.Controls.Add(this.lblInProgress);
+            this.pnlColorLegendMain.Controls.Add(this.pbResolved);
+            this.pnlColorLegendMain.Controls.Add(this.lblunResolved);
+            this.pnlColorLegendMain.Location = new System.Drawing.Point(212, 26);
+            this.pnlColorLegendMain.Name = "pnlColorLegendMain";
+            this.pnlColorLegendMain.Size = new System.Drawing.Size(173, 100);
+            this.pnlColorLegendMain.TabIndex = 11;
+            // 
+            // pbunResolved
+            // 
+            this.pbunResolved.Location = new System.Drawing.Point(3, 3);
+            this.pbunResolved.Name = "pbunResolved";
+            this.pbunResolved.Size = new System.Drawing.Size(25, 25);
+            this.pbunResolved.TabIndex = 5;
+            this.pbunResolved.TabStop = false;
+            // 
             // lblResolved
             // 
-            this.lblResolved.Location = new System.Drawing.Point(265, 108);
+            this.lblResolved.Location = new System.Drawing.Point(34, 65);
             this.lblResolved.Name = "lblResolved";
             this.lblResolved.Size = new System.Drawing.Size(111, 25);
             this.lblResolved.TabIndex = 10;
             this.lblResolved.Text = "Resolved";
             this.lblResolved.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pbInProgress
+            // 
+            this.pbInProgress.Location = new System.Drawing.Point(3, 34);
+            this.pbInProgress.Name = "pbInProgress";
+            this.pbInProgress.Size = new System.Drawing.Size(25, 25);
+            this.pbInProgress.TabIndex = 6;
+            this.pbInProgress.TabStop = false;
+            // 
             // lblInProgress
             // 
-            this.lblInProgress.Location = new System.Drawing.Point(265, 77);
+            this.lblInProgress.Location = new System.Drawing.Point(34, 34);
             this.lblInProgress.Name = "lblInProgress";
             this.lblInProgress.Size = new System.Drawing.Size(111, 25);
             this.lblInProgress.TabIndex = 9;
             this.lblInProgress.Text = "In progress";
             this.lblInProgress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblunResolved
-            // 
-            this.lblunResolved.Location = new System.Drawing.Point(265, 46);
-            this.lblunResolved.Name = "lblunResolved";
-            this.lblunResolved.Size = new System.Drawing.Size(111, 25);
-            this.lblunResolved.TabIndex = 8;
-            this.lblunResolved.Text = "Unresolved";
-            this.lblunResolved.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pbResolved
             // 
-            this.pbResolved.Location = new System.Drawing.Point(234, 108);
+            this.pbResolved.Location = new System.Drawing.Point(3, 65);
             this.pbResolved.Name = "pbResolved";
             this.pbResolved.Size = new System.Drawing.Size(25, 25);
             this.pbResolved.TabIndex = 7;
             this.pbResolved.TabStop = false;
             // 
-            // pbInProgress
+            // lblunResolved
             // 
-            this.pbInProgress.Location = new System.Drawing.Point(234, 77);
-            this.pbInProgress.Name = "pbInProgress";
-            this.pbInProgress.Size = new System.Drawing.Size(25, 25);
-            this.pbInProgress.TabIndex = 6;
-            this.pbInProgress.TabStop = false;
-            // 
-            // pbunResolved
-            // 
-            this.pbunResolved.Location = new System.Drawing.Point(234, 46);
-            this.pbunResolved.Name = "pbunResolved";
-            this.pbunResolved.Size = new System.Drawing.Size(25, 25);
-            this.pbunResolved.TabIndex = 5;
-            this.pbunResolved.TabStop = false;
+            this.lblunResolved.Location = new System.Drawing.Point(34, 3);
+            this.lblunResolved.Name = "lblunResolved";
+            this.lblunResolved.Size = new System.Drawing.Size(111, 25);
+            this.lblunResolved.TabIndex = 8;
+            this.lblunResolved.Text = "Unresolved";
+            this.lblunResolved.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlChartWrapperMain
             // 
@@ -400,6 +420,7 @@
             this.btnArchive.TabIndex = 17;
             this.btnArchive.Text = "Archive old tickets";
             this.btnArchive.UseVisualStyleBackColor = true;
+            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
             // button_deleteTicket
             // 
@@ -600,12 +621,14 @@
             this.menuStrip1.PerformLayout();
             this.pnlDashBoard.ResumeLayout(false);
             this.gbSecondaryChart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbPastDeadline)).EndInit();
+            this.pnlColorLegendSecondary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbWithinDeadline)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPastDeadline)).EndInit();
             this.gbMainChart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbResolved)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInProgress)).EndInit();
+            this.pnlColorLegendMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbunResolved)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInProgress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResolved)).EndInit();
             this.UserManagement_Pnl.ResumeLayout(false);
             this.UserManagement_Pnl.PerformLayout();
             this.TicketView_Pnl.ResumeLayout(false);
@@ -672,5 +695,7 @@
         private System.Windows.Forms.PictureBox pbunResolved;
         private System.Windows.Forms.Panel pnlChartWrapperMain;
         private System.Windows.Forms.Button btnArchive;
+        private System.Windows.Forms.Panel pnlColorLegendSecondary;
+        private System.Windows.Forms.Panel pnlColorLegendMain;
     }
 }
