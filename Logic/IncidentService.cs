@@ -20,6 +20,6 @@ namespace Logic
         {
             IncidentDb.AddIncident(incident);
         }
-
+        
     }
 }

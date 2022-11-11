@@ -65,7 +65,7 @@ namespace Logic
         {
             return ticketDB.getNewTicketId();
         }
-
+        
 
     }
 }

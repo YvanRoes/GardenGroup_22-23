@@ -250,10 +250,12 @@ namespace UI
             foreach (Ticket ticket in tickets)
             {
                 ListViewItem li = new ListViewItem(ticket._id.ToString());
+                li.SubItems.Add(ticket._reportedBy.ToString());
                 li.SubItems.Add(ticket._subject);
-                li.SubItems.Add(ticket._description);
-                li.Tag = ticket._id;
-                listView_RegularTickets.Items.Add(li);
+                li.SubItems.Add(ticket._date.ToString());
+                // li.SubItems.Add(ticketService.getTicketsByStatusAsync(ticket._status.ToString()));
+                li.Tag = ticket;
+                listView_Tickets.Items.Add(li);
             }
 
         }
