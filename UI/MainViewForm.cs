@@ -374,5 +374,12 @@ namespace UI
             }
 
         }
+
+        private void button_deleteTicket_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(listView_ServiceDesk.SelectedItems[0].Text);
+            _ticketService.DeleteTicket(id);
+            LoadTicketListViewForServiceDeskEmployee();
+        }
     }
 }

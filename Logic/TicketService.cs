@@ -74,5 +74,10 @@ namespace Logic
             return ticketDB.getTicketSortedByPriority();
         }
 
+        public void DeleteTicket(int id)
+        {
+            ticketDB.DeleteDocument(id);
+        }
+
     }
 }
