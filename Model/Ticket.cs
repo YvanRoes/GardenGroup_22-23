@@ -19,7 +19,7 @@ namespace Model
         [BsonElement("deadline")] private int _deadline;
         [BsonElement("description")] private string _description;
         [BsonElement("status")] private int _status;
-        [BsonElement("Comment")] private string _comment;
+        [BsonElement("TransferDetails")] private string _transferDetails;
 
         public int get_id() { return _id; }
         public int get_ticketedBy() { return _ticketedBy; }
@@ -41,6 +41,7 @@ namespace Model
                 default: return TicketStatus.unknown;
             }
         }
+        public string get_transferDetails() { return _transferDetails; }
 
         public Ticket(int _id, int _ticketedBy, int _reportedBy, string _subject, DateTime _date, int _ticketType, int _priority, int _deadline, string _description, int _status)
         {

@@ -68,7 +68,7 @@ namespace DAL
             var field = Builders<Ticket>.Projection.Include("TransferDetails");
             var result = _ticketCollection.Find(filter).Project<Ticket>(field).FirstOrDefault();
 
-            return result._transferDetails;
+            return result.get_transferDetails();
         }
     }
 }
