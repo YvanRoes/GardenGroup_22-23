@@ -12,17 +12,17 @@ namespace DAL
 {
     public class TicketDAO : MongoHelper
     {
+        IMongoCollection<Ticket> collection;
 
         //Yvan Roes
         public List<Ticket> getTickets()
         {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            collection = database.GetCollection<Ticket>("Ticket");
             return collection.AsQueryable().ToList();
         }
 
         public List<Ticket> getOpenAndPendingTickets()
         {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
             List<Ticket> tickets = collection.Aggregate().Match(x => (int)x.get_status() == 1 || (int)x.get_status() == 2).ToList<Ticket>();
             return tickets;
         }
@@ -33,7 +33,6 @@ namespace DAL
             if(status != TicketStatus.unknown)
                 pipe.Add(new BsonDocument { { "status", (int)status } });
 
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
             var query = collection.Aggregate()
                         .Match(pipe);
             var results = await query.ToListAsync();
@@ -42,7 +41,6 @@ namespace DAL
 
         public List<Ticket> getTicketSortedByPriority()
         {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
             List<Ticket> tickets = collection.Aggregate().Sort("{priority: -1}").ToList<Ticket>();
             return tickets;
         }
@@ -63,8 +61,6 @@ namespace DAL
 
         public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
-
             //var filter = Builders<BsonDocument>.Filter.Eq("reportedBy", userId);
             var filter = Builders<Ticket>.Filter.Eq(ticket => ticket.get_reportedBy(), userId);
             List<Ticket> filteredTickets = collection.Find(filter).ToList();
@@ -74,7 +70,6 @@ namespace DAL
 
         public void UpdateTicket(Ticket ticket)
         {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
             var filter = Builders<Ticket>.Filter.Eq("ID", ticket.get_id());
 
                 var update = Builders<Ticket>.Update.Set("ID" , ticket.get_id()).Set("ticketedBy", ticket.get_ticketedBy()).Set("reportedBy", ticket.get_reportedBy()).Set("subject", ticket.get_subject())
@@ -86,18 +81,17 @@ namespace DAL
         }
         public void DeleteDocument(int id)
         {
-            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
             var filter = Builders<Ticket>.Filter.Eq("ID" ,id);
             
             var personDeleteResult = collection.DeleteOne(filter);
         }
 
-        public void UpdateStatus(int ticketid, int status)
+        public void UpdateTicketStatus(int ticketid, int status)
         {
 
             var filter = Builders<Ticket>.Filter.Eq("ID", ticketid);
-            var update = Builders<Ticket>.Update.Set("status", (int)TicketStatus.transfered);
-            //collection.UpdateOne(filter, update);
+            var update = Builders<Ticket>.Update.Set("status", status);
+            collection.UpdateOne(filter, update);
         }
 
         //Andy's 

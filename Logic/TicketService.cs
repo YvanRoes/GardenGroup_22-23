@@ -108,5 +108,9 @@ namespace Logic
             ticketDB.DeleteDocument(id);
         }
 
+        public void UpdateTicketStatus(int ticketId, int status)
+        {
+            ticketDB.UpdateTicketStatus(ticketId, status);
+        }
     }
 }
