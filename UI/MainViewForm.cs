@@ -279,6 +279,7 @@ namespace UI
                 button_CreateIncident.Text = "Create Incident";
                 button_deleteTicket.Text = "Delete Incident";
                 button_PrioritySort.Visible = false;
+                btnArchive.Visible = false;
                 LoadTicketListViewForRegularEmployee();
 
             }
