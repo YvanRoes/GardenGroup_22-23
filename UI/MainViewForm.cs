@@ -31,7 +31,10 @@ namespace UI
             start();
 
             if (_loggedUser.get_userType() != UserType.ServiceDesk)
+            {
                 userManagementToolStripMenuItem.Enabled = false;
+                btnArchive.Visible = false;
+            }
         }
 
         public MainViewForm()
