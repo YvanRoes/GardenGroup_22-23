@@ -36,6 +36,10 @@ namespace Logic
         {
             return userDb.generatePassword(id, name);
         }
+        public void SetnewPassowrd(string newPassword,string email,int id)
+        {
+            userDb.SetnewPassowrd(newPassword, email, id);
+        }
         public void addNewUser(User user)
         {
             userDb.AddUser(user);
@@ -48,6 +52,10 @@ namespace Logic
         public User GetUserByUsernameAndPassword(string email,string password)
         {
             return userDb.GetUserByUsernameAndPassword(email,password);
+        }
+        public User GetFilteredUsersByEmailAndId(string email,int id)
+        {
+            return userDb.GetFilteredUsersByEmailAndId(email, id); 
         }
     }
 }
