@@ -1,45 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace DAL
 {
-    public class ItemDAO : MongoHelper
+    public class TicketDAO : MongoHelper
     {
-        public List<Ticket> GetAllTickets()
-        {
-            List<Ticket> list = new List<Ticket>();
-            var doc = GetListOfDocuments("Ticket");
-            doc.ForEach(t =>
-            {
-                int id = (int)t["ID"];
-                int ticketedBy = (int)t["ticketedBy"];
-                int reportedBy = (int)t["reportedBy"];
-                string subject = (string)t["subject"];
-                string date = (string)t["date"];
-                TicketType ticketType = (TicketType)(int)t["ticketType"];
-                Priority priority = (Priority)(int)t["priority"];
-                Deadline deadline = (Deadline)(int)t["deadline"];
-                string description = (string)t["description"];
-                string status = (string)t["status"];
 
-                list.Add(new Ticket(id, ticketedBy, reportedBy, subject, date, ticketType, priority, deadline, description, getTicketStatusFromString(status)));
+        //Yvan Roes
+        public List<Ticket> getTickets()
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            return collection.AsQueryable().ToList();
+        }
+
+        public List<Ticket> getOpenAndPendingTickets()
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            List<Ticket> tickets = collection.Aggregate().Match(x => x._status == 1 || x._status == 2).ToList<Ticket>();
+            return tickets;
+        }
+
+        public async Task<List<Ticket>> getTicketByStatusAsync(TicketStatus status) 
+        {
+            BsonDocument pipe  = new BsonDocument();
+            if(status != TicketStatus.unknown)
+                pipe.Add(new BsonDocument { { "status", (int)status } });
+
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var query = collection.Aggregate()
+                        .Match(pipe);
+            var results = await query.ToListAsync();
+            return results.AsQueryable().ToList();
+        }
+
+        public List<Ticket> getTicketSortedByPriority()
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            List<Ticket> tickets = collection.Aggregate().Sort("{priority: -1}").ToList<Ticket>();
+            return tickets;
+        }
+
+        public int getNewTicketId()
+        {
+            List<Ticket> tickets = getTickets();
+            int max = 0;
+            tickets.ForEach(t =>
+            {
+                if(t.get_id() > max)
+                    max = t.get_id();
             });
-            return list;
+            return max + 1;
         }
 
-        private TicketStatus getTicketStatusFromString(string status)
+        //Aleks
+
+        public List<Ticket> GetFilteredTicketsByUserId(int userId)
         {
-            switch (status)
-            {
-                case "open" : return TicketStatus.open;
-                case "waiting" : return TicketStatus.waiting;
-                case "closed": return TicketStatus.closed;
-                default : return TicketStatus.unknown;
-            }
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+
+            //var filter = Builders<BsonDocument>.Filter.Eq("reportedBy", userId);
+            var filter = Builders<Ticket>.Filter.Eq(ticket => ticket._reportedBy, userId);
+            List<Ticket> filteredTickets = collection.Find(filter).ToList();
+
+            return filteredTickets;
         }
+
+        public void UpdateTicket(Ticket ticket)
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var filter = Builders<Ticket>.Filter.Eq("ID", ticket.get_id());
+
+                var update = Builders<Ticket>.Update.Set("ID" , ticket.get_id()).Set("ticketedBy", ticket.get_ticketedBy()).Set("reportedBy", ticket.get_reportedBy()).Set("subject", ticket.get_subject())
+                .Set("date", ticket.get_date()).Set("ticketType",(int)ticket.get_ticketType()).Set("priority",(int)ticket.get_priority()).Set("deadline", (int)ticket.get_deadline())
+                .Set("description",ticket.get_description()).Set("status",(int)ticket.get_status());
+
+            collection.UpdateOneAsync(filter, update);
+
+        }
+        public void DeleteDocument(int id)
+        {
+            IMongoCollection<Ticket> collection = database.GetCollection<Ticket>("Ticket");
+            var filter = Builders<Ticket>.Filter.Eq("ID" ,id);
+            
+            var personDeleteResult = collection.DeleteOne(filter);
+        }
+        
+        //Andy's 
+
+        public string CountTicketsperUser(int userId)
+        {
+            string result = executeMatchCountQuery("Ticket", "reportedBy", userId);
+            string nrOfTickets = "";
+
+            if (result == "NULL")
+                nrOfTickets = "0";
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (char.IsDigit(result[i]))
+                    nrOfTickets += result[i];
+            }
+
+            return nrOfTickets;
+        }
+
     }
 }

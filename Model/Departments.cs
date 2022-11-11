@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum TicketStatus { unresolved = 1, inProgress = 2, resolved = 3 , transfered = 4, unknown }
+    public enum Departments {HR, Logistic, Finance, Sales, Administration, Production, ServiceDesk }
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Priority { low, normal, high }
+    public enum Priority { low=1, normal, high }
 }

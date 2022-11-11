@@ -12,62 +12,90 @@ namespace DAL
 {
     public class UserDAO : MongoHelper
     {
-        //public User GetUser()
-        //{
-        //    return new User()
-        //    {
-        //        Id = 0,
-        //        Name = "",
-        //        Password = "",
-        //        Email = "",
-        //        Phone = 0,
-        //        UserType = 0,
-        //        Location = 0,
-        //    };
-        //}
+
+        private IMongoCollection<User> collection;
+        public UserDAO()
+        {
+            MongoClient mongoClient = new MongoClient("mongodb+srv://gg3:gg3@cluster0.mhym582.mongodb.net/test");
+            IMongoDatabase database = mongoClient.GetDatabase("NoSqlProjectDatabase");
+            collection = database.GetCollection<User>("User");
+
+        }
+        private User getUser(BsonDocument doc)
+        {
+            int id = (int)doc["ID"];
+            string name = doc["Name"].ToString();
+            string email = doc["Email"].ToString();
+            long phone = (long)doc["Phone"];
+            int userType = (int)(doc["UserType"]);
+            int location = (int)doc["Location"];
+            string password = doc["Password"].ToString();
+
+            return new User(id, name, email, phone, userType, location, password);
+        }
 
         public List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
-            var document = GetListOfDocuments("User");
+            var documents = GetListOfDocuments("User");
 
-            foreach (var info in document)
-            {
-                int id = (int)info["ID"];
-                string name = info["Name"].ToString();
-                string email = info["Email"].ToString();
-                long phone = (long)info["Phone"];
-                int userType = (int)(info["UserType"]);
-                int location = (int)info["Location"];
-                
-                User u = new User(id, name, email, phone, userType, location);
-                users.Add(u);
-            }
+            foreach (var doc in documents)
+                users.Add(getUser(doc));
 
-                return users;
+            return users;
+        }
+        public User GetUserByUsernameAndPassword(string email, string password)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u._email, email) & Builders<User>.Filter.Eq(u => u._password, password);
+            var user = collection.Find(filter).FirstOrDefault();
+
+            return user;
         }
 
         public List<User> GetFilteredUserByEmail(string filterEmail)
         {
             List<User> users = new List<User>();
-            //I have to fix the attribute change back to string
-            var document = GetListOfFilteredDocuments("User", "Email",filterEmail);
+            var documents = GetListOfFilteredDocuments("User", "Email", filterEmail);
 
-            foreach (var info in document)
-            {
-                int id = (int)info["ID"];
-                string name = info["Name"].ToString();
-                string email = info["Email"].ToString();
-                long phone = (long)info["Phone"];
-                int userType = (int)(info["UserType"]);
-                int location = (int)info["Location"];
-
-                User u = new User(id, name, email, phone, userType, location);
-                users.Add(u);
-            }
+            foreach (var doc in documents)
+                users.Add(getUser(doc));
 
             return users;
         }
+
+        public void AddUser(User user)
+        {
+            var document = new BsonDocument { { "ID", getNewId() }, { "Name", user.get_name() }, { "Email", user.get_email() }, { "Phone", user.get_phone() }, { "Location", (int)user.get_location() }, { "UserType", (int)user.get_userType() }, { "Password", user.get_password() } };
+            CreateDocument("User", document);
+        }
+
+        private int getNewId()
+        {
+            int id = 0;
+            List<User> users = GetAllUsers();
+
+            users.ForEach(user =>
+            {
+                if (user.get_id() > id)
+                    id = user.get_id();
+            });
+            return id + 1;
+        }
+        private string getPassword(int id, string name)
+        {
+            string[] separateName = name.Split(' ');
+            return id + separateName[0];
+        }
+        public int generateId()
+        {
+            return getNewId();
+        }
+        public string generatePassword(int id, string name)
+        {
+            return getPassword(id, name);
+        }
+
+
     }
 }
 
